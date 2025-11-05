@@ -309,14 +309,14 @@ export default function ProductInfoPage({ variant, onNavigate }: ProductInfoPage
         </div>
       </section>
 
-			{/* Product Galleries by Category */}
-			{variant === 'flow-meters' && renderGallery('Flow Meters', 'Explore our complete lineup of flow meters', 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2')}
-			{variant === 'analyzers' && renderGallery('Analyzers & Transmitters', 'Advanced analyzers and transmitters for continuous monitoring')}
-			{variant === 'valves' && renderGallery('Valves & Piping', 'Engineered valves and piping solutions for critical applications')}
-			{variant === 'automation' && renderGallery('Automation (IoT / PLC / RTU / SCADA)', 'Integrated automation platforms for intelligent water management', 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2')}
-			{variant === 'cameras' && renderGallery('Cameras & Vision', 'Rugged vision and surveillance systems for utilities')}
-			{variant === 'jointing' && renderGallery('Jointing Machines', 'Professional jointing equipment for plastic piping systems')}
-			{variant === 'rosemount' && renderGallery('Rosemount 3051S Series Coplanar Pressure Transmitter', 'Premium 3051S models and options', 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2')}
+      {/* Product Galleries by Category */}
+      {variant === 'flow-meters' && renderGallery('Flow Meters', 'Explore our complete lineup of flow meters')}
+      {variant === 'analyzers' && renderGallery('Analyzers & Transmitters', 'Advanced analyzers and transmitters for continuous monitoring')}
+      {variant === 'valves' && renderGallery('Valves & Piping', 'Engineered valves and piping solutions for critical applications')}
+      {variant === 'automation' && renderGallery('Automation (IoT / PLC / RTU / SCADA)', 'Integrated automation platforms for intelligent water management')}
+      {variant === 'cameras' && renderGallery('Cameras & Vision', 'Rugged vision and surveillance systems for utilities')}
+      {variant === 'jointing' && renderGallery('Jointing Machines', 'Professional jointing equipment for plastic piping systems')}
+      {variant === 'rosemount' && renderGallery('Rosemount 3051S Series Coplanar Pressure Transmitter', 'Premium 3051S models and options')}
 
       {/* Features Section */}
       {page.features.length > 0 && (

@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import heroWaterImage from '../assets/products/hero-section.jpg';
-import { Building2, TrendingUp, CheckCircle2, Clock } from 'lucide-react';
+import { Building2, CheckCircle2, Clock } from 'lucide-react';
 
 interface ProjectsPageProps {
   initialFilter?: 'all' | 'completed' | 'ongoing';

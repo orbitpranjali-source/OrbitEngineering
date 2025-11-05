@@ -17,6 +17,8 @@ interface ProductsPageProps {
 
 
 export default function ProductsPage({ onNavigate }: ProductsPageProps) {
+  // mark prop as used to satisfy TypeScript when parent passes navigation handler
+  void onNavigate;
   const productCategories = [
     {
       icon: Droplets,
@@ -141,7 +143,8 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
                   ) : (
                     <category.icon className="h-10 w-10 text-[#0073bc] mx-auto group-hover:scale-110 transition-transform duration-300" />
                   )}
-                </div>
+    </div>
+
                 <h3 className="text-xl font-bold text-gray-900 mb-3">
                   {category.title === 'Water Treatment Plants' && '🚰 '}
                   {category.title === 'Sewage Treatment Plants' && '🧼 '}
@@ -243,9 +246,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
           <p className="text-lg text-gray-600 mb-8">
             Our engineering team can design and build products tailored to your specific requirements
           </p>
-          <button onClick={() => onNavigate && onNavigate('product-info')} className="px-8 py-3 bg-[#0073bc] text-white rounded-full font-semibold hover:bg-[#005a94] transition-colors">
-            Request Product Information
-          </button>
+          
         </div>
       </section>
     </div>

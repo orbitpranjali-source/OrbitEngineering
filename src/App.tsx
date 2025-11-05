@@ -11,8 +11,10 @@ import FAQPage from './pages/FAQPage';
 import TeamPage from './pages/TeamPage';
 import ContactPage from './pages/ContactPage';
 import ProductDetailPage from './pages/ProductDetailPage';
+import ClientsPage from './pages/ClientsPage';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useMemo } from 'react';
-import { buildProductsData, flattenProducts, type ProductItem, type RawGroup } from './data/products';
+import { buildProductsData, flattenProducts, type ProductItem } from './data/products';
 import { RAW_SUB_PRODUCTS } from './data/rawProducts';
 import logo2 from './assets/logo-2.png';
 
@@ -25,6 +27,7 @@ type PageType =
   | 'about'
   | 'services'
   | 'products'
+  | 'clients'
   | 'faq'
   | 'team'
   | 'contact'
@@ -123,6 +126,8 @@ function App() {
         return <ServicesPage onNavigate={handleNavigate} />;
       case 'products':
         return <ProductsPage onNavigate={handleNavigate} />;
+      case 'clients':
+        return <ClientsPage />;
       case 'product-info':
         return <ProductInfoPage onNavigate={handleNavigate} />;
       case 'faq':
@@ -137,22 +142,32 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-white">
-      <Header onNavigate={handleNavigate} currentPage={currentPage} />
-      <div className="relative flex-grow">
-        {isTransitioning && (
-          <div className="absolute inset-0 z-40 route-logo-overlay">
-            <img src={logo2} alt="Sync Water Tech" />
-          </div>
-        )}
-        <main className={`flex-grow ${isTransitioning ? 'pointer-events-none select-none' : ''}`}>
-          <div className="animate-fade-in animate-slide-up">
-            {renderPage()}
-          </div>
-        </main>
-      </div>
-      <Footer onNavigate={handleNavigate} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/clients" element={<ClientsPage />} />
+        <Route
+          path="/*"
+          element={
+            <div className="min-h-screen flex flex-col bg-white">
+              <Header onNavigate={handleNavigate} currentPage={currentPage} />
+              <div className="relative flex-grow">
+                {isTransitioning && (
+                  <div className="absolute inset-0 z-40 route-logo-overlay">
+                    <img src={logo2} alt="Sync Water Tech" />
+                  </div>
+                )}
+                <main className={`flex-grow ${isTransitioning ? 'pointer-events-none select-none' : ''}`}>
+                  <div className="animate-fade-in animate-slide-up">
+                    {renderPage()}
+                  </div>
+                </main>
+              </div>
+              <Footer onNavigate={handleNavigate} />
+            </div>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
