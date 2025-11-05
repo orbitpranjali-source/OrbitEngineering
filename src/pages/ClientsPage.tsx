@@ -82,32 +82,63 @@ export default function ClientsPage() {
           </div>
 
           <div className="bg-white rounded-3xl shadow-sm ring-1 ring-black/5 p-6 md:p-8">
+            {/* Dynamically load client logos from src/assets/clients and map to the display names */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {[
-                'MP Jal Nigam',
-                'MPUDCL Bhopal',
-                'Bhopal Municipal Corporation',
-                'Indore District Administration',
-                'Tikamgarh Nagar Parishads',
-                'WRD Bhopal',
-                'Prism Cement',
-                'Lupin Pharmaceuticals',
-                'Vindhyachal Distillery',
-                'Central India Pvt Ltd',
-                'Dilip Buildcon',
-                'Tejas Construction'
-              ].map((name) => (
-                <div key={name} className="rounded-2xl border border-indigo-100 bg-white p-6 shadow-[0_2px_10px_rgba(99,102,241,0.08)]">
-                  <div className="flex items-center gap-4">
-                    <div className="relative">
-                      <div className="h-10 w-10 rounded-full bg-indigo-100 flex items-center justify-center">
-                        <div className="h-4 w-4 rounded-full bg-indigo-300"></div>
+              {(() => {
+                const modules = import.meta.glob('../assets/clients/*.{png,jpg,jpeg,svg}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
+                const fileMap: Record<string, string> = Object.fromEntries(
+                  Object.entries(modules).map(([p, url]) => {
+                    const fname = p.split('/').pop() || p;
+                    const key = fname.replace(/\.(png|jpe?g|svg)$/i, '').toLowerCase().replace(/[^a-z0-9]/g, '');
+                    return [key, url];
+                  })
+                );
+
+                const displayNames = [
+                  'MP Jal Nigam',
+                  'MPUDCL Bhopal',
+                  'Bhopal Municipal Corporation',
+                  'Indore District Administration',
+                  'Tikamgarh Nagar Parishads',
+                  'WRD Bhopal',
+                  'Prism Cement',
+                  'Lupin Pharmaceuticals',
+                  'Vindhyachal Distillery',
+                  'Central India Pvt Ltd',
+                  'Dilip Buildcon',
+                  'Tejas Construction'
+                ];
+
+                return displayNames.map((name, idx) => {
+                  const key = name.toLowerCase().replace(/[^a-z0-9]/g, '');
+                  const logo = fileMap[key] || null;
+                  return (
+                    <motion.div
+                      key={name}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: idx * 0.04, duration: 0.4 }}
+                      whileHover={{ scale: 1.03 }}
+                      className="rounded-2xl border border-indigo-100 bg-white p-6 shadow-[0_2px_10px_rgba(99,102,241,0.06)] hover:shadow-lg transform-gpu transition-shadow transition-transform"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div className="flex-shrink-0">
+                          {logo ? (
+                            <div className="h-12 w-12 rounded-md bg-white flex items-center justify-center border border-gray-100 overflow-hidden">
+                              <img src={logo} alt={`${name} logo`} className="h-10 w-auto object-contain" />
+                            </div>
+                          ) : (
+                            <div className="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center">
+                              <div className="h-4 w-4 rounded-full bg-indigo-300" />
+                            </div>
+                          )}
+                        </div>
+                        <div className="font-medium text-gray-900 text-sm md:text-base">{name}</div>
                       </div>
-                    </div>
-                    <div className="font-medium text-gray-900 text-sm md:text-base">{name}</div>
-                  </div>
-                </div>
-              ))}
+                    </motion.div>
+                  );
+                });
+              })()}
             </div>
           </div>
         </div>
