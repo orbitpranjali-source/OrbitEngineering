@@ -1,19 +1,21 @@
-import { Droplets, Settings, FileText, Wrench, Cloud, Cpu } from 'lucide-react';
-import subHeadingImage from '../assets/products/sub-heading.jpg';
-import heroWaterImage from '../assets/products/hero-section.jpg';
+import { useState } from 'react';
+import { Droplets, Settings, FileText, Wrench, Cloud, Cpu, ChevronDown, HelpCircle } from 'lucide-react';
+import HeroSection from '../components/HeroSection';
+import { MotionFadeUp, MotionStagger } from '../components/Animated';
 import iconWaterTreatmentPlants from '../assets/icon/Water Treatment Plants.png';
 import iconAutomationSystems from '../assets/icon/Automation Systems.png';
 import iconOMServices from '../assets/icon/O&M Services.png';
 import iconCloudManagement from '../assets/icon/Cloud Management.png';
 import iconInstallationCommissioning from '../assets/icon/Installation & Commissioning.png';
 import iconConsultancyDesign from '../assets/icon/Consultancy & Design.png';
-import iconOurServices from '../assets/icon/Our Services.png';
 
 interface ServicesPageProps {
   onNavigate?: (page: string) => void;
 }
 
 export default function ServicesPage({ onNavigate }: ServicesPageProps) {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  
   const services = [
     {
       icon: Droplets,
@@ -100,36 +102,66 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
     'Energy management solutions'
   ];
 
+  const faqs = [
+    {
+      question: 'What services does Sync Water Tech provide?',
+      answer: 'We provide comprehensive water infrastructure solutions including design and installation of Water Treatment Plants (WTP), Sewage Treatment Plants (STP), Reverse Osmosis systems, Effluent Treatment Plants (ETP), PLC-based automation, SCADA systems, IoT sensors, and complete operation and maintenance services.'
+    },
+    {
+      question: 'What regions do you serve?',
+      answer: 'We primarily serve projects across Madhya Pradesh and central India, with capabilities to execute projects nationwide. We have successfully completed projects in Bhopal, Indore, Jabalpur, Gwalior, Ujjain, and many other cities across the region.'
+    },
+    {
+      question: 'How does your automation technology work?',
+      answer: 'Our automation systems use programmable logic controllers (PLC) integrated with SCADA software and IoT sensors to monitor and control water treatment processes in real-time. This enables remote monitoring, automated control, predictive maintenance, and significant improvements in efficiency and reliability.'
+    },
+    {
+      question: 'What is the typical timeline for a project?',
+      answer: 'Project timelines vary based on scope and complexity. Small automation upgrades may take 2-3 months, while large treatment plant installations can take 12-18 months. We provide detailed project schedules during the planning phase and maintain transparent communication throughout execution.'
+    },
+    {
+      question: 'Do you provide operation and maintenance services?',
+      answer: 'Yes, we offer comprehensive O&M services including preventive maintenance, emergency repairs, system upgrades, performance monitoring, and 24/7 technical support. We can manage operations for the entire lifecycle of your water infrastructure.'
+    },
+    {
+      question: 'What makes your Clarus Fusion Series unique?',
+      answer: 'The Clarus Fusion Series represents our integrated approach combining advanced treatment technology with intelligent automation. It features 30% lower power consumption, 99.5% treatment efficiency, cloud-based monitoring, predictive maintenance, and mobile app control - all in a scalable, energy-optimized platform.'
+    },
+    {
+      question: 'Can you upgrade existing water treatment facilities?',
+      answer: 'Absolutely. We specialize in modernizing and automating existing water treatment facilities. This includes retrofitting older plants with PLC controls, adding IoT sensors, implementing cloud monitoring, and upgrading treatment processes to improve efficiency and meet current standards.'
+    },
+    {
+      question: 'What certifications and standards do you follow?',
+      answer: 'We follow ISO quality management standards and comply with all relevant Indian and international standards for water treatment and automation. Our designs meet Bureau of Indian Standards (BIS), Central Public Health and Environmental Engineering Organisation (CPHEEO) guidelines, and industry best practices.'
+    },
+    {
+      question: 'How do you ensure water quality in your treatment systems?',
+      answer: 'Our systems incorporate multiple quality control measures including multi-stage filtration, real-time monitoring of critical parameters (pH, turbidity, chlorine, TDS), automated chemical dosing, continuous data logging, and alarm systems for any deviations from specified parameters.'
+    },
+    {
+      question: 'What is your approach to energy efficiency?',
+      answer: 'Energy efficiency is integral to our designs. We use variable frequency drives, optimized pump scheduling, intelligent control algorithms, energy recovery systems, and renewable energy integration where applicable. Our Clarus Fusion technology achieves 30% lower power consumption compared to conventional systems.'
+    },
+    {
+      question: 'Do you provide training for operating your systems?',
+      answer: 'Yes, comprehensive training is included with every installation. We provide hands-on training for operators, maintenance staff, and supervisors covering system operation, routine maintenance, troubleshooting, and emergency procedures. We also provide detailed operation manuals and ongoing technical support.'
+    },
+    {
+      question: 'How can I get a quote for my project?',
+      answer: 'Contact us through our website, email, or phone with your project details. Our team will schedule a consultation to understand your requirements, conduct a site assessment if needed, and provide a detailed proposal including scope, timeline, and pricing.'
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="relative text-white py-20">
-        <img src={heroWaterImage} alt="Water technology background" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              {iconOurServices ? (
-                <img src={iconOurServices} alt="Our Services icon" className="h-16 w-16 md:h-20 md:w-20 object-contain mx-auto mb-6" />
-              ) : (
-                <Settings className="h-16 w-16 mx-auto mb-6 opacity-90" />
-              )}
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Services</h1>
-              <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto">
-                Comprehensive water infrastructure solutions from concept to maintenance
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection title="Our Services" subtitle="Comprehensive water infrastructure solutions from concept to maintenance" />
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <MotionStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" stagger={0.05}>
             {services.map((service, index) => (
-              <div
-                key={index}
-                className="group bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow border border-gray-100"
-              >
+              <MotionFadeUp key={index} className="group bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow border border-gray-100">
                 <div className="icon-wrap mb-6 mx-auto">
                   {service.image ? (
                     <img src={service.image} alt={`${service.title} icon`} className="icon-img icon-hover" />
@@ -148,9 +180,9 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </MotionFadeUp>
             ))}
-          </div>
+          </MotionStagger>
         </div>
       </section>
 
@@ -194,19 +226,45 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
         </div>
       </section>
 
-      <section className="relative text-white py-20">
-        <img src={subHeadingImage} alt="Custom solutions background" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/40" />
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Custom Solutions for Your Needs
-          </h2>
-          <p className="text-lg text-blue-100 mb-8">
-            Every project is unique. We tailor our services to meet your specific requirements and objectives.
-          </p>
-          <button onClick={() => onNavigate && onNavigate('projects')} className="px-8 py-3 bg-white text-[#0073bc] rounded-full font-semibold hover:bg-gray-100 transition-colors">
-            Discuss Your Project
-          </button>
+      {/* FAQ Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <HelpCircle className="h-12 w-12 mx-auto mb-4 text-[#0073bc]" />
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-gray-600">
+              Find answers to common questions about our services and solutions
+            </p>
+          </div>
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <div
+                key={index}
+                className="bg-gray-50 rounded-xl shadow-md overflow-hidden border border-gray-100"
+              >
+                <button
+                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                  className="w-full px-6 py-5 flex items-start justify-between text-left hover:bg-gray-100 transition-colors"
+                >
+                  <span className="font-semibold text-gray-900 pr-8">
+                    {faq.question}
+                  </span>
+                  <ChevronDown
+                    className={`h-5 w-5 text-[#0073bc] flex-shrink-0 transition-transform ${
+                      openIndex === index ? 'transform rotate-180' : ''
+                    }`}
+                  />
+                </button>
+                {openIndex === index && (
+                  <div className="px-6 pb-5 text-gray-700 leading-relaxed">
+                    {faq.answer}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
     </div>

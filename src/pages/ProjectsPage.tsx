@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import heroWaterImage from '../assets/products/hero-section.jpg';
+import HeroSection from '../components/HeroSection';
+import { AnimatedHeading } from '../components/Animated';
 import { Building2, CheckCircle2, Clock } from 'lucide-react';
 
 interface ProjectsPageProps {
@@ -88,22 +89,7 @@ export default function ProjectsPage({ initialFilter = 'all' }: ProjectsPageProp
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
-      <section className="relative text-white py-20">
-        <img src={heroWaterImage} alt="Water technology background" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <Building2 className="h-16 w-16 mx-auto mb-6 opacity-90" />
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Our Projects
-            </h1>
-            <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto">
-              Delivering water infrastructure excellence across India with PLC, SCADA & Automation Systems
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection title="Our Projects" subtitle="Delivering water infrastructure excellence across India with PLC, SCADA & Automation Systems" />
 
       {/* Navigation Tabs */}
       <section className="py-8 bg-white border-b">
@@ -159,9 +145,9 @@ export default function ProjectsPage({ initialFilter = 'all' }: ProjectsPageProp
                       <CheckCircle2 className="h-8 w-8 text-white" />
                     </div>
                     <div>
-                      <h2 className="text-3xl font-bold text-gray-900">
+                      <AnimatedHeading level={2} className="text-3xl font-bold text-gray-900">
                         Completed Works
-                      </h2>
+                      </AnimatedHeading>
                       <p className="text-gray-600 mt-2">All Executed with PLC, SCADA & Automation Systems</p>
                     </div>
                   </div>
@@ -219,9 +205,9 @@ export default function ProjectsPage({ initialFilter = 'all' }: ProjectsPageProp
                         <Building2 className="h-6 w-6 text-white" />
                       </div>
                       <div>
-                        <h3 className="text-2xl font-bold text-gray-900">
+                        <AnimatedHeading level={3} className="text-2xl font-bold text-gray-900">
                           Our Milestones
-                        </h3>
+                        </AnimatedHeading>
                         <p className="text-gray-600 mt-1 text-sm">These milestones illustrate our unwavering commitment to scalable turnkey automation solutions, grounded in robust project execution, technological excellence, and enduring impact across industrial, municipal, and water‑utility sectors.</p>
                       </div>
                     </div>
@@ -284,9 +270,9 @@ export default function ProjectsPage({ initialFilter = 'all' }: ProjectsPageProp
                       <Clock className="h-8 w-8 text-white" />
                     </div>
                     <div>
-                      <h2 className="text-3xl font-bold text-gray-900">
+                      <AnimatedHeading level={2} className="text-3xl font-bold text-gray-900">
                         Ongoing Projects
-                      </h2>
+                      </AnimatedHeading>
                       <p className="text-gray-600 mt-2">In Progress</p>
                     </div>
                   </div>
@@ -342,9 +328,9 @@ export default function ProjectsPage({ initialFilter = 'all' }: ProjectsPageProp
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl font-bold mb-4">
+            <AnimatedHeading level={2} className="text-3xl font-bold mb-4">
               Ready to Start Your Project?
-            </h2>
+            </AnimatedHeading>
             <p className="text-lg text-blue-100 mb-8">
               Let's discuss how we can bring innovative water solutions with PLC, SCADA & Automation Systems to your community
             </p>

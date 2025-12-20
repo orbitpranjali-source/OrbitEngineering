@@ -2,7 +2,6 @@ import { useState } from 'react';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
 import heroWaterImage from '../assets/products/hero-section.jpg';
 import { ChevronDown, HelpCircle } from 'lucide-react';
-import iconFAQ from '../assets/icon/Frequently Asked Questions.png';
 
 interface FAQPageProps {
   onNavigate?: (page: string) => void;
@@ -10,7 +9,6 @@ interface FAQPageProps {
 
 export default function FAQPage({ onNavigate }: FAQPageProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
-
   const faqs = [
     {
       question: 'What services does Sync Water Tech provide?',
@@ -69,11 +67,7 @@ export default function FAQPage({ onNavigate }: FAQPageProps) {
         <div className="absolute inset-0 bg-black/50" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            {iconFAQ ? (
-              <img src={iconFAQ} alt="FAQ icon" className="h-16 w-16 md:h-20 md:w-20 object-contain mx-auto mb-6" />
-            ) : (
-              <HelpCircle className="h-16 w-16 mx-auto mb-6 opacity-90" />
-            )}
+            <HelpCircle className="h-16 w-16 mx-auto mb-6 opacity-90" />
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
               Frequently Asked Questions
             </h1>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import LogoLoader from './components/LogoLoader';
 import HomePage from './pages/HomePage';
 import ProjectsPage from './pages/ProjectsPage';
 import AboutPage from './pages/AboutPage';
@@ -16,7 +17,6 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useMemo } from 'react';
 import { buildProductsData, flattenProducts, type ProductItem } from './data/products';
 import { RAW_SUB_PRODUCTS } from './data/rawProducts';
-import logo2 from './assets/logo-2.png';
 
 type PageType =
   | 'home'
@@ -80,7 +80,7 @@ function App() {
           setPendingAnchor(null);
         }, 50);
       }
-    }, 1500);
+    }, 2200);
   };
 
   useEffect(() => {
@@ -151,11 +151,7 @@ function App() {
             <div className="min-h-screen flex flex-col bg-white">
               <Header onNavigate={handleNavigate} currentPage={currentPage} />
               <div className="relative flex-grow">
-                {isTransitioning && (
-                  <div className="absolute inset-0 z-40 route-logo-overlay">
-                    <img src={logo2} alt="Sync Water Tech" />
-                  </div>
-                )}
+                <LogoLoader isVisible={isTransitioning} />
                 <main className={`flex-grow ${isTransitioning ? 'pointer-events-none select-none' : ''}`}>
                   <div className="animate-fade-in animate-slide-up">
                     {renderPage()}

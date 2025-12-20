@@ -20,26 +20,26 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div>
             <div className="text-2xl font-bold text-white mb-4">
-              Sync Water Tech
+              Orbit
             </div>
             <p className="text-sm text-gray-400 mb-4">
               Pioneering water innovation for sustainable communities
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://in.linkedin.com/company/sync-watertech"
+                href="https://www.linkedin.com/company/orbit-engineering-co"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Sync WaterTech on LinkedIn"
+                aria-label="Orbit Engineering on LinkedIn"
                 className="text-gray-400 hover:text-[#0073bc] transition-colors"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
               <a
-                href="https://www.instagram.com/syncwatertech/"
+                href="https://www.instagram.com/orbitengineering98?igsh=MWIzZ3BxNzF3NmplMw=="
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Sync WaterTech on Instagram"
+                aria-label="Orbit Engineering on Instagram"
                 className="text-gray-400 hover:text-[#0073bc] transition-colors"
               >
                 <Instagram className="h-5 w-5" />
@@ -68,19 +68,26 @@ export default function Footer({ onNavigate }: FooterProps) {
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-[#0073bc] flex-shrink-0 mt-0.5" />
-                <span className="text-sm">
-                  Flat No.1, Block 12, Shalimar Enclave,<br />
-                  E3 Arera Colony, Bhopal, 462016
-                </span>
+                <div className="text-sm">
+                  <span className="block font-medium text-white">Working Office:</span>
+                  <span className="text-gray-400">Flat No.2, Block 12, Shalimar Enclave,<br />E3 Arera Colony, Bhopal, 462016</span>
+                </div>
+              </li>
+              <li className="flex items-start space-x-3">
+                <MapPin className="h-5 w-5 text-[#0073bc] flex-shrink-0 mt-0.5" />
+                <div className="text-sm">
+                  <span className="block font-medium text-white">Head Office:</span>
+                  <span className="text-gray-400">B-32/A Priyadershini Society,<br />Sant Asharam Nagar, Bagsewaniya,<br />Bhopal - 462043</span>
+                </div>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-[#0073bc] flex-shrink-0" />
-                <span className="text-sm">+91-9425005008</span>
+                <span className="text-sm">+91 70241 28029</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-[#0073bc] flex-shrink-0" />
-                <a href="mailto:info@syncwatertech.com" className="text-sm text-gray-400 hover:text-[#0073bc] transition-colors">
-                  info@syncwatertech.com
+                <a href="mailto:info@orbitengineerings.com" className="text-sm text-gray-400 hover:text-[#0073bc] transition-colors">
+                  info@orbitengineerings.com
                 </a>
               </li>
             </ul>

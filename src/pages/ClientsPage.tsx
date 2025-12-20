@@ -1,7 +1,16 @@
 import { useState, useMemo } from 'react';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, Users, Star } from 'lucide-react';
-import { motion } from 'framer-motion';
-const heroWaterImage = new URL('../assets/products/hero-section.jpg', import.meta.url).href;
+import HeroSection from '../components/HeroSection';
+import { MotionFadeUp, MotionStagger, AnimatedHeading } from '../components/Animated';
+import mpJalNigam from '../assets/clients/mp-jal-nigam.png';
+import bharatSarkar from '../assets/clients/bharat-sarkar.png';
+import mpudclIndoreDistrict from '../assets/clients/mpudcl-indore-district.png';
+import lupinPharmaceuticals from '../assets/clients/lupin-pharmaceuticals.png';
+import vindhayachalDistillery from '../assets/clients/vindhayachal-distillery.png';
+import dblBuildcon from '../assets/clients/dbl-buildcon.png';
+import tejasConstructions from '../assets/clients/tejas-constructions.png';
+import prismCement from '../assets/clients/prism-cement.png';
+import centralIndia from '../assets/clients/central-india-pvt-ltd.png';
 
 export default function ClientsPage() {
   const [formData, setFormData] = useState({ fullName: '', email: '', phone: '', message: '' });
@@ -30,39 +39,26 @@ export default function ClientsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="relative text-white py-20">
-        <img src={heroWaterImage} alt="Clients background" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Partners</h1>
-            <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto">
-              Trusted technology and automation partners we work with
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection title="Our Partners" subtitle="Trusted technology and automation partners we work with" />
 
       {/* Static logos (no animation) with names */}
       <section className="py-12 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
-            {clients.map((c, idx) => (
-              <motion.div
+          <MotionStagger className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6" stagger={0.04}>
+            {clients.map((c) => (
+              <MotionFadeUp
                 key={c.name}
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.05, duration: 0.45 }}
                 whileHover={{ scale: 1.04 }}
                 className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm text-center hover:shadow-md transition-shadow"
+                style={{ willChange: 'transform, opacity' }}
               >
                 <div className="flex items-center justify-center h-28">
                   <img src={c.logo} alt={`${c.name} logo`} className="max-h-16 w-auto object-contain opacity-95 filter grayscale-0" />
                 </div>
                 <div className="mt-3 text-sm font-medium text-gray-700 truncate">{c.name}</div>
-              </motion.div>
+              </MotionFadeUp>
             ))}
-          </div>
+          </MotionStagger>
         </div>
       </section>
 
@@ -75,25 +71,16 @@ export default function ClientsPage() {
               <Star className="h-4 w-4 fill-indigo-400 text-indigo-400" />
               <span className="text-sm font-semibold">Valued Clients</span>
             </div>
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
+            <AnimatedHeading level={2} className="text-3xl md:text-4xl font-bold text-gray-900">
               Serving <span className="text-indigo-600">Government & Private Enterprises</span>
-            </h2>
+            </AnimatedHeading>
             <p className="text-gray-600 mt-3">Trusted by leading organizations across India for water infrastructure solutions</p>
           </div>
 
           <div className="bg-white rounded-3xl shadow-sm ring-1 ring-black/5 p-6 md:p-8">
-            {/* Dynamically load client logos from src/assets/clients and map to the display names */}
+            {/* Explicit mapping of organization names to their logos (keeps layout responsive and consistent) */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
               {(() => {
-                const modules = import.meta.glob('../assets/clients/*.{png,jpg,jpeg,svg}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
-                const fileMap: Record<string, string> = Object.fromEntries(
-                  Object.entries(modules).map(([p, url]) => {
-                    const fname = p.split('/').pop() || p;
-                    const key = fname.replace(/\.(png|jpe?g|svg)$/i, '').toLowerCase().replace(/[^a-z0-9]/g, '');
-                    return [key, url];
-                  })
-                );
-
                 const displayNames = [
                   'MP Jal Nigam',
                   'MPUDCL Bhopal',
@@ -109,33 +96,45 @@ export default function ClientsPage() {
                   'Tejas Construction'
                 ];
 
-                return displayNames.map((name, idx) => {
-                  const key = name.toLowerCase().replace(/[^a-z0-9]/g, '');
-                  const logo = fileMap[key] || null;
+                const logoMap: Record<string, string | null> = {
+                  'MP Jal Nigam': mpJalNigam,
+                  'MPUDCL Bhopal': bharatSarkar,
+                  'Bhopal Municipal Corporation': bharatSarkar,
+                  'Indore District Administration': mpudclIndoreDistrict,
+                  'Tikamgarh Nagar Parishads': bharatSarkar,
+                  'WRD Bhopal': bharatSarkar,
+                  'Prism Cement': prismCement,
+                  'Lupin Pharmaceuticals': lupinPharmaceuticals,
+                  'Vindhyachal Distillery': vindhayachalDistillery,
+                  'Central India Pvt Ltd': centralIndia,
+                  'Dilip Buildcon': dblBuildcon,
+                  'Tejas Construction': tejasConstructions
+                };
+
+                return displayNames.map((name) => {
+                  const logo = logoMap[name] || null;
                   return (
-                    <motion.div
+                    <MotionFadeUp
                       key={name}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: idx * 0.04, duration: 0.4 }}
-                      whileHover={{ scale: 1.03 }}
+                      whileHover={{ scale: 1.035 }}
                       className="rounded-2xl border border-indigo-100 bg-white p-6 shadow-[0_2px_10px_rgba(99,102,241,0.06)] hover:shadow-lg transform-gpu transition-shadow transition-transform"
+                      style={{ willChange: 'transform, opacity' }}
                     >
-                      <div className="flex items-center gap-4">
+                      <div className="flex flex-col sm:flex-row items-center sm:items-center gap-4">
                         <div className="flex-shrink-0">
                           {logo ? (
-                            <div className="h-12 w-12 rounded-md bg-white flex items-center justify-center border border-gray-100 overflow-hidden">
-                              <img src={logo} alt={`${name} logo`} className="h-10 w-auto object-contain" />
+                            <div className="h-[100px] w-[100px] rounded-lg bg-white flex items-center justify-center border border-gray-100 overflow-hidden">
+                              <img src={logo} alt={`${name} logo`} className="h-[100px] w-[100px] object-contain" />
                             </div>
                           ) : (
-                            <div className="h-12 w-12 rounded-full bg-indigo-100 flex items-center justify-center">
-                              <div className="h-4 w-4 rounded-full bg-indigo-300" />
+                            <div className="h-[100px] w-[100px] rounded-lg bg-indigo-100 flex items-center justify-center">
+                              <div className="h-5 w-5 rounded-full bg-indigo-300" />
                             </div>
                           )}
                         </div>
-                        <div className="font-medium text-gray-900 text-sm md:text-base">{name}</div>
+                        <div className="font-medium text-gray-900 text-sm md:text-base text-center sm:text-left">{name}</div>
                       </div>
-                    </motion.div>
+                    </MotionFadeUp>
                   );
                 });
               })()}
@@ -161,7 +160,7 @@ export default function ClientsPage() {
                   <div>
                     <h3 className="font-semibold text-gray-900">Phone</h3>
                     <p className="text-gray-600 text-sm mb-2">Call us directly for immediate assistance</p>
-                    <a href="tel:+919981144987" className="text-[#0073bc] font-medium">+91 99811 44987</a>
+                    <a href="tel:+917024128029" className="text-[#0073bc] font-medium">+91 70241 28029</a>
                   </div>
                 </div>
               </div>
@@ -171,7 +170,7 @@ export default function ClientsPage() {
                   <div>
                     <h3 className="font-semibold text-gray-900">Email</h3>
                     <p className="text-gray-600 text-sm mb-2">Send us an email for detailed inquiries</p>
-                    <a href="mailto:info@syncwatertech@gmail.com" className="text-[#0073bc] font-medium">info@syncwatertech@gmail.com</a>
+                    <a href="mailto:info@orbitengineerings.com" className="text-[#0073bc] font-medium">info@orbitengineerings.com</a>
                   </div>
                 </div>
               </div>
@@ -182,11 +181,12 @@ export default function ClientsPage() {
                     <h3 className="font-semibold text-gray-900">Address</h3>
                     <p className="text-gray-600 text-sm mb-2">Visit our office for consultations</p>
                     <a
-                      href="https://maps.google.com/?q=12/1+Shalimar+Enclave,+E-3+Area+Colony+Bhopal,+Madhya+Pradesh,+India+462016"
+                      href="https://maps.google.com/?q=Shalimar+Enclave,+E-3+Area+Colony+Bhopal"
                       target="_blank" rel="noreferrer"
-                      className="text-[#0073bc] font-medium"
+                      className="text-[#0073bc] font-medium block text-sm"
                     >
-                      12/1 Shalimar Enclave, E-3 Area Colony, Bhopal, 462016
+                      Working: Flat No.2, Block 12, Shalimar Enclave, Bhopal<br />
+                      Head: B-32/A Priyadershini Society, Bagsewaniya, Bhopal
                     </a>
                   </div>
                 </div>
@@ -246,7 +246,7 @@ export default function ClientsPage() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0073bc] focus:border-transparent outline-none"
-                      placeholder="+91 99811 44987"
+                      placeholder="+91 70241 28029"
                     />
                   </div>
                   <div>

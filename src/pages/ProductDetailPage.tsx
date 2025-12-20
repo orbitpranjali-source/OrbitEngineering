@@ -1,5 +1,5 @@
-import { motion } from 'framer-motion';
-import heroWaterImage from '../assets/products/hero-section.jpg';
+import HeroSection from '../components/HeroSection';
+import { MotionFadeUp, MotionScaleIn } from '../components/Animated';
 
 interface ProductDetailPageProps {
   productName: string;
@@ -18,17 +18,7 @@ export default function ProductDetailPage({
 }: ProductDetailPageProps) {
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="relative text-white py-20">
-        <img src={heroWaterImage} alt="Water technology background" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">{productName}</h1>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection title={productName} />
 
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -42,21 +32,15 @@ export default function ProductDetailPage({
               </button>
             </div>
           )}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="bg-white rounded-2xl shadow-xl p-6 md:p-10 border border-gray-100"
-          >
+          <MotionFadeUp className="bg-white rounded-2xl shadow-xl p-6 md:p-10 border border-gray-100">
             <div className="w-full flex items-center justify-center mb-8">
-              <motion.img
-                src={productImage}
-                alt={productName}
-                className="max-h-96 w-auto object-contain rounded-xl shadow-lg"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6 }}
-              />
+              <MotionScaleIn>
+                <img
+                  src={productImage}
+                  alt={productName}
+                  className="max-h-96 w-auto object-contain rounded-xl shadow-lg"
+                />
+              </MotionScaleIn>
             </div>
 
             {productDescription && productDescription.length > 0 && (
@@ -84,7 +68,7 @@ export default function ProductDetailPage({
                 </button>
               </div>
             )}
-          </motion.div>
+          </MotionFadeUp>
         </div>
       </section>
     </div>

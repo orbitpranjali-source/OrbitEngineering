@@ -1,18 +1,21 @@
 import { Mail, Briefcase, Target } from 'lucide-react';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
-import heroWaterImage from '../assets/products/hero-section.jpg';
-import ourTeamIcon from '../assets/icon/Our Team.png';
-import rohitImg from '../assets/team/rohit-arora-2.jpg';
+import HeroSection from '../components/HeroSection';
+import { MotionFadeUp, MotionStagger, MotionFadeScale, AnimatedHeading } from '../components/Animated';
+// ourTeamIcon removed: using shared HeroSection component instead
+import manojImg from '../assets/team/manoj-tiwari.jpeg';
 import vijayImg from '../assets/team/vijay-tiwari-2.jpg';
+import officeFounder from '../assets/sync-water-tech-new-office-founder-cabin.jpg';
+import officeReception from '../assets/sync-water-tech-new-office-reception.jpg';
 
 export default function TeamPage() {
   const team = [
     {
-      name: 'Rohit Arora',
-      role: 'Co-Founder & CEO',
-      email: 'rohit@syncwatertech.com',
+      name: 'Manoj Tiwari',
+      role: 'Managing Director',
+      email: 'mktiwari@orbitengineering.com',
       description: 'Visionary leader with expertise in water infrastructure and sustainable technology solutions',
-      photo: rohitImg
+      photo: manojImg
     },
     {
       name: 'Vijay Tiwari',
@@ -23,68 +26,26 @@ export default function TeamPage() {
     }
   ];
 
-  const openPositions = [
-    {
-      title: 'Automation Engineer',
-      department: 'Engineering',
-      location: 'Bhopal, MP',
-      type: 'Full-time'
-    },
-    {
-      title: 'Water Treatment Specialist',
-      department: 'Operations',
-      location: 'Bhopal, MP',
-      type: 'Full-time'
-    },
-    {
-      title: 'Project Manager',
-      department: 'Project Management',
-      location: 'Bhopal, MP',
-      type: 'Full-time'
-    },
-    {
-      title: 'Field Service Engineer',
-      department: 'Service & Support',
-      location: 'Multiple Locations',
-      type: 'Full-time'
-    }
-  ];
+  // Removed unused openPositions array
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="relative text-white py-20">
-        <img src={heroWaterImage} alt="Water technology background" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <img src={ourTeamIcon} alt="Our Team icon" className="h-20 w-20 mx-auto mb-6 opacity-90 object-contain" />
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Our Team
-            </h1>
-            <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto">
-              Meet the visionaries driving water innovation
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection title="Our Team" subtitle="Meet the visionaries driving water innovation" />
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <AnimatedHeading level={2} className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               Meet the Visionaries
-            </h2>
+            </AnimatedHeading>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Our leadership team brings decades of combined experience in water technology and infrastructure
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <MotionStagger className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto" stagger={0.06}>
             {team.map((member, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow"
-              >
+              <MotionFadeUp key={index} className="bg-gray-50 rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
                 {member.photo ? (
                   <img
                     src={member.photo}
@@ -117,9 +78,9 @@ export default function TeamPage() {
                     {member.email}
                   </a>
                 </div>
-              </div>
+              </MotionFadeUp>
             ))}
-          </div>
+          </MotionStagger>
         </div>
       </section>
 
@@ -138,7 +99,7 @@ export default function TeamPage() {
           <div className="max-w-4xl mx-auto mb-12">
             <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Why Join Sync Water Tech?
+                Why Join Orbit?
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex items-start space-x-3">
@@ -188,34 +149,46 @@ export default function TeamPage() {
               </div>
             </div>
           </div>
-
-          <div>
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">
-              Current Openings
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-              {openPositions.map((position, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-6 border border-gray-100"
-                >
-                  <h4 className="text-xl font-bold text-gray-900 mb-3">
-                    {position.title}
-                  </h4>
-                  <div className="space-y-2 text-sm text-gray-600 mb-4">
-                    <p><span className="font-medium">Department:</span> {position.department}</p>
-                    <p><span className="font-medium">Location:</span> {position.location}</p>
-                    <p><span className="font-medium">Type:</span> {position.type}</p>
-                  </div>
-                  <button className="w-full py-2.5 bg-[#0073bc] text-white rounded-lg font-medium hover:bg-[#005a94] transition-colors">
-                    Apply Now
-                  </button>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
+
+
+      {/* Our Office section inserted below Join Our Team */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-6">
+            <AnimatedHeading level={2} className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+              Our Office
+            </AnimatedHeading>
+            <MotionFadeUp>
+              <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+                Modern, inspiring, and built for excellence.
+              </p>
+            </MotionFadeUp>
+          </div>
+
+          <MotionStagger className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch" stagger={0.06}>
+            <MotionFadeScale className="overflow-hidden rounded-2xl" whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}>
+              <img
+                src={officeFounder}
+                alt="Founder cabin at Orbit office"
+                loading="lazy"
+                className="w-full h-[480px] md:h-[640px] object-contain rounded-2xl bg-gray-50"
+              />
+            </MotionFadeScale>
+
+            <MotionFadeScale className="overflow-hidden rounded-2xl" whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}>
+              <img
+                src={officeReception}
+                alt="Reception area at Orbit office"
+                loading="lazy"
+                className="w-full h-[480px] md:h-[640px] object-contain rounded-2xl bg-gray-50"
+              />
+            </MotionFadeScale>
+          </MotionStagger>
+        </div>
+      </section>
+
 
       <section className="relative text-white py-16">
         <img src={subHeadingImage} alt="Careers background" className="absolute inset-0 w-full h-full object-cover" />

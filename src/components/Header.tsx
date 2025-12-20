@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import logo2 from '../assets/logo-2.png';
+import logo2 from '/src/assets/Orbit LOGO.png';
 
 interface HeaderProps {
   onNavigate: (page: string) => void;
@@ -19,7 +19,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
     { label: 'About', page: 'about' },
     { label: 'Services', page: 'services' },
     { label: 'Partners', page: 'clients' },
-    { label: 'FAQ', page: 'faq' },
+    { label: 'Solution', page: 'faq' },
     { label: 'Team', page: 'team' },
     { label: 'Contact', page: 'contact' },
   ];
@@ -55,8 +55,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
             onClick={() => onNavigate('home')}
             aria-label="Go to home"
           >
-            <img src={logo2} alt="Sync Water Tech Logo" className="h-10 w-auto mr-3 transition-transform duration-300 group-hover:scale-105" />
-            <span className="text-3xl font-bold tracking-tight text-[#0073bc]">SyncWaterTech</span>
+            <img src={logo2} alt="Orbit Logo" className="h-20 w-auto transition-all duration-500 ease-in-out hover:scale-110 animate-fade-in z-[60]" />
           </button>
 
           {/* Modern Pill-Style Navigation */}
@@ -64,7 +63,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
             <div className="flex items-center bg-gray-50/80 backdrop-blur-sm rounded-full px-2 py-2 shadow-sm border border-gray-100/50">
               {navItems.slice(0, 5).map((item) => {
                 const isActive = currentPage === item.page;
-                
+
                 return (
                   <button
                     key={item.page}
@@ -75,11 +74,10 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                         window.history.pushState({}, '', '/clients');
                       }
                     }}
-                    className={`relative px-6 py-3 mx-1 rounded-full text-sm font-medium transition-all duration-300 ease-in-out transform ${
-                      isActive
-                        ? 'bg-[#005B9A] text-white shadow-lg scale-105'
-                        : 'text-gray-700 hover:text-[#005B9A] hover:bg-blue-50 hover:scale-105'
-                    }`}
+                    className={`relative px-6 py-3 mx-1 rounded-full text-sm font-medium transition-all duration-300 ease-in-out transform ${isActive
+                      ? 'bg-[#005B9A] text-white shadow-lg scale-105'
+                      : 'text-gray-700 hover:text-[#005B9A] hover:bg-blue-50 hover:scale-105'
+                      }`}
                   >
                     <span className="relative z-10">{item.label}</span>
                     {isActive && (
@@ -88,7 +86,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                   </button>
                 );
               })}
-              
+
               {/* Products Dropdown with Pill-Style */}
               <div className="relative" ref={dropdownRef}>
                 <button
@@ -99,23 +97,21 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                     }
                   }}
                   onMouseEnter={() => setProductsDropdownOpen(true)}
-                  className={`relative px-6 py-3 mx-1 rounded-full text-sm font-medium transition-all duration-300 ease-in-out transform flex items-center space-x-1 ${
-                    currentPage === 'products' || currentPage.startsWith('product-info')
-                      ? 'bg-[#005B9A] text-white shadow-lg scale-105'
-                      : 'text-gray-700 hover:text-[#005B9A] hover:bg-blue-50 hover:scale-105'
-                  }`}
+                  className={`relative px-6 py-3 mx-1 rounded-full text-sm font-medium transition-all duration-300 ease-in-out transform flex items-center space-x-1 ${currentPage === 'products' || currentPage.startsWith('product-info')
+                    ? 'bg-[#005B9A] text-white shadow-lg scale-105'
+                    : 'text-gray-700 hover:text-[#005B9A] hover:bg-blue-50 hover:scale-105'
+                    }`}
                 >
                   <span className="relative z-10">Products</span>
-                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
-                    productsDropdownOpen ? 'rotate-180' : ''
-                  }`} />
+                  <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${productsDropdownOpen ? 'rotate-180' : ''
+                    }`} />
                   {(currentPage === 'products' || currentPage.startsWith('product-info')) && (
                     <div className="absolute inset-0 bg-[#005B9A] rounded-full shadow-lg animate-pulse-slow"></div>
                   )}
                 </button>
 
                 {productsDropdownOpen && (
-                  <div 
+                  <div
                     className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg dropdown-shadow border border-gray-100 overflow-hidden animate-slide-up z-50"
                     onMouseLeave={() => setProductsDropdownOpen(false)}
                   >
@@ -150,7 +146,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
 
               {navItems.slice(5).map((item) => {
                 const isActive = currentPage === item.page;
-                
+
                 return (
                   <button
                     key={item.page}
@@ -160,11 +156,10 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                         window.history.pushState({}, '', '/clients');
                       }
                     }}
-                    className={`relative px-6 py-3 mx-1 rounded-full text-sm font-medium transition-all duration-300 ease-in-out transform ${
-                      isActive
-                        ? 'bg-[#005B9A] text-white shadow-lg scale-105'
-                        : 'text-gray-700 hover:text-[#005B9A] hover:bg-blue-50 hover:scale-105'
-                    }`}
+                    className={`relative px-6 py-3 mx-1 rounded-full text-sm font-medium transition-all duration-300 ease-in-out transform ${isActive
+                      ? 'bg-[#005B9A] text-white shadow-lg scale-105'
+                      : 'text-gray-700 hover:text-[#005B9A] hover:bg-blue-50 hover:scale-105'
+                      }`}
                   >
                     <span className="relative z-10">{item.label}</span>
                     {isActive && (
@@ -195,7 +190,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
           <div className="px-4 py-4 space-y-2">
             {navItems.slice(0, 5).map((item) => {
               const isActive = currentPage === item.page;
-              
+
               return (
                 <button
                   key={item.page}
@@ -206,33 +201,30 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                       window.history.pushState({}, '', '/clients');
                     }
                   }}
-                  className={`block w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                    isActive
-                      ? 'bg-[#005B9A] text-white shadow-lg'
-                      : 'text-gray-700 hover:bg-blue-50 hover:text-[#005B9A]'
-                  }`}
+                  className={`block w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${isActive
+                    ? 'bg-[#005B9A] text-white shadow-lg'
+                    : 'text-gray-700 hover:bg-blue-50 hover:text-[#005B9A]'
+                    }`}
                 >
                   {item.label}
                 </button>
               );
             })}
-            
+
             {/* Mobile Products Dropdown */}
             <div className="space-y-2">
               <button
                 onClick={() => setMobileProductsDropdownOpen(!mobileProductsDropdownOpen)}
-                className={`flex items-center justify-between w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                  currentPage === 'products' || currentPage.startsWith('product-info')
-                    ? 'bg-[#005B9A] text-white shadow-lg'
-                    : 'text-gray-700 hover:bg-blue-50 hover:text-[#005B9A]'
-                }`}
+                className={`flex items-center justify-between w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${currentPage === 'products' || currentPage.startsWith('product-info')
+                  ? 'bg-[#005B9A] text-white shadow-lg'
+                  : 'text-gray-700 hover:bg-blue-50 hover:text-[#005B9A]'
+                  }`}
               >
                 <span>Products</span>
-                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${
-                  mobileProductsDropdownOpen ? 'rotate-180' : ''
-                }`} />
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileProductsDropdownOpen ? 'rotate-180' : ''
+                  }`} />
               </button>
-              
+
               {mobileProductsDropdownOpen && (
                 <div className="ml-4 space-y-1 animate-slide-up">
                   <button
@@ -241,9 +233,8 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                       setMobileMenuOpen(false);
                       setMobileProductsDropdownOpen(false);
                     }}
-                    className={`block w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                      currentPage === 'products' ? 'bg-[#005B9A] text-white shadow-lg' : 'text-gray-600 hover:bg-blue-50 hover:text-[#005B9A]'
-                    }`}
+                    className={`block w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${currentPage === 'products' ? 'bg-[#005B9A] text-white shadow-lg' : 'text-gray-600 hover:bg-blue-50 hover:text-[#005B9A]'
+                      }`}
                   >
                     All Products
                   </button>
@@ -255,9 +246,8 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                         setMobileMenuOpen(false);
                         setMobileProductsDropdownOpen(false);
                       }}
-                      className={`block w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                        currentPage === category.page ? 'bg-[#005B9A] text-white shadow-lg' : 'text-gray-600 hover:bg-blue-50 hover:text-[#005B9A]'
-                      }`}
+                      className={`block w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${currentPage === category.page ? 'bg-[#005B9A] text-white shadow-lg' : 'text-gray-600 hover:bg-blue-50 hover:text-[#005B9A]'
+                        }`}
                     >
                       {category.label}
                     </button>
@@ -268,7 +258,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
 
             {navItems.slice(5).map((item) => {
               const isActive = currentPage === item.page;
-              
+
               return (
                 <button
                   key={item.page}
@@ -279,11 +269,10 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                       window.history.pushState({}, '', '/clients');
                     }
                   }}
-                  className={`block w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
-                    isActive
-                      ? 'bg-[#005B9A] text-white shadow-lg'
-                      : 'text-gray-700 hover:bg-blue-50 hover:text-[#005B9A]'
-                  }`}
+                  className={`block w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${isActive
+                    ? 'bg-[#005B9A] text-white shadow-lg'
+                    : 'text-gray-700 hover:bg-blue-50 hover:text-[#005B9A]'
+                    }`}
                 >
                   {item.label}
                 </button>

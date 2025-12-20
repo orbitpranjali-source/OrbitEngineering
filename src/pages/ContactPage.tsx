@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
-import heroWaterImage from '../assets/products/hero-section.jpg';
+import HeroSection from '../components/HeroSection';
+import { MotionFadeUp, MotionStagger, AnimatedHeading } from '../components/Animated';
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
-import iconContact from '../assets/icon/contact us.png';
+// iconContact removed; hero uses shared HeroSection
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -36,71 +37,55 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <section className="relative text-white py-20">
-        <img src={heroWaterImage} alt="Water technology background" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            {iconContact ? (
-              <img src={iconContact} alt="Contact us icon" className="h-16 w-16 md:h-20 md:w-20 object-contain mx-auto mb-6" />
-            ) : (
-              <Mail className="h-16 w-16 mx-auto mb-6 opacity-90" />
-            )}
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Contact Us
-            </h1>
-            <p className="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto">
-              Let's discuss how we can help with your water infrastructure needs
-            </p>
-          </div>
-        </div>
-      </section>
+      <HeroSection title="Contact Us" subtitle="Let's discuss how we can help with your water infrastructure needs" />
 
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             <div id="contact-form">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">
+              <AnimatedHeading level={2} className="text-3xl font-bold text-gray-900 mb-6">
                 Get In Touch
-              </h2>
+              </AnimatedHeading>
               <p className="text-gray-600 mb-8 leading-relaxed">
                 Whether you're planning a new water treatment facility, looking to upgrade existing infrastructure, or need technical consultation, our team is ready to help. Fill out the form and we'll get back to you within 24 hours.
               </p>
 
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
+              <MotionStagger className="space-y-6" stagger={0.06}>
+                <MotionFadeUp className="flex items-start space-x-4">
                   <div className="bg-[#0073bc] bg-opacity-10 rounded-xl p-3">
                     <MapPin className="h-6 w-6 text-[#0073bc]" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Address</h3>
-                    <p className="text-gray-600">
-                      Flat No.1, Block 12, Shalimar Enclave,<br />
-                      E3 Arera Colony, Bhopal, 462016
-                    </p>
+                    <h3 className="font-semibold text-gray-900 mb-1">Our Office</h3>
+                    <div className="text-gray-600 text-sm space-y-2">
+                      <div>
+                        Flat No.2, Block 12, Shalimar Enclave,<br />
+                        E3 Arera Colony, Bhopal, 462016
+                      </div>
+                    </div>
                   </div>
-                </div>
+                </MotionFadeUp>
 
-                <div className="flex items-start space-x-4">
+                <MotionFadeUp className="flex items-start space-x-4">
                   <div className="bg-[#0073bc] bg-opacity-10 rounded-xl p-3">
                     <Phone className="h-6 w-6 text-[#0073bc]" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                    <p className="text-gray-600">+91-9425005008</p>
+                    <p className="text-gray-600">+91 70241 28029</p>
                   </div>
-                </div>
+                </MotionFadeUp>
 
-                <div className="flex items-start space-x-4">
+                <MotionFadeUp className="flex items-start space-x-4">
                   <div className="bg-[#0073bc] bg-opacity-10 rounded-xl p-3">
                     <Mail className="h-6 w-6 text-[#0073bc]" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                    <p className="text-gray-600">info@syncwatertech.com</p>
+                    <p className="text-gray-600">info@orbitengineerings.com</p>
                   </div>
-                </div>
-              </div>
+                </MotionFadeUp>
+              </MotionStagger>
 
               <div className="mt-12 bg-gradient-to-br from-[#0073bc] to-[#005a94] rounded-2xl p-8 text-white">
                 <h3 className="text-xl font-bold mb-4">Business Hours</h3>
@@ -113,9 +98,7 @@ export default function ContactPage() {
 
             <div>
               <div className="bg-white rounded-2xl shadow-lg p-8 border border-gray-100">
-                <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                  Send Us a Message
-                </h3>
+                <AnimatedHeading level={3} className="text-2xl font-bold text-gray-900 mb-6">Send Us a Message</AnimatedHeading>
 
                 {isSubmitted ? (
                   <div className="text-center py-12">
@@ -183,7 +166,7 @@ export default function ContactPage() {
                         value={formData.phone}
                         onChange={handleChange}
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0073bc] focus:border-transparent transition-all outline-none"
-                        placeholder="+91 XXX XXX XXXX"
+                        placeholder="+91 70241 28029"
                       />
                     </div>
 
@@ -251,7 +234,7 @@ export default function ContactPage() {
               allowFullScreen={true}
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
-              title="Sync WaterTech Pvt. Ltd. Location - Bhopal, Madhya Pradesh"
+              title="Orbit Location - Bhopal, Madhya Pradesh"
               className="rounded-2xl"
             />
           </div>

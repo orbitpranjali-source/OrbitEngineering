@@ -1,7 +1,9 @@
 import { ArrowRight, Cpu, Cloud, Droplets, Settings, X } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
+import { MotionFadeUp, MotionStagger, AnimatedHeading } from '../components/Animated';
 import { useState, useRef } from 'react';
 import heroGirl from '../assets/hero-village-girl.jpg';
+import heroBg from '../assets/products/hero-bg.jpg';
 import villageProject2 from '../assets/village-project-2.jpg';
 import iconWaterTreatmentPlants from '../assets/icon/Water Treatment Plants.png';
 import iconAutomationSystems from '../assets/icon/Automation Systems.png';
@@ -95,12 +97,20 @@ export default function HomePage({ onNavigate }: HomePageProps) {
     { icon: Settings, image: iconOMServices, title: 'O&M Services', desc: 'Comprehensive operation and maintenance' },
   ];
 
-  
+
 
   return (
     <div className="min-h-screen">
-      <section className="relative bg-gradient-to-br from-[#0073bc] via-[#005a94] to-[#004870] text-white overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+      <section
+        className="relative text-white overflow-hidden"
+        style={{
+          backgroundImage: `url(${heroBg})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+        }}
+      >
+        {/* subtle overlay so white text remains readable but image stays visible */}
+        <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="max-w-3xl lg:pr-10">
@@ -118,7 +128,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
               >
-                Sync Water Tech Pvt Ltd propels water management beyond convention — harnessing cutting-edge process automation, SCADA, Industry 4.0, cloud technologies, and precision instrumentation to solve real-world water challenges in rural and urban India.
+                Orbit propels water management beyond convention — harnessing cutting-edge process automation, SCADA, Industry 4.0, cloud technologies, and precision instrumentation to solve real-world water challenges in rural and urban India.
               </motion.p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
@@ -141,7 +151,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
+        {/* removed bottom white fade so background image remains fully visible */}
       </section>
 
       {/* Section 2: moved DualAnimationSection into this position */}
@@ -150,20 +160,15 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Our Expertise
-            </h2>
+            <AnimatedHeading level={2} className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Expertise</AnimatedHeading>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               Comprehensive water infrastructure solutions tailored to your needs
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <MotionStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" stagger={0.05}>
             {services.map((service, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow"
-              >
+              <MotionFadeUp key={index} className="bg-white rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow">
                 {service.image ? (
                   <img src={service.image} alt={`${service.title} icon`} className="h-12 w-12 object-contain mb-4 mx-auto" />
                 ) : (
@@ -173,9 +178,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                   {service.title}
                 </h3>
                 <p className="text-gray-600 text-sm">{service.desc}</p>
-              </div>
+              </MotionFadeUp>
             ))}
-          </div>
+          </MotionStagger>
 
           <div className="mt-12 text-center">
             <button
@@ -189,7 +194,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-  {/* Dual Animation Section removed from here (moved to Section 2) */}
+      {/* Dual Animation Section removed from here (moved to Section 2) */}
 
       {showLearnMore && (
         <div className="fixed inset-0 z-50 flex items-end md:items-center justify-center bg-black/50" onClick={() => setShowLearnMore(false)}>
@@ -198,7 +203,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between mb-4">
-              <h3 className="text-2xl font-bold text-[#0073bc]">About Sync Water Tech</h3>
+              <h3 className="text-2xl font-bold text-[#0073bc]">About Orbit</h3>
               <button aria-label="Close" onClick={() => setShowLearnMore(false)} className="p-2 rounded-full hover:bg-gray-100 transition-colors">
                 <X className="h-5 w-5" />
               </button>
@@ -217,7 +222,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 A Clear Mission: innovate with purpose, deliver with integrity, and deliver water systems grounded in environmental stewardship and social well-being—empowering quality water infrastructure across India and beyond.
               </p>
               <p>
-                At Sync Water Tech, every project is a promise fulfilled — for a cleaner, more resilient tomorrow.
+                At Orbit, every project is a promise fulfilled — for a cleaner, more resilient tomorrow.
               </p>
             </div>
           </div>

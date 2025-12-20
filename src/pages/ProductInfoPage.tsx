@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Gauge, Activity, Zap, Camera, Wrench, BarChart3, CheckCircle, ArrowRight } from 'lucide-react';
 import { RAW_SUB_PRODUCTS } from '../data/rawProducts';
+import { MotionFadeUp, AnimatedHeading } from '../components/Animated';
 
 interface ProductInfoPageProps {
   variant?: string;
@@ -8,69 +9,78 @@ interface ProductInfoPageProps {
 }
 
 export default function ProductInfoPage({ variant, onNavigate }: ProductInfoPageProps) {
-	const [expandedMap, setExpandedMap] = useState<Record<string, boolean>>({});
+  const [expandedMap, setExpandedMap] = useState<Record<string, boolean>>({});
 
-	const toggleExpanded = (key: string) => {
-		setExpandedMap(prev => ({ ...prev, [key]: !prev[key] }));
-	};
+  const toggleExpanded = (key: string) => {
+    setExpandedMap(prev => ({ ...prev, [key]: !prev[key] }));
+  };
 
-	const getItemsByCategory = (categoryName: string) => {
-		return (RAW_SUB_PRODUCTS.find(c => c.category === categoryName)?.items || []);
-	};
+  const getItemsByCategory = (categoryName: string) => {
+    return (RAW_SUB_PRODUCTS.find(c => c.category === categoryName)?.items || []);
+  };
 
-	const renderGallery = (categoryName: string, subtitle: string) => {
-		const items = getItemsByCategory(categoryName);
-		return (
-			<section className="py-16 bg-gray-50">
-				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-					<div className="text-center mb-12">
-						<h2 className="text-3xl font-bold text-gray-900 mb-4">Product Range</h2>
-						<p className="text-lg text-gray-600">{subtitle}</p>
-					</div>
-					<div className="flex flex-wrap gap-4 md:gap-5">
-						{items.map((item, idx) => {
-							const key = `${categoryName}-${idx}`;
-							const isExpanded = !!expandedMap[key];
-							const firstParagraph = Array.isArray(item.paragraphs) && item.paragraphs[0] ? item.paragraphs[0] : '';
-							const hasBullets = Array.isArray(item.bullets) && item.bullets.length > 0;
-							const hasDetails = (!!firstParagraph) || hasBullets;
-							return (
-								<div key={idx} className="w-full sm:w-[48%] lg:w-[31%] group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col transform hover:-translate-y-0.5 h-full min-h-[420px]">
-									<div className="bg-gray-50 flex items-center justify-center p-3">
-										<img src={item.image} alt={item.name} className="h-[220px] w-full object-contain rounded-lg shadow-sm" />
-									</div>
-									<div className="p-4 flex flex-col gap-2 flex-1">
-										<h3 className="text-lg font-semibold text-gray-900 text-center">{item.name}</h3>
-										{hasDetails && (
-											<div className="mt-1">
-												<button onClick={() => toggleExpanded(key)} className="inline-flex items-center justify-center w-full sm:w-auto px-3 py-1.5 rounded-lg text-sm font-semibold bg-[#0073bc] text-white hover:bg-[#005a94] transition-colors">
-													{isExpanded ? 'Show Less' : 'Read More'}
-												</button>
-											</div>
-										)}
-										<div className={`overflow-hidden transition-all duration-500 ease-in-out ${isExpanded ? 'max-h-[520px] opacity-100' : 'max-h-0 opacity-0'}`}>
-											{firstParagraph && (
-												<p className="mt-3 text-gray-600 text-sm leading-6">{firstParagraph}</p>
-											)}
-											{hasBullets && (
-												<ul className="mt-3 list-disc list-inside space-y-1 text-gray-700 text-sm">
-													{item.bullets!.map((b, i) => (
-														<li key={i}>{b}</li>
-													))}
-												</ul>
-											)}
-										</div>
-									</div>
-								</div>
-							);
-						})}
-					</div>
-				</div>
-			</section>
-		);
-	};
-  const config: Record<string, { 
-    title: string; 
+  const renderGallery = (categoryName: string, subtitle: string) => {
+    const items = getItemsByCategory(categoryName);
+    // Check if current variant is flow-meters or automation to apply specific grid layout
+    const isTwoColumnLayout = variant === 'flow-meters' || variant === 'automation';
+
+    return (
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Product Range</h2>
+            <p className="text-lg text-gray-600">{subtitle}</p>
+          </div>
+          <div className="flex flex-wrap gap-4 md:gap-5">
+            {items.map((item, idx) => {
+              const key = `${categoryName}-${idx}`;
+              const isExpanded = !!expandedMap[key];
+              const firstParagraph = Array.isArray(item.paragraphs) && item.paragraphs[0] ? item.paragraphs[0] : '';
+              const hasBullets = Array.isArray(item.bullets) && item.bullets.length > 0;
+              const hasDetails = (!!firstParagraph) || hasBullets;
+
+              // Dynamic width class based on layout requirement
+              const widthClass = isTwoColumnLayout
+                ? "w-full md:w-[48%] lg:w-[48%]" // 2 cards per row for specific pages
+                : "w-full sm:w-[48%] lg:w-[31%]"; // Default 3 cards per row
+
+              return (
+                <MotionFadeUp key={idx} className={`${widthClass} group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col transform hover:-translate-y-0.5 h-full min-h-[420px]`}>
+                  <div className="bg-gray-50 flex items-center justify-center p-3">
+                    <img src={item.image} alt={item.name} className="h-[220px] w-full object-contain rounded-lg shadow-sm" />
+                  </div>
+                  <div className="p-4 flex flex-col gap-2 flex-1">
+                    <h3 className="text-lg font-semibold text-gray-900 text-center">{item.name}</h3>
+                    {hasDetails && (
+                      <div className="mt-1">
+                        <button onClick={() => toggleExpanded(key)} className="inline-flex items-center justify-center w-full sm:w-auto px-3 py-1.5 rounded-lg text-sm font-semibold bg-[#0073bc] text-white hover:bg-[#005a94] transition-colors">
+                          {isExpanded ? 'Show Less' : 'Read More'}
+                        </button>
+                      </div>
+                    )}
+                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isExpanded ? 'max-h-[520px] opacity-100' : 'max-h-0 opacity-0'}`}>
+                      {firstParagraph && (
+                        <p className="mt-3 text-gray-600 text-sm leading-6">{firstParagraph}</p>
+                      )}
+                      {hasBullets && (
+                        <ul className="mt-3 list-disc list-inside space-y-1 text-gray-700 text-sm">
+                          {item.bullets!.map((b, i) => (
+                            <li key={i}>{b}</li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  </div>
+                </MotionFadeUp>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    );
+  };
+  const config: Record<string, {
+    title: string;
     description: string;
     icon: any;
     features: string[];
@@ -299,13 +309,15 @@ export default function ProductInfoPage({ variant, onNavigate }: ProductInfoPage
       <section className="relative py-16 md:py-20 bg-gradient-to-br from-[#0073bc] to-[#005a94] text-white">
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 rounded-full mb-6">
-              <IconComponent className="w-10 h-10" />
+          <MotionFadeUp>
+            <div className="text-center">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-white/10 rounded-full mb-6">
+                <IconComponent className="w-10 h-10" />
+              </div>
+              <AnimatedHeading level={1} className="text-4xl md:text-5xl font-bold mb-4">{page.title}</AnimatedHeading>
+              <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">{page.description}</p>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">{page.title}</h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto leading-relaxed">{page.description}</p>
-          </div>
+          </MotionFadeUp>
         </div>
       </section>
 
@@ -323,7 +335,7 @@ export default function ProductInfoPage({ variant, onNavigate }: ProductInfoPage
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Key Features</h2>
+              <AnimatedHeading level={2} className="text-3xl font-bold text-gray-900 mb-4">Key Features</AnimatedHeading>
               <p className="text-lg text-gray-600">Advanced capabilities that set our products apart</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -347,7 +359,7 @@ export default function ProductInfoPage({ variant, onNavigate }: ProductInfoPage
         <section className="py-16 bg-gray-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Applications</h2>
+              <AnimatedHeading level={2} className="text-3xl font-bold text-gray-900 mb-4">Applications</AnimatedHeading>
               <p className="text-lg text-gray-600">Where our solutions make a difference</p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -377,7 +389,7 @@ export default function ProductInfoPage({ variant, onNavigate }: ProductInfoPage
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900 mb-4">Technical Specifications</h2>
+              <AnimatedHeading level={2} className="text-3xl font-bold text-gray-900 mb-4">Technical Specifications</AnimatedHeading>
               <p className="text-lg text-gray-600">Detailed specifications for your technical requirements</p>
             </div>
             <div className="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden">
@@ -407,10 +419,10 @@ export default function ProductInfoPage({ variant, onNavigate }: ProductInfoPage
       {/* CTA Section */}
       <section className="py-16 bg-gradient-to-r from-[#0073bc] to-[#005a94]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h3 className="text-3xl font-bold text-white mb-4">Ready to Get Started?</h3>
+          <AnimatedHeading level={3} className="text-3xl font-bold text-white mb-4">Ready to Get Started?</AnimatedHeading>
           <p className="text-xl text-blue-100 mb-8">Contact our team for detailed specifications, pricing, and technical support.</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button 
+            <button
               onClick={() => onNavigate && onNavigate('contact')}
               className="bg-white text-[#0073bc] px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center space-x-2"
             >
@@ -418,8 +430,8 @@ export default function ProductInfoPage({ variant, onNavigate }: ProductInfoPage
               <ArrowRight className="w-5 h-5" />
             </button>
             <div className="text-blue-100 text-sm">
-              <div>Email: info@syncwatertech.com</div>
-              <div>Phone: +91-9425005008</div>
+              <div>Email: info@orbitengineerings.com</div>
+              <div>Phone: +91 70241 28029</div>
             </div>
           </div>
         </div>
