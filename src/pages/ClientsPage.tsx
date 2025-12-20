@@ -196,8 +196,7 @@ export default function ClientsPage() {
                   <div className="bg-blue-50 text-[#0073bc] p-3 rounded-xl"><Clock className="h-6 w-6" /></div>
                   <div>
                     <h3 className="font-semibold text-gray-900">Business Hours</h3>
-                    <p className="text-gray-600 text-sm">Mon - Fri: 10:00 AM - 7:00 PM</p>
-                    <p className="text-gray-600 text-sm">Saturday: 10:00 AM - 4:00 PM</p>
+                    <p className="text-gray-600 text-sm">Monday - Saturday: 10:00 AM - 7:00 PM</p>
                     <p className="text-gray-600 text-sm">Sunday: Closed</p>
                   </div>
                 </div>
