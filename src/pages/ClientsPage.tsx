@@ -22,7 +22,7 @@ export default function ClientsPage() {
   // Dynamically import all images in src/assets/partners using Vite's recommended query form
   const clients = useMemo(() => {
     const modules = import.meta.glob('../assets/partners/*.{png,jpg,jpeg,svg}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
-    return Object.entries(modules).map(([filePath, url]) => {
+    const partnersArray = Object.entries(modules).map(([filePath, url]) => {
       const fileName = filePath.split('/').pop() || filePath;
       let name = fileName.replace(/\.(png|jpg|jpeg|svg)$/i, '').replace(/[-_]/g, ' ');
 
@@ -36,6 +36,9 @@ export default function ClientsPage() {
 
       return { name, logo: url };
     });
+
+    // Sort alphabetically by name
+    return partnersArray.sort((a, b) => a.name.localeCompare(b.name));
   }, []);
 
   const onSubmit = async (e: React.FormEvent) => {
@@ -107,7 +110,7 @@ export default function ClientsPage() {
                     <MotionFadeUp
                       key={name}
                       whileHover={{ scale: 1.035 }}
-                      className="rounded-2xl border border-indigo-100 bg-white p-6 shadow-[0_2px_10px_rgba(99,102,241,0.06)] hover:shadow-lg transform-gpu transition-shadow transition-transform"
+                      className="rounded-2xl border border-indigo-100 bg-white p-6 shadow-[0_2px_10px_rgba(99,102,241,0.06)] hover:shadow-lg transform-gpu"
                       style={{ willChange: 'transform, opacity' }}
                     >
                       <div className="flex flex-col sm:flex-row items-center sm:items-center gap-4">
@@ -146,7 +149,7 @@ export default function ClientsPage() {
             </div>
           </div>
           <div className="space-y-12 overflow-hidden py-8">
-            {/* First Row: Left-to-Right */}
+            {/* First Row: Left-to-Right (First 6 partners) */}
             <div className="relative flex overflow-hidden">
               <motion.div
                 className="flex whitespace-nowrap gap-6"
@@ -164,21 +167,24 @@ export default function ClientsPage() {
                   },
                 }}
               >
-                {[...clients, ...clients].map((c, i) => (
-                  <div
-                    key={`${c.name}-row1-${i}`}
-                    className="flex-shrink-0 w-48 bg-white rounded-xl border border-gray-100 p-6 shadow-sm text-center hover:shadow-md transition-shadow group"
-                  >
-                    <div className="flex items-center justify-center h-24 mb-4">
-                      <img src={c.logo} alt={`${c.name} logo`} className="max-h-16 w-auto object-contain transition-transform group-hover:scale-110" />
+                {(() => {
+                  const firstRowPartners = clients.slice(0, 6);
+                  return [...firstRowPartners, ...firstRowPartners].map((c, i) => (
+                    <div
+                      key={`${c.name}-row1-${i}`}
+                      className="flex-shrink-0 w-48 bg-white rounded-xl border border-gray-100 p-6 shadow-sm text-center hover:shadow-md transition-shadow group"
+                    >
+                      <div className="flex items-center justify-center h-24 mb-4">
+                        <img src={c.logo} alt={`${c.name} logo`} className="max-h-16 w-auto object-contain transition-transform group-hover:scale-110" />
+                      </div>
+                      <div className="text-sm font-medium text-gray-700 truncate">{c.name}</div>
                     </div>
-                    <div className="text-sm font-medium text-gray-700 truncate">{c.name}</div>
-                  </div>
-                ))}
+                  ));
+                })()}
               </motion.div>
             </div>
 
-            {/* Second Row: Right-to-Left */}
+            {/* Second Row: Right-to-Left (Remaining partners) */}
             <div className="relative flex overflow-hidden">
               <motion.div
                 className="flex whitespace-nowrap gap-6"
@@ -196,17 +202,20 @@ export default function ClientsPage() {
                   },
                 }}
               >
-                {[...clients, ...clients].map((c, i) => (
-                  <div
-                    key={`${c.name}-row2-${i}`}
-                    className="flex-shrink-0 w-48 bg-white rounded-xl border border-gray-100 p-6 shadow-sm text-center hover:shadow-md transition-shadow group"
-                  >
-                    <div className="flex items-center justify-center h-24 mb-4">
-                      <img src={c.logo} alt={`${c.name} logo`} className="max-h-16 w-auto object-contain transition-transform group-hover:scale-110" />
+                {(() => {
+                  const secondRowPartners = clients.slice(6);
+                  return [...secondRowPartners, ...secondRowPartners].map((c, i) => (
+                    <div
+                      key={`${c.name}-row2-${i}`}
+                      className="flex-shrink-0 w-48 bg-white rounded-xl border border-gray-100 p-6 shadow-sm text-center hover:shadow-md transition-shadow group"
+                    >
+                      <div className="flex items-center justify-center h-24 mb-4">
+                        <img src={c.logo} alt={`${c.name} logo`} className="max-h-16 w-auto object-contain transition-transform group-hover:scale-110" />
+                      </div>
+                      <div className="text-sm font-medium text-gray-700 truncate">{c.name}</div>
                     </div>
-                    <div className="text-sm font-medium text-gray-700 truncate">{c.name}</div>
-                  </div>
-                ))}
+                  ));
+                })()}
               </motion.div>
             </div>
           </div>

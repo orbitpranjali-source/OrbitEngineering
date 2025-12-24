@@ -118,7 +118,7 @@ export default function Footer({ onNavigate }: FooterProps) {
 
         <div className="mt-12 pt-8 border-t border-gray-800 text-center">
           <p className="text-sm text-gray-400">
-            <button onClick={() => onNavigate('home')} className="hover:text-[#0073bc] transition-colors">Orbit Engineering Group</button>. Powered by PLC, SCADA & Automation.
+            &copy; {new Date().getFullYear()} <button onClick={() => onNavigate('home')} className="hover:text-[#0073bc] transition-colors">Orbit Engineering Group</button>. Established in 1998. All rights reserved.
           </p>
         </div>
       </div>

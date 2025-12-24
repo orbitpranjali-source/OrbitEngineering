@@ -169,7 +169,7 @@ export default function TeamPage() {
 
 
       {/* Our Office section inserted below Join Our Team */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-6">
             <AnimatedHeading level={2} className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
@@ -182,44 +182,48 @@ export default function TeamPage() {
             </MotionFadeUp>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 items-stretch">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{
-                scale: 1.05,
+                scale: 1.02,
                 boxShadow: "0 25px 50px -12px rgba(0, 115, 188, 0.4)",
                 borderColor: "rgba(0, 115, 188, 0.5)"
               }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="overflow-hidden rounded-2xl border-2 border-transparent bg-white shadow-lg cursor-pointer transform-gpu"
+              className="overflow-hidden rounded-2xl border-2 border-transparent bg-white shadow-lg cursor-pointer transform-gpu w-full"
             >
-              <img
-                src={office2}
-                alt="Orbit Engineering Group Office"
-                loading="lazy"
-                className="w-full h-[400px] md:h-[500px] object-cover"
-              />
+              <div className="w-full aspect-[3/2]">
+                <img
+                  src={office2}
+                  alt="Orbit Engineering Group Office"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{
-                scale: 1.05,
+                scale: 1.02,
                 boxShadow: "0 25px 50px -12px rgba(0, 115, 188, 0.4)",
                 borderColor: "rgba(0, 115, 188, 0.5)"
               }}
               transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
-              className="overflow-hidden rounded-2xl border-2 border-transparent bg-white shadow-lg cursor-pointer transform-gpu"
+              className="overflow-hidden rounded-2xl border-2 border-transparent bg-white shadow-lg cursor-pointer transform-gpu w-full"
             >
-              <img
-                src={reception}
-                alt="Orbit Engineering Reception"
-                loading="lazy"
-                className="w-full h-[400px] md:h-[500px] object-cover"
-              />
+              <div className="w-full aspect-[3/2]">
+                <img
+                  src={reception}
+                  alt="Orbit Engineering Reception"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
             </motion.div>
           </div>
         </div>

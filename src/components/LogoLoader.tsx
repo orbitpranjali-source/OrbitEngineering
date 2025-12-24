@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo from '/src/assets/Orbit logo_1.png';
 
@@ -17,6 +18,19 @@ interface LogoLoaderProps {
 export default function LogoLoader({ isVisible }: LogoLoaderProps) {
     const DURATION = 2.8;
 
+    // Memoize particles to prevent re-calculating random positions on every render
+    const particles = useMemo(() => {
+        return [...Array(15)].map((_, i) => ({
+            id: i,
+            width: Math.random() * 2 + 1 + 'px',
+            height: Math.random() * 2 + 1 + 'px',
+            left: Math.random() * 100 + '%',
+            top: Math.random() * 100 + '%',
+            duration: Math.random() * 3 + 2,
+            delay: Math.random() * 5,
+        }));
+    }, []);
+
     return (
         <AnimatePresence mode="wait">
             {isVisible && (
@@ -27,18 +41,19 @@ export default function LogoLoader({ isVisible }: LogoLoaderProps) {
                     exit={{ opacity: 0, scale: 1.1, filter: 'blur(10px)' }}
                     transition={{ duration: 0.8, ease: "circOut" }}
                     className="fixed inset-0 z-[100] flex items-center justify-center bg-[#020617] overflow-hidden"
+                    style={{ willChange: 'opacity, transform' }}
                 >
                     {/* Background Depth: Moving Stars/Particles */}
                     <div className="absolute inset-0 z-0">
-                        {[...Array(30)].map((_, i) => (
+                        {particles.map((p) => (
                             <motion.div
-                                key={i}
+                                key={p.id}
                                 className="absolute bg-blue-400 rounded-full"
                                 style={{
-                                    width: Math.random() * 2 + 1 + 'px',
-                                    height: Math.random() * 2 + 1 + 'px',
-                                    left: Math.random() * 100 + '%',
-                                    top: Math.random() * 100 + '%',
+                                    width: p.width,
+                                    height: p.height,
+                                    left: p.left,
+                                    top: p.top,
                                 }}
                                 animate={{
                                     opacity: [0, 0.8, 0],
@@ -46,9 +61,9 @@ export default function LogoLoader({ isVisible }: LogoLoaderProps) {
                                     z: [0, 100]
                                 }}
                                 transition={{
-                                    duration: Math.random() * 3 + 2,
+                                    duration: p.duration,
                                     repeat: Infinity,
-                                    delay: Math.random() * 5,
+                                    delay: p.delay,
                                     ease: "easeInOut"
                                 }}
                             />

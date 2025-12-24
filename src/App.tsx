@@ -1,46 +1,45 @@
-import { useState, useEffect } from 'react';
+import { useState, lazy, Suspense, useMemo } from 'react';
+import { BrowserRouter, Routes, Route, useNavigate, useLocation, useParams } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import LogoLoader from './components/LogoLoader';
-import HomePage from './pages/HomePage';
-import ProjectsPage from './pages/ProjectsPage';
-import AboutPage from './pages/AboutPage';
-import ServicesPage from './pages/ServicesPage';
-import ProductsPage from './pages/ProductsPage';
-import ProductInfoPage from './pages/ProductInfoPage';
-import FAQPage from './pages/FAQPage';
-import TeamPage from './pages/TeamPage';
-import ContactPage from './pages/ContactPage';
-import ProductDetailPage from './pages/ProductDetailPage';
-import ClientsPage from './pages/ClientsPage';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { useMemo } from 'react';
 import { buildProductsData, flattenProducts, type ProductItem } from './data/products';
 import { RAW_SUB_PRODUCTS } from './data/rawProducts';
 
-type PageType =
-  | 'home'
-  | 'projects'
-  | 'projects:all'
-  | 'projects:completed'
-  | 'projects:ongoing'
-  | 'about'
-  | 'services'
-  | 'products'
-  | 'clients'
-  | 'faq'
-  | 'team'
-  | 'contact'
-  | 'product-info'
-  | `product-info:${string}`
-  | `product:${string}`;
+// Lazy load pages for performance
+const HomePage = lazy(() => import('./pages/HomePage'));
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const ProductsPage = lazy(() => import('./pages/ProductsPage'));
+const ProductInfoPage = lazy(() => import('./pages/ProductInfoPage'));
+const FAQPage = lazy(() => import('./pages/FAQPage'));
+const TeamPage = lazy(() => import('./pages/TeamPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const ProductDetailPage = lazy(() => import('./pages/ProductDetailPage'));
+const ClientsPage = lazy(() => import('./pages/ClientsPage'));
 
-function App() {
-  const [currentPage, setCurrentPage] = useState<PageType>('home');
+function ProductDetailLoader({ productIndex, onNavigate }: { productIndex: Record<string, ProductItem>, onNavigate: (p: string) => void }) {
+  const { slug } = useParams() as { slug: string };
+  const p = productIndex[slug];
+  if (!p) return <ProductsPage onNavigate={onNavigate} />;
+  return (
+    <ProductDetailPage
+      productName={p.name}
+      productImage={p.image}
+      productDescription={p.paragraphs}
+      bullets={p.bullets}
+      onBack={() => onNavigate('products')}
+    />
+  );
+}
+
+function AppContent() {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [pendingAnchor, setPendingAnchor] = useState<string | null>(null);
 
-  // Build a product index (slug -> product) based on raw products data
+  // Build a product index (slug -> product)
   const productIndex = useMemo(() => {
     const groups = buildProductsData(RAW_SUB_PRODUCTS as unknown as Array<{
       category: string;
@@ -53,118 +52,84 @@ function App() {
     }, {});
   }, []);
 
-  const handleNavigate = (page: string) => {
-    let target = page as PageType;
-    // Support anchors like "contact#contact-form"
-    if (page.includes('#')) {
-      const [base, anchor] = page.split('#');
-      target = base as PageType;
-      setPendingAnchor(anchor || null);
-    } else {
-      setPendingAnchor(null);
-    }
-    if (target === currentPage || isTransitioning) return;
+  const handleNavigate = (path: string) => {
+    if (isTransitioning) return;
+
+    // Normalize internal navigation string targets to actual paths
+    let targetPath = path;
+    if (path === 'home') targetPath = '/';
+    else if (path === 'projects') targetPath = '/projects';
+    else if (path === 'about') targetPath = '/about';
+    else if (path === 'services') targetPath = '/services';
+    else if (path === 'products') targetPath = '/products';
+    else if (path === 'clients') targetPath = '/clients';
+    else if (path === 'faq') targetPath = '/solutions';
+    else if (path === 'team') targetPath = '/team';
+    else if (path === 'contact') targetPath = '/contact';
+    else if (path.startsWith('product-info:')) targetPath = `/products/${path.split(':')[1]}`;
+    else if (path.startsWith('product:')) targetPath = `/product/${path.split(':')[1]}`;
+
     setIsTransitioning(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    // total 1.5s sequence (includes 0.3s fade-in + drop + short fade-out)
+
     setTimeout(() => {
-      setCurrentPage(target);
+      navigate(targetPath);
       setIsTransitioning(false);
-      if (pendingAnchor) {
-        // Give React a tick to render the new page before scrolling
-        setTimeout(() => {
-          const el = document.getElementById(pendingAnchor!);
-          if (el) {
-            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-          setPendingAnchor(null);
-        }, 50);
-      }
-    }, 2200);
+    }, 1500);
   };
 
-  useEffect(() => {
-    document.body.style.overflow = 'visible';
-  }, []);
-
-  const renderPage = () => {
-    const isProjects = currentPage.startsWith('projects');
-    const projectFilter = isProjects
-      ? (currentPage.split(':')[1] as 'all' | 'completed' | 'ongoing' | undefined)
-      : undefined;
-    const isProductInfo = currentPage.startsWith('product-info:');
-    if (isProductInfo) {
-      const variant = currentPage.split(':')[1];
-      return <ProductInfoPage variant={variant} onNavigate={handleNavigate} />;
-    }
-    const isProduct = currentPage.startsWith('product:');
-    if (isProduct) {
-      const slug = currentPage.split(':')[1];
-      const p = productIndex[slug];
-      if (!p) return <ProductsPage />;
-      return (
-        <ProductDetailPage
-          productName={p.name}
-          productImage={p.image}
-          productDescription={p.paragraphs}
-          bullets={p.bullets}
-          onBack={() => handleNavigate('products')}
-        />
-      );
-    }
-    switch (currentPage) {
-      case 'home':
-        return <HomePage onNavigate={handleNavigate} />;
-      case 'projects':
-      case 'projects:all':
-      case 'projects:completed':
-      case 'projects:ongoing':
-        return <ProjectsPage initialFilter={projectFilter ?? 'all'} onNavigate={handleNavigate} />;
-      case 'about':
-        return <AboutPage />;
-      case 'services':
-        return <ServicesPage onNavigate={handleNavigate} />;
-      case 'products':
-        return <ProductsPage onNavigate={handleNavigate} />;
-      case 'clients':
-        return <ClientsPage />;
-      case 'product-info':
-        return <ProductInfoPage onNavigate={handleNavigate} />;
-      case 'faq':
-        return <FAQPage onNavigate={handleNavigate} />;
-      case 'team':
-        return <TeamPage />;
-      case 'contact':
-        return <ContactPage />;
-      default:
-        return <HomePage onNavigate={handleNavigate} />;
-    }
+  const getActivePage = () => {
+    const p = location.pathname;
+    if (p === '/') return 'home';
+    if (p === '/projects') return 'projects';
+    if (p === '/about') return 'about';
+    if (p === '/services') return 'services';
+    if (p === '/products') return 'products';
+    if (p === '/clients') return 'clients';
+    if (p === '/solutions') return 'faq';
+    if (p === '/team') return 'team';
+    if (p === '/contact') return 'contact';
+    if (p.startsWith('/products/')) return `product-info:${p.split('/').pop()}`;
+    return 'home';
   };
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/clients" element={<ClientsPage />} />
-        <Route
-          path="/*"
-          element={
-            <div className="min-h-screen flex flex-col bg-white">
-              <Header onNavigate={handleNavigate} currentPage={currentPage} />
-              <div className="relative flex-grow">
-                <LogoLoader isVisible={isTransitioning} />
-                <main className={`flex-grow ${isTransitioning ? 'pointer-events-none select-none' : ''}`}>
-                  <div className="animate-fade-in animate-slide-up">
-                    {renderPage()}
-                  </div>
-                </main>
-              </div>
-              <Footer onNavigate={handleNavigate} />
+    <div className="min-h-screen flex flex-col bg-white">
+      <Header onNavigate={handleNavigate} currentPage={getActivePage()} />
+      <div className="relative flex-grow">
+        <LogoLoader isVisible={isTransitioning} />
+        <main className={`flex-grow ${isTransitioning ? 'pointer-events-none select-none opacity-50 transition-opacity duration-500' : 'opacity-100 transition-opacity duration-500'}`}>
+          <Suspense fallback={
+            <div className="min-h-[60vh] flex items-center justify-center">
+              <div className="w-12 h-12 border-4 border-[#0073bc] border-t-transparent rounded-full animate-spin"></div>
             </div>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+          }>
+            <Routes>
+              <Route path="/" element={<HomePage onNavigate={handleNavigate} />} />
+              <Route path="/projects" element={<ProjectsPage initialFilter="all" onNavigate={handleNavigate} />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage onNavigate={handleNavigate} />} />
+              <Route path="/products" element={<ProductsPage onNavigate={handleNavigate} />} />
+              <Route path="/products/:variant" element={<ProductInfoPage onNavigate={handleNavigate} />} />
+              <Route path="/product/:slug" element={<ProductDetailLoader productIndex={productIndex} onNavigate={handleNavigate} />} />
+              <Route path="/clients" element={<ClientsPage />} />
+              <Route path="/solutions" element={<FAQPage onNavigate={handleNavigate} />} />
+              <Route path="/team" element={<TeamPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+            </Routes>
+          </Suspense>
+        </main>
+      </div>
+      <Footer onNavigate={handleNavigate} />
+    </div>
   );
 }
 
-export default App;
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
+  );
+}

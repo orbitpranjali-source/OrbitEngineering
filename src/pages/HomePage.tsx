@@ -203,26 +203,20 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between mb-4">
-              <h3 className="text-2xl font-bold text-[#0073bc]">About Orbit</h3>
+              <h3 className="text-2xl font-bold text-[#0073bc]">About Orbit Engineering Group</h3>
               <button aria-label="Close" onClick={() => setShowLearnMore(false)} className="p-2 rounded-full hover:bg-gray-100 transition-colors">
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <div className="space-y-4 text-gray-700 leading-relaxed">
+            <div className="space-y-4 text-gray-700 leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
               <p>
-                Established in 1998 in Bhopal, the company builds on a legacy exceeding four decades of engineering excellence through its parent firms, Orbit Engineering and Orbit Engineering, to deliver turnkey systems — from design and steel fabrication to PLC/SCADA integration and long-term O&M—through an ISO 9001-certified quality framework that guarantees reliability and ecological accountability.
+                Established in 1998 in Bhopal, Orbit Engineering Group builds on a legacy exceeding four decades of engineering excellence. We deliver turnkey systems — from design and steel fabrication to PLC/SCADA integration and long-term O&M — through an ISO 9001-certified quality framework.
               </p>
               <p>
-                Our ambition is to lead in water innovation — offering holistic, sustainable, and affordable solutions that elevate access to clean water, optimise resource management, and uplift communities.
+                Our ambition is to lead in water innovation — offering holistic, sustainable, and affordable solutions that elevate access to clean water, optimize resource management, and uplift communities across India and beyond.
               </p>
               <p>
-                Lead Image of Homepage: A village girl drinking water from a tap.
-              </p>
-              <p>
-                A Clear Mission: innovate with purpose, deliver with integrity, and deliver water systems grounded in environmental stewardship and social well-being—empowering quality water infrastructure across India and beyond.
-              </p>
-              <p>
-                At Orbit, every project is a promise fulfilled — for a cleaner, more resilient tomorrow.
+                <strong>Our Mission:</strong> To innovate with purpose, deliver with integrity, and provide water systems grounded in environmental stewardship. At Orbit, every project is a promise fulfilled — for a cleaner, more resilient tomorrow.
               </p>
             </div>
           </div>

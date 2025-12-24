@@ -41,19 +41,22 @@ export default function ProductInfoPage({ variant, onNavigate }: ProductInfoPage
 
               // Dynamic width class based on layout requirement
               const widthClass = isTwoColumnLayout
-                ? "w-full md:w-[48%] lg:w-[48%]" // 2 cards per row for specific pages
-                : "w-full sm:w-[48%] lg:w-[31%]"; // Default 3 cards per row
+                ? "w-full md:w-[48%]" // Stacks on small screens, 2-col on MD+
+                : "w-full sm:w-[48%] lg:w-[31%]"; // Stacks on small, 2-col on SM/MD, 3-col on LG
 
               return (
-                <MotionFadeUp key={idx} className={`${widthClass} group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col transform hover:-translate-y-0.5 h-full min-h-[420px]`}>
-                  <div className="bg-gray-50 flex items-center justify-center p-3">
-                    <img src={item.image} alt={item.name} className="h-[220px] w-full object-contain rounded-lg shadow-sm" />
+                <MotionFadeUp key={idx} className={`${widthClass} group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full min-h-[420px]`}>
+                  <div className="bg-gray-50 flex items-center justify-center p-6">
+                    <img src={item.image} alt={item.name} className="h-[220px] w-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                   </div>
-                  <div className="p-4 flex flex-col gap-2 flex-1">
-                    <h3 className="text-lg font-semibold text-gray-900 text-center">{item.name}</h3>
+                  <div className="p-6 flex flex-col gap-4 flex-1">
+                    <h3 className="text-xl font-bold text-gray-900 text-center">{item.name}</h3>
                     {hasDetails && (
-                      <div className="mt-1">
-                        <button onClick={() => toggleExpanded(key)} className="inline-flex items-center justify-center w-full sm:w-auto px-3 py-1.5 rounded-lg text-sm font-semibold bg-[#0073bc] text-white hover:bg-[#005a94] transition-colors">
+                      <div className="mt-auto">
+                        <button
+                          onClick={() => toggleExpanded(key)}
+                          className="inline-flex items-center justify-center w-full px-6 py-3 rounded-xl text-sm font-bold bg-[#0073bc] text-white hover:bg-[#005a94] shadow-md hover:shadow-lg transition-all active:scale-95"
+                        >
                           {isExpanded ? 'Show Less' : 'Read More'}
                         </button>
                       </div>

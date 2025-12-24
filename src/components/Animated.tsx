@@ -27,9 +27,10 @@ export const MotionFadeUp: React.FC<MotionProps> = ({ children, className, ...re
   <motion.div
     initial="hidden"
     whileInView="visible"
-    viewport={{ once: true, amount: 0.15 }}
+    viewport={{ once: true, amount: 0.1 }}
     variants={fadeUp}
     className={className}
+    style={{ willChange: 'opacity, transform' }}
     {...rest}
   >
     {children}
@@ -40,9 +41,10 @@ export const MotionScaleIn: React.FC<MotionProps> = ({ children, className, ...r
   <motion.div
     initial="hidden"
     whileInView="visible"
-    viewport={{ once: true, amount: 0.15 }}
+    viewport={{ once: true, amount: 0.1 }}
     variants={scaleIn}
     className={className}
+    style={{ willChange: 'opacity, transform' }}
     {...rest}
   >
     {children}
@@ -53,9 +55,10 @@ export const MotionFadeScale: React.FC<MotionProps> = ({ children, className, ..
   <motion.div
     initial="hidden"
     whileInView="visible"
-    viewport={{ once: true, amount: 0.15 }}
+    viewport={{ once: true, amount: 0.1 }}
     variants={fadeScale}
     className={className}
+    style={{ willChange: 'opacity, transform' }}
     {...rest}
   >
     {children}

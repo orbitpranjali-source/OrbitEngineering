@@ -15,10 +15,10 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
 
   const navItems = [
     { label: 'Home', page: 'home' },
-    { label: 'Projects', page: 'projects' },
     { label: 'About', page: 'about' },
+    { label: 'Projects', page: 'projects' },
     { label: 'Services', page: 'services' },
-    { label: 'Our Ecosystem', page: 'clients' },
+    { label: 'Ecosystem', page: 'clients' },
     { label: 'Solution', page: 'faq' },
     { label: 'Team', page: 'team' },
     { label: 'Contact', page: 'contact' },
@@ -47,7 +47,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
   }, []);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 shadow-sm">
+    <header className="sticky top-0 z-[1000] bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/70 shadow-sm">
       <div className="w-full px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <button
