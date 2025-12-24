@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import subHeadingImage from '../assets/products/sub-heading.jpg';
+import heroSectionImage from '../assets/products/hero-section.jpg';
 import HeroSection from '../components/HeroSection';
 import { MotionFadeUp, MotionStagger, AnimatedHeading } from '../components/Animated';
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
@@ -223,30 +223,121 @@ export default function ContactPage() {
 
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="relative rounded-xl overflow-hidden mb-8">
-            <img src={subHeadingImage} alt="Section background" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="relative rounded-xl overflow-hidden mb-12">
+            <img src={heroSectionImage} alt="Section background" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-black/50" />
             <div className="relative z-10 py-10 px-4 text-center">
               <h2 className="text-3xl font-bold text-white mb-2">
-                Our Location
+                Our Locations
               </h2>
               <p className="text-blue-100">
-                Visit us at our office in Bhopal
+                Visit us at our offices
               </p>
             </div>
           </div>
-          <div className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.1234567890123!2d77.4126!3d23.2599!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c6c8e2b8b8b8b%3A0x1234567890abcdef!2sBhopal%2C%20Madhya%20Pradesh!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
-              width="100%"
-              height="400"
-              style={{ border: 0 }}
-              allowFullScreen={true}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Orbit Location - Bhopal, Madhya Pradesh"
-              className="rounded-2xl"
-            />
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Working Office Map */}
+            <div className="flex flex-col group">
+              <div className="relative rounded-t-2xl overflow-hidden border-x border-t border-gray-200">
+                <img src={heroSectionImage} alt="Working Office Header" className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-black/60 transition-colors group-hover:bg-black/50" />
+                <div className="relative z-10 p-6">
+                  <div className="flex items-center space-x-3 mb-2">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2">
+                      <MapPin className="h-5 w-5 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white">Working Office</h3>
+                  </div>
+                  <p className="text-blue-100 text-sm">
+                    Flat No.2, Block 12, Shalimar Enclave, E3 Arera Colony, Bhopal, 462016
+                  </p>
+                </div>
+              </div>
+              <div className="relative bg-white rounded-b-2xl overflow-hidden shadow-lg border border-gray-200 h-[400px]">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3667.432328148812!2d77.4286159!3d23.2162985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x397c4273069151db%3A0xe549a909796677f2!2sShalimar%20Enclave%2C%20E3%2C%20Arera%20Colony%2C%20Bhopal%2C%20Madhya%20Pradesh%20462016!5e0!3m2!1sen!2sin!4v1703413554823!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Orbit Working Office - Bhopal"
+                />
+
+                {/* Visual Pin Icon */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+                  <div className="bg-white p-2 rounded-full shadow-lg border-2 border-[#0073bc] transform -translate-y-4">
+                    <MapPin className="h-6 w-6 text-[#0073bc] fill-[#0073bc]/20" />
+                  </div>
+                </div>
+
+                {/* Clickable Overlay */}
+                <a
+                  href="https://maps.google.com/?q=Flat+No.2,+Block+12,+Shalimar+Enclave,+E3+Arera+Colony,+Bhopal,+462016"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0 z-10 cursor-pointer"
+                  title="Open in Google Maps"
+                >
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg text-[#0073bc] text-xs font-semibold shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                    View on Google Maps
+                  </div>
+                </a>
+              </div>
+            </div>
+
+            {/* Head Office Map */}
+            <div className="flex flex-col group">
+              <div className="relative rounded-t-2xl overflow-hidden border-x border-t border-gray-200">
+                <img src={heroSectionImage} alt="Head Office Header" className="absolute inset-0 w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-black/60 transition-colors group-hover:bg-black/50" />
+                <div className="relative z-10 p-6">
+                  <div className="flex items-center space-x-3 mb-2">
+                    <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2">
+                      <MapPin className="h-5 w-5 text-white" />
+                    </div>
+                    <h3 className="text-xl font-bold text-white">Head Office</h3>
+                  </div>
+                  <p className="text-blue-100 text-sm">
+                    B-32/A Priyadershini Society, Sant Asharam Nagar, Bagsewaniya, Bhopal - 462043
+                  </p>
+                </div>
+              </div>
+              <div className="relative bg-white rounded-b-2xl overflow-hidden shadow-lg border border-gray-200 h-[400px]">
+                <iframe
+                  src="https://www.google.com/maps?q=B-32/A Priyadershini Society, Sant Asharam Nagar, Bagsewaniya, Bhopal - 462043&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen={true}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Orbit Head Office - Bhopal"
+                />
+
+                {/* Visual Pin Icon */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-20">
+                  <div className="bg-white p-2 rounded-full shadow-lg border-2 border-[#0073bc] transform -translate-y-4">
+                    <MapPin className="h-6 w-6 text-[#0073bc] fill-[#0073bc]/20" />
+                  </div>
+                </div>
+
+                {/* Clickable Overlay */}
+                <a
+                  href="https://maps.google.com/?q=B-32/A+Priyadershini+Society,+Sant+Asharam+Nagar,+Bagsewaniya,+Bhopal+-+462043"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="absolute inset-0 z-10 cursor-pointer"
+                  title="Open in Google Maps"
+                >
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-lg text-[#0073bc] text-xs font-semibold shadow-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                    View on Google Maps
+                  </div>
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
