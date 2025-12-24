@@ -18,7 +18,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
     { label: 'Projects', page: 'projects' },
     { label: 'About', page: 'about' },
     { label: 'Services', page: 'services' },
-    { label: 'Partners', page: 'clients' },
+    { label: 'Our Ecosystem', page: 'clients' },
     { label: 'Solution', page: 'faq' },
     { label: 'Team', page: 'team' },
     { label: 'Contact', page: 'contact' },

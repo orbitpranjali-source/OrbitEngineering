@@ -45,7 +45,7 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <HeroSection title="About Orbit" subtitle="Pioneering water innovation for sustainable communities" />
+      <HeroSection title="About Orbit Engineerings" subtitle="Pioneering water innovation for sustainable communities" />
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -134,8 +134,8 @@ export default function AboutPage() {
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Address</h3>
               <p className="text-gray-600 text-sm">
-                <span className="font-bold">Working Office:</span> Flat No.2, Block 12,<br />Shalimar Enclave, E3 Arera Colony, Bhopal<br /><br />
-                <span className="font-bold">Head Office:</span> B-32/A Priyadershini Society,<br />Bagsewaniya, Bhopal
+                <span className="font-bold">Working Office:</span> <a href="https://maps.google.com/?q=Flat+No.2,+Block+12,+Shalimar+Enclave,+E3+Arera+Colony,+Bhopal,+462016" target="_blank" rel="noopener noreferrer" className="hover:text-[#0073bc] transition-colors">Flat No.2, Block 12, Shalimar Enclave,<br />E3 Arera Colony, Bhopal</a><br /><br />
+                <span className="font-bold">Head Office:</span> <a href="https://maps.google.com/?q=B-32/A+Priyadershini+Society,+Sant+Asharam+Nagar,+Bagsewaniya,+Bhopal+-+462043" target="_blank" rel="noopener noreferrer" className="hover:text-[#0073bc] transition-colors">B-32/A Priyadershini Society,<br />Bagsewaniya, Bhopal</a>
               </p>
             </div>
 
@@ -144,7 +144,7 @@ export default function AboutPage() {
                 <Phone className="h-8 w-8 text-[#0073bc]" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Phone</h3>
-              <p className="text-gray-600 text-sm">+91 70241 28029</p>
+              <p className="text-gray-600 text-sm"><a href="tel:7024128029" className="hover:text-[#0073bc] transition-colors">+91 70241 28029</a></p>
             </div>
 
             <div className="text-center">
@@ -152,7 +152,9 @@ export default function AboutPage() {
                 <Mail className="h-8 w-8 text-[#0073bc]" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Email</h3>
-              <p className="text-gray-600 text-sm">info@orbitengineerings.com</p>
+              <p className="text-gray-600 text-sm">
+                <a href="mailto:info@orbitengineerings.com" className="hover:text-[#0073bc] transition-colors">info@orbitengineerings.com</a>
+              </p>
             </div>
           </div>
         </div>

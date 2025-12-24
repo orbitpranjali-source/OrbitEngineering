@@ -5,8 +5,8 @@ import { MotionFadeUp, MotionStagger, MotionFadeScale, AnimatedHeading } from '.
 // ourTeamIcon removed: using shared HeroSection component instead
 import manojImg from '../assets/team/manoj-tiwari.jpeg';
 import vijayImg from '../assets/team/vijay-tiwari-2.jpg';
-import officeFounder from '../assets/sync-water-tech-new-office-founder-cabin.jpg';
-import officeReception from '../assets/sync-water-tech-new-office-reception.jpg';
+import office2 from '../assets/Office-2.png';
+import reception from '../assets/reception.png';
 
 export default function TeamPage() {
   const team = [
@@ -20,7 +20,7 @@ export default function TeamPage() {
     {
       name: 'Vijay Tiwari',
       role: 'Co-Founder & CTO',
-      email: 'vijay@syncwatertech.com',
+      email: 'vijay@orbitengineerings.com',
       description: 'Technical expert specializing in automation, IoT, and advanced water treatment systems',
       photo: vijayImg
     }
@@ -170,8 +170,8 @@ export default function TeamPage() {
           <MotionStagger className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch" stagger={0.06}>
             <MotionFadeScale className="overflow-hidden rounded-2xl" whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}>
               <img
-                src={officeFounder}
-                alt="Founder cabin at Orbit office"
+                src={office2}
+                alt="Orbit Engineering Group Office"
                 loading="lazy"
                 className="w-full h-[480px] md:h-[640px] object-contain rounded-2xl bg-gray-50"
               />
@@ -179,8 +179,8 @@ export default function TeamPage() {
 
             <MotionFadeScale className="overflow-hidden rounded-2xl" whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}>
               <img
-                src={officeReception}
-                alt="Reception area at Orbit office"
+                src={reception}
+                alt="Orbit Engineering Reception"
                 loading="lazy"
                 className="w-full h-[480px] md:h-[640px] object-contain rounded-2xl bg-gray-50"
               />
@@ -201,7 +201,7 @@ export default function TeamPage() {
             We're always looking for talented individuals. Send us your resume and we'll keep you in mind for future opportunities.
           </p>
           <a
-            href="mailto:careers@syncwatertech.com"
+            href="mailto:careers@orbitengineerings.com"
             className="inline-block px-8 py-3 bg-white text-[#0073bc] rounded-full font-semibold hover:bg-gray-100 transition-colors"
           >
             Email Your Resume

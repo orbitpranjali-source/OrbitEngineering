@@ -59,8 +59,10 @@ export default function ContactPage() {
                     <h3 className="font-semibold text-gray-900 mb-1">Our Office</h3>
                     <div className="text-gray-600 text-sm space-y-2">
                       <div>
-                        Flat No.2, Block 12, Shalimar Enclave,<br />
-                        E3 Arera Colony, Bhopal, 462016
+                        <a href="https://maps.google.com/?q=Flat+No.2,+Block+12,+Shalimar+Enclave,+E3+Arera+Colony,+Bhopal,+462016" target="_blank" rel="noopener noreferrer" className="hover:text-[#0073bc] transition-colors">
+                          Flat No.2, Block 12, Shalimar Enclave,<br />
+                          E3 Arera Colony, Bhopal, 462016
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -72,7 +74,9 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                    <p className="text-gray-600">+91 70241 28029</p>
+                    <p className="text-gray-600">
+                      <a href="tel:7024128029" className="hover:text-[#0073bc] transition-colors">+91 70241 28029</a>
+                    </p>
                   </div>
                 </MotionFadeUp>
 
@@ -82,7 +86,11 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
-                    <p className="text-gray-600">info@orbitengineerings.com</p>
+                    <div className="text-gray-600 space-y-1">
+                      <div><a href="mailto:info@orbitengineerings.com" className="hover:text-[#0073bc] transition-colors">info@orbitengineerings.com</a></div>
+                      <div><a href="mailto:vijaytiwari@orbitengineerings.com" className="hover:text-[#0073bc] transition-colors">vijaytiwari@orbitengineerings.com</a></div>
+                      <div><a href="mailto:sales@orbitengineerings.com" className="hover:text-[#0073bc] transition-colors">sales@orbitengineerings.com</a></div>
+                    </div>
                   </div>
                 </MotionFadeUp>
               </MotionStagger>

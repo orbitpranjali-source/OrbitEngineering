@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Droplets, Settings, FileText, Wrench, Cloud, Cpu, ChevronDown, HelpCircle } from 'lucide-react';
+
+import { Droplets, Settings, FileText, Wrench, Cloud, Cpu } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
 import { MotionFadeUp, MotionStagger } from '../components/Animated';
 import iconWaterTreatmentPlants from '../assets/icon/Water Treatment Plants.png';
@@ -14,8 +14,7 @@ interface ServicesPageProps {
 }
 
 export default function ServicesPage({ onNavigate }: ServicesPageProps) {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-  
+
   const services = [
     {
       icon: Droplets,
@@ -102,56 +101,7 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
     'Energy management solutions'
   ];
 
-  const faqs = [
-    {
-      question: 'What services does Sync Water Tech provide?',
-      answer: 'We provide comprehensive water infrastructure solutions including design and installation of Water Treatment Plants (WTP), Sewage Treatment Plants (STP), Reverse Osmosis systems, Effluent Treatment Plants (ETP), PLC-based automation, SCADA systems, IoT sensors, and complete operation and maintenance services.'
-    },
-    {
-      question: 'What regions do you serve?',
-      answer: 'We primarily serve projects across Madhya Pradesh and central India, with capabilities to execute projects nationwide. We have successfully completed projects in Bhopal, Indore, Jabalpur, Gwalior, Ujjain, and many other cities across the region.'
-    },
-    {
-      question: 'How does your automation technology work?',
-      answer: 'Our automation systems use programmable logic controllers (PLC) integrated with SCADA software and IoT sensors to monitor and control water treatment processes in real-time. This enables remote monitoring, automated control, predictive maintenance, and significant improvements in efficiency and reliability.'
-    },
-    {
-      question: 'What is the typical timeline for a project?',
-      answer: 'Project timelines vary based on scope and complexity. Small automation upgrades may take 2-3 months, while large treatment plant installations can take 12-18 months. We provide detailed project schedules during the planning phase and maintain transparent communication throughout execution.'
-    },
-    {
-      question: 'Do you provide operation and maintenance services?',
-      answer: 'Yes, we offer comprehensive O&M services including preventive maintenance, emergency repairs, system upgrades, performance monitoring, and 24/7 technical support. We can manage operations for the entire lifecycle of your water infrastructure.'
-    },
-    {
-      question: 'What makes your Clarus Fusion Series unique?',
-      answer: 'The Clarus Fusion Series represents our integrated approach combining advanced treatment technology with intelligent automation. It features 30% lower power consumption, 99.5% treatment efficiency, cloud-based monitoring, predictive maintenance, and mobile app control - all in a scalable, energy-optimized platform.'
-    },
-    {
-      question: 'Can you upgrade existing water treatment facilities?',
-      answer: 'Absolutely. We specialize in modernizing and automating existing water treatment facilities. This includes retrofitting older plants with PLC controls, adding IoT sensors, implementing cloud monitoring, and upgrading treatment processes to improve efficiency and meet current standards.'
-    },
-    {
-      question: 'What certifications and standards do you follow?',
-      answer: 'We follow ISO quality management standards and comply with all relevant Indian and international standards for water treatment and automation. Our designs meet Bureau of Indian Standards (BIS), Central Public Health and Environmental Engineering Organisation (CPHEEO) guidelines, and industry best practices.'
-    },
-    {
-      question: 'How do you ensure water quality in your treatment systems?',
-      answer: 'Our systems incorporate multiple quality control measures including multi-stage filtration, real-time monitoring of critical parameters (pH, turbidity, chlorine, TDS), automated chemical dosing, continuous data logging, and alarm systems for any deviations from specified parameters.'
-    },
-    {
-      question: 'What is your approach to energy efficiency?',
-      answer: 'Energy efficiency is integral to our designs. We use variable frequency drives, optimized pump scheduling, intelligent control algorithms, energy recovery systems, and renewable energy integration where applicable. Our Clarus Fusion technology achieves 30% lower power consumption compared to conventional systems.'
-    },
-    {
-      question: 'Do you provide training for operating your systems?',
-      answer: 'Yes, comprehensive training is included with every installation. We provide hands-on training for operators, maintenance staff, and supervisors covering system operation, routine maintenance, troubleshooting, and emergency procedures. We also provide detailed operation manuals and ongoing technical support.'
-    },
-    {
-      question: 'How can I get a quote for my project?',
-      answer: 'Contact us through our website, email, or phone with your project details. Our team will schedule a consultation to understand your requirements, conduct a site assessment if needed, and provide a detailed proposal including scope, timeline, and pricing.'
-    }
-  ];
+
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -227,46 +177,7 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <HelpCircle className="h-12 w-12 mx-auto mb-4 text-[#0073bc]" />
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-lg text-gray-600">
-              Find answers to common questions about our services and solutions
-            </p>
-          </div>
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="bg-gray-50 rounded-xl shadow-md overflow-hidden border border-gray-100"
-              >
-                <button
-                  onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                  className="w-full px-6 py-5 flex items-start justify-between text-left hover:bg-gray-100 transition-colors"
-                >
-                  <span className="font-semibold text-gray-900 pr-8">
-                    {faq.question}
-                  </span>
-                  <ChevronDown
-                    className={`h-5 w-5 text-[#0073bc] flex-shrink-0 transition-transform ${
-                      openIndex === index ? 'transform rotate-180' : ''
-                    }`}
-                  />
-                </button>
-                {openIndex === index && (
-                  <div className="px-6 pb-5 text-gray-700 leading-relaxed">
-                    {faq.answer}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
     </div>
   );
 }

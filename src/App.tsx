@@ -119,7 +119,7 @@ function App() {
       case 'projects:all':
       case 'projects:completed':
       case 'projects:ongoing':
-        return <ProjectsPage initialFilter={projectFilter ?? 'all'} />;
+        return <ProjectsPage initialFilter={projectFilter ?? 'all'} onNavigate={handleNavigate} />;
       case 'about':
         return <AboutPage />;
       case 'services':

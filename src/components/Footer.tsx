@@ -69,20 +69,34 @@ export default function Footer({ onNavigate }: FooterProps) {
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-[#0073bc] flex-shrink-0 mt-0.5" />
                 <div className="text-sm">
-                  <span className="block font-medium text-white">Working Office:</span>
-                  <span className="text-gray-400">Flat No.2, Block 12, Shalimar Enclave,<br />E3 Arera Colony, Bhopal, 462016</span>
+                  <a
+                    href="https://maps.google.com/?q=Flat+No.2,+Block+12,+Shalimar+Enclave,+E3+Arera+Colony,+Bhopal,+462016"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group"
+                  >
+                    <span className="block font-medium text-white group-hover:text-[#0073bc] transition-colors">Working Office:</span>
+                    <span className="text-gray-400 group-hover:text-gray-300 transition-colors">Flat No.2, Block 12, Shalimar Enclave,<br />E3 Arera Colony, Bhopal, 462016</span>
+                  </a>
                 </div>
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-[#0073bc] flex-shrink-0 mt-0.5" />
                 <div className="text-sm">
-                  <span className="block font-medium text-white">Head Office:</span>
-                  <span className="text-gray-400">B-32/A Priyadershini Society,<br />Sant Asharam Nagar, Bagsewaniya,<br />Bhopal - 462043</span>
+                  <a
+                    href="https://maps.google.com/?q=B-32/A+Priyadershini+Society,+Sant+Asharam+Nagar,+Bagsewaniya,+Bhopal+-+462043"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group"
+                  >
+                    <span className="block font-medium text-white group-hover:text-[#0073bc] transition-colors">Head Office:</span>
+                    <span className="text-gray-400 group-hover:text-gray-300 transition-colors">B-32/A Priyadershini Society,<br />Sant Asharam Nagar, Bagsewaniya,<br />Bhopal - 462043</span>
+                  </a>
                 </div>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-[#0073bc] flex-shrink-0" />
-                <span className="text-sm">+91 70241 28029</span>
+                <a href="tel:7024128029" className="text-sm hover:text-[#0073bc] transition-colors">+91 70241 28029</a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-5 w-5 text-[#0073bc] flex-shrink-0" />
@@ -104,7 +118,7 @@ export default function Footer({ onNavigate }: FooterProps) {
 
         <div className="mt-12 pt-8 border-t border-gray-800 text-center">
           <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} Sync Water Tech Pvt Ltd. All rights reserved.
+            <button onClick={() => onNavigate('home')} className="hover:text-[#0073bc] transition-colors">Orbit Engineering Group</button>. Powered by PLC, SCADA & Automation.
           </p>
         </div>
       </div>

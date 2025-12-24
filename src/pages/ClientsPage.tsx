@@ -11,6 +11,7 @@ import dblBuildcon from '../assets/clients/dbl-buildcon.png';
 import tejasConstructions from '../assets/clients/tejas-constructions.png';
 import prismCement from '../assets/clients/prism-cement.png';
 import centralIndia from '../assets/clients/central-india-pvt-ltd.png';
+import heroSectionImage from '../assets/products/hero-section.jpg';
 
 export default function ClientsPage() {
   const [formData, setFormData] = useState({ fullName: '', email: '', phone: '', message: '' });
@@ -22,7 +23,16 @@ export default function ClientsPage() {
     const modules = import.meta.glob('../assets/partners/*.{png,jpg,jpeg,svg}', { eager: true, query: '?url', import: 'default' }) as Record<string, string>;
     return Object.entries(modules).map(([filePath, url]) => {
       const fileName = filePath.split('/').pop() || filePath;
-      const name = fileName.replace(/\.(png|jpg|jpeg|svg)$/i, '').replace(/[-_]/g, ' ');
+      let name = fileName.replace(/\.(png|jpg|jpeg|svg)$/i, '').replace(/[-_]/g, ' ');
+
+      // Title Case formatting
+      name = name.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()).join(' ');
+
+      // Specific Correction
+      if (name.toLowerCase().includes('regada')) {
+        name = 'Regada';
+      }
+
       return { name, logo: url };
     });
   }, []);
@@ -39,28 +49,7 @@ export default function ClientsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <HeroSection title="Our Partners" subtitle="Trusted technology and automation partners we work with" />
-
-      {/* Static logos (no animation) with names */}
-      <section className="py-12 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <MotionStagger className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6" stagger={0.04}>
-            {clients.map((c) => (
-              <MotionFadeUp
-                key={c.name}
-                whileHover={{ scale: 1.04 }}
-                className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm text-center hover:shadow-md transition-shadow"
-                style={{ willChange: 'transform, opacity' }}
-              >
-                <div className="flex items-center justify-center h-28">
-                  <img src={c.logo} alt={`${c.name} logo`} className="max-h-16 w-auto object-contain opacity-95 filter grayscale-0" />
-                </div>
-                <div className="mt-3 text-sm font-medium text-gray-700 truncate">{c.name}</div>
-              </MotionFadeUp>
-            ))}
-          </MotionStagger>
-        </div>
-      </section>
+      <HeroSection title="Our Ecosystem" subtitle="Trusted technology and automation partners we work with" />
 
       {/* Named clients grid like the reference */}
       <section className="py-14 bg-gray-50">
@@ -143,6 +132,36 @@ export default function ClientsPage() {
         </div>
       </section>
 
+      {/* Static logos (no animation) with names */}
+      <section className="py-12 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative rounded-xl overflow-hidden mb-12">
+            <img src={heroSectionImage} alt="Partners background" className="absolute inset-0 w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-black/50" />
+            <div className="relative z-10 py-16 px-4 text-center">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-2">
+                Our Partners
+              </h2>
+            </div>
+          </div>
+          <MotionStagger className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6" stagger={0.04}>
+            {clients.map((c) => (
+              <MotionFadeUp
+                key={c.name}
+                whileHover={{ scale: 1.04 }}
+                className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm text-center hover:shadow-md transition-shadow"
+                style={{ willChange: 'transform, opacity' }}
+              >
+                <div className="flex items-center justify-center h-28">
+                  <img src={c.logo} alt={`${c.name} logo`} className="max-h-16 w-auto object-contain opacity-95 filter grayscale-0" />
+                </div>
+                <div className="mt-3 text-sm font-medium text-gray-700 truncate">{c.name}</div>
+              </MotionFadeUp>
+            ))}
+          </MotionStagger>
+        </div>
+      </section>
+
       {/* Contact slice like reference */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -160,7 +179,7 @@ export default function ClientsPage() {
                   <div>
                     <h3 className="font-semibold text-gray-900">Phone</h3>
                     <p className="text-gray-600 text-sm mb-2">Call us directly for immediate assistance</p>
-                    <a href="tel:+917024128029" className="text-[#0073bc] font-medium">+91 70241 28029</a>
+                    <a href="tel:+917024128029" className="text-[#0073bc] font-medium hover:text-[#005a94] transition-colors">+91 70241 28029</a>
                   </div>
                 </div>
               </div>
@@ -183,9 +202,9 @@ export default function ClientsPage() {
                     <a
                       href="https://maps.google.com/?q=Shalimar+Enclave,+E-3+Area+Colony+Bhopal"
                       target="_blank" rel="noreferrer"
-                      className="text-[#0073bc] font-medium block text-sm"
+                      className="text-[#0073bc] font-medium block text-sm hover:text-[#005a94] transition-colors"
                     >
-                      Working: Flat No.2, Block 12, Shalimar Enclave, Bhopal<br />
+                      Working Office: Flat No.2, Block 12, Shalimar Enclave, Bhopal<br />
                       Head: B-32/A Priyadershini Society, Bagsewaniya, Bhopal
                     </a>
                   </div>

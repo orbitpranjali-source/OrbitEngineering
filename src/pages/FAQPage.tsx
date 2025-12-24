@@ -11,52 +11,24 @@ export default function FAQPage({ onNavigate }: FAQPageProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const faqs = [
     {
-      question: 'What services does Sync Water Tech provide?',
-      answer: 'We provide comprehensive water infrastructure solutions including design and installation of Water Treatment Plants (WTP), Sewage Treatment Plants (STP), Reverse Osmosis systems, Effluent Treatment Plants (ETP), PLC-based automation, SCADA systems, IoT sensors, and complete operation and maintenance services.'
+      question: 'What types of water treatment solutions do you offer?',
+      answer: 'Orbit Engineering Group offers a wide range of water treatment solutions to meet various needs, including: Water filtration systems: Remove impurities, contaminants, and suspended solids from water. Water softening systems: Reduce the hardness of water by removing calcium and magnesium ions. Disinfection systems: Eliminate harmful bacteria, viruses, and other microorganisms. Wastewater treatment systems: Treat wastewater to remove pollutants and contaminants before discharge.'
     },
     {
-      question: 'What regions do you serve?',
-      answer: 'We primarily serve projects across Madhya Pradesh and central India, with capabilities to execute projects nationwide. We have successfully completed projects in Bhopal, Indore, Jabalpur, Gwalior, Ujjain, and many other cities across the region.'
+      question: 'How do your SCADA systems help optimise water distribution?',
+      answer: 'Our SCADA (Supervisory Control and Data Acquisition) systems provide real-time monitoring and control of water distribution networks. By collecting and analyzing data on water flow, pressure, and consumption, we can optimize operations, identify leaks, and improve efficiency.'
     },
     {
-      question: 'How does your automation technology work?',
-      answer: 'Our automation systems use programmable logic controllers (PLC) integrated with SCADA software and IoT sensors to monitor and control water treatment processes in real-time. This enables remote monitoring, automated control, predictive maintenance, and significant improvements in efficiency and reliability.'
+      question: 'Do you offer custom solutions to meet specific needs?',
+      answer: 'Yes, we specialise in providing customised solutions to meet the unique requirements of our clients. Our team of experts can work with you to design and implement a water treatment system that is tailored to your specific needs and budget.'
     },
     {
-      question: 'What is the typical timeline for a project?',
-      answer: 'Project timelines vary based on scope and complexity. Small automation upgrades may take 2-3 months, while large treatment plant installations can take 12-18 months. We provide detailed project schedules during the planning phase and maintain transparent communication throughout execution.'
+      question: 'How do you determine pricing for your products and services?',
+      answer: 'Our pricing is based on several factors, including the size of the project, the complexity of the system, and the specific requirements of the client. We strive to offer competitive pricing while providing high-quality products and services.'
     },
     {
-      question: 'Do you provide operation and maintenance services?',
-      answer: 'Yes, we offer comprehensive O&M services including preventive maintenance, emergency repairs, system upgrades, performance monitoring, and 24/7 technical support. We can manage operations for the entire lifecycle of your water infrastructure.'
-    },
-    {
-      question: 'What makes your Clarus Fusion Series unique?',
-      answer: 'The Clarus Fusion Series represents our integrated approach combining advanced treatment technology with intelligent automation. It features 30% lower power consumption, 99.5% treatment efficiency, cloud-based monitoring, predictive maintenance, and mobile app control - all in a scalable, energy-optimized platform.'
-    },
-    {
-      question: 'Can you upgrade existing water treatment facilities?',
-      answer: 'Absolutely. We specialize in modernizing and automating existing water treatment facilities. This includes retrofitting older plants with PLC controls, adding IoT sensors, implementing cloud monitoring, and upgrading treatment processes to improve efficiency and meet current standards.'
-    },
-    {
-      question: 'What certifications and standards do you follow?',
-      answer: 'We follow ISO quality management standards and comply with all relevant Indian and international standards for water treatment and automation. Our designs meet Bureau of Indian Standards (BIS), Central Public Health and Environmental Engineering Organisation (CPHEEO) guidelines, and industry best practices.'
-    },
-    {
-      question: 'How do you ensure water quality in your treatment systems?',
-      answer: 'Our systems incorporate multiple quality control measures including multi-stage filtration, real-time monitoring of critical parameters (pH, turbidity, chlorine, TDS), automated chemical dosing, continuous data logging, and alarm systems for any deviations from specified parameters.'
-    },
-    {
-      question: 'What is your approach to energy efficiency?',
-      answer: 'Energy efficiency is integral to our designs. We use variable frequency drives, optimized pump scheduling, intelligent control algorithms, energy recovery systems, and renewable energy integration where applicable. Our Clarus Fusion technology achieves 30% lower power consumption compared to conventional systems.'
-    },
-    {
-      question: 'Do you provide training for operating your systems?',
-      answer: 'Yes, comprehensive training is included with every installation. We provide hands-on training for operators, maintenance staff, and supervisors covering system operation, routine maintenance, troubleshooting, and emergency procedures. We also provide detailed operation manuals and ongoing technical support.'
-    },
-    {
-      question: 'How can I get a quote for my project?',
-      answer: 'Contact us through our website, email, or phone with your project details. Our team will schedule a consultation to understand your requirements, conduct a site assessment if needed, and provide a detailed proposal including scope, timeline, and pricing.'
+      question: 'How can I contact your customer support team?',
+      answer: <>You can contact our customer support team by phone, email, or through our website contact form. Our team is available to assist you with any questions: <a href="mailto:info@orbitengineerings.com" className="text-[#0073bc] hover:underline">info@orbitengineerings.com</a></>
     }
   ];
 
@@ -94,9 +66,8 @@ export default function FAQPage({ onNavigate }: FAQPageProps) {
                     {faq.question}
                   </span>
                   <ChevronDown
-                    className={`h-5 w-5 text-[#0073bc] flex-shrink-0 transition-transform ${
-                      openIndex === index ? 'transform rotate-180' : ''
-                    }`}
+                    className={`h-5 w-5 text-[#0073bc] flex-shrink-0 transition-transform ${openIndex === index ? 'transform rotate-180' : ''
+                      }`}
                   />
                 </button>
                 {openIndex === index && (

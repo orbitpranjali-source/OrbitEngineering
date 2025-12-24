@@ -430,7 +430,7 @@ export default function ProductInfoPage({ variant, onNavigate }: ProductInfoPage
               <ArrowRight className="w-5 h-5" />
             </button>
             <div className="text-blue-100 text-sm">
-              <div>Email: info@orbitengineerings.com</div>
+              <div>Email: <a href="mailto:info@orbitengineerings.com" className="hover:text-blue-200 transition-colors">info@orbitengineerings.com</a></div>
               <div>Phone: +91 70241 28029</div>
             </div>
           </div>
