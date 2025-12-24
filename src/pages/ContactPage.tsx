@@ -70,26 +70,28 @@ export default function ContactPage() {
 
                 <MotionFadeUp className="flex items-start space-x-4">
                   <div className="bg-[#0073bc] bg-opacity-10 rounded-xl p-3">
-                    <Phone className="h-6 w-6 text-[#0073bc]" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
-                    <p className="text-gray-600">
-                      <a href="tel:7024128029" className="hover:text-[#0073bc] transition-colors">+91 70241 28029</a>
-                    </p>
-                  </div>
-                </MotionFadeUp>
-
-                <MotionFadeUp className="flex items-start space-x-4">
-                  <div className="bg-[#0073bc] bg-opacity-10 rounded-xl p-3">
                     <Mail className="h-6 w-6 text-[#0073bc]" />
                   </div>
                   <div>
                     <h3 className="font-semibold text-gray-900 mb-1">Email</h3>
                     <div className="text-gray-600 space-y-1">
-                      <div><a href="mailto:info@orbitengineerings.com" className="hover:text-[#0073bc] transition-colors">info@orbitengineerings.com</a></div>
+                      <div><a href="mailto:info@orbitengineerings.com" className="hover:text-[#0073bc] transition-colors font-medium">info@orbitengineerings.com</a></div>
                       <div><a href="mailto:vijaytiwari@orbitengineerings.com" className="hover:text-[#0073bc] transition-colors">vijaytiwari@orbitengineerings.com</a></div>
                       <div><a href="mailto:sales@orbitengineerings.com" className="hover:text-[#0073bc] transition-colors">sales@orbitengineerings.com</a></div>
+                    </div>
+                  </div>
+                </MotionFadeUp>
+
+                <MotionFadeUp className="flex items-start space-x-4">
+                  <div className="bg-[#0073bc] bg-opacity-10 rounded-xl p-3">
+                    <Phone className="h-6 w-6 text-[#0073bc]" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
+                    <div className="text-gray-600 space-y-1">
+                      <div><a href="tel:7024128029" className="hover:text-[#0073bc] transition-colors">+91 70241 28029</a></div>
+                      <div><a href="tel:8817770367" className="hover:text-[#0073bc] transition-colors">+91 88177 70367</a></div>
+                      <div><a href="tel:9893091450" className="hover:text-[#0073bc] transition-colors">+91 98930 91450</a></div>
                     </div>
                   </div>
                 </MotionFadeUp>

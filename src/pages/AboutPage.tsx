@@ -7,7 +7,8 @@ import iconEndToEnd from '../assets/icon/End-to-End Solutions.png';
 import iconResults from '../assets/icon/Results Oriented.png';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
 import HeroSection from '../components/HeroSection';
-import { MotionFadeUp, MotionStagger, AnimatedHeading } from '../components/Animated';
+import { motion } from 'framer-motion';
+import { AnimatedHeading } from '../components/Animated';
 
 export default function AboutPage() {
   const whyChooseUs = [
@@ -69,20 +70,26 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <div className="relative rounded-2xl overflow-hidden text-white">
+            <motion.div
+              initial={{ opacity: 0, x: 100 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="relative rounded-2xl overflow-hidden text-white shadow-2xl"
+            >
               <img src={subHeadingImage} alt="Mission and Vision background" className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-black/40" />
-              <div className="relative z-10 p-8">
+              <div className="relative z-10 p-8 md:p-12">
                 <AnimatedHeading level={3} className="text-2xl font-bold mb-6">Our Mission</AnimatedHeading>
-                <p className="text-blue-100 mb-8 leading-relaxed">
+                <p className="text-blue-100 mb-8 leading-relaxed text-lg">
                   To provide innovative, sustainable, and accessible water management solutions that empower communities, protect natural resources, and build a resilient future for all.
                 </p>
                 <AnimatedHeading level={3} className="text-2xl font-bold mb-6">Our Vision</AnimatedHeading>
-                <p className="text-blue-100 leading-relaxed">
+                <p className="text-blue-100 leading-relaxed text-lg">
                   To be India's most trusted partner in water infrastructure, recognized for technological excellence, environmental responsibility, and unwavering commitment to community welfare.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -98,21 +105,50 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <MotionStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" stagger={0.05}>
-            {whyChooseUs.map((item, index) => (
-              <MotionFadeUp key={index} className="bg-white rounded-xl shadow-md p-8 hover:shadow-lg transition-shadow">
-                <div className="mb-6">
-                  <img src={item.image} alt={`${item.title} icon`} className="h-16 w-16 object-contain mx-auto" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">
-                  {item.description}
-                </p>
-              </MotionFadeUp>
-            ))}
-          </MotionStagger>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {whyChooseUs.map((item, index) => {
+              const position = index % 3; // 0: left, 1: center, 2: right
+
+              const variants = {
+                hidden: {
+                  opacity: 0,
+                  x: position === 0 ? 100 : position === 2 ? -100 : 0,
+                  scale: position === 1 ? 0.95 : 1
+                },
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  scale: 1,
+                  transition: {
+                    duration: 1.2,
+                    ease: "easeOut" as any,
+                    delay: 0.1
+                  }
+                }
+              };
+
+              return (
+                <motion.div
+                  key={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={variants}
+                  className="bg-white rounded-xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] p-8 hover:shadow-lg transition-shadow border border-gray-100 group"
+                >
+                  <div className="mb-6 overflow-hidden rounded-lg bg-gray-50 p-4 group-hover:bg-blue-50 transition-colors">
+                    <img src={item.image} alt={`${item.title} icon`} className="h-16 w-16 object-contain mx-auto transform group-hover:scale-110 transition-transform duration-300" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {item.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -144,7 +180,11 @@ export default function AboutPage() {
                 <Phone className="h-8 w-8 text-[#0073bc]" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Phone</h3>
-              <p className="text-gray-600 text-sm"><a href="tel:7024128029" className="hover:text-[#0073bc] transition-colors">+91 70241 28029</a></p>
+              <div className="text-gray-600 text-sm space-y-1">
+                <p><a href="tel:7024128029" className="hover:text-[#0073bc] transition-colors">+91 70241 28029</a></p>
+                <p><a href="tel:8817770367" className="hover:text-[#0073bc] transition-colors">+91 88177 70367</a></p>
+                <p><a href="tel:9893091450" className="hover:text-[#0073bc] transition-colors">+91 98930 91450</a></p>
+              </div>
             </div>
 
             <div className="text-center">
@@ -152,9 +192,11 @@ export default function AboutPage() {
                 <Mail className="h-8 w-8 text-[#0073bc]" />
               </div>
               <h3 className="font-semibold text-gray-900 mb-2">Email</h3>
-              <p className="text-gray-600 text-sm">
-                <a href="mailto:info@orbitengineerings.com" className="hover:text-[#0073bc] transition-colors">info@orbitengineerings.com</a>
-              </p>
+              <div className="text-gray-600 text-sm space-y-1">
+                <p><a href="mailto:info@orbitengineerings.com" className="hover:text-[#0073bc] transition-colors font-medium">info@orbitengineerings.com</a></p>
+                <p><a href="mailto:vijaytiwari@orbitengineerings.com" className="hover:text-[#0073bc] transition-colors">vijaytiwari@orbitengineerings.com</a></p>
+                <p><a href="mailto:sales@orbitengineerings.com" className="hover:text-[#0073bc] transition-colors">sales@orbitengineerings.com</a></p>
+              </div>
             </div>
           </div>
         </div>

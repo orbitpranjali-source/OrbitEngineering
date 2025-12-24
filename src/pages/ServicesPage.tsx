@@ -1,7 +1,7 @@
 
 import { Droplets, Settings, FileText, Wrench, Cloud, Cpu } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
-import { MotionFadeUp, MotionStagger } from '../components/Animated';
+import { motion } from 'framer-motion';
 import iconWaterTreatmentPlants from '../assets/icon/Water Treatment Plants.png';
 import iconAutomationSystems from '../assets/icon/Automation Systems.png';
 import iconOMServices from '../assets/icon/O&M Services.png';
@@ -14,6 +14,7 @@ interface ServicesPageProps {
 }
 
 export default function ServicesPage({ onNavigate }: ServicesPageProps) {
+  void onNavigate;
 
   const services = [
     {
@@ -109,30 +110,59 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <MotionStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" stagger={0.05}>
-            {services.map((service, index) => (
-              <MotionFadeUp key={index} className="group bg-gray-50 rounded-2xl p-8 hover:shadow-lg transition-shadow border border-gray-100">
-                <div className="icon-wrap mb-6 mx-auto">
-                  {service.image ? (
-                    <img src={service.image} alt={`${service.title} icon`} className="icon-img icon-hover" />
-                  ) : (
-                    <service.icon className="h-12 w-12 md:h-14 md:w-14 text-[#0073bc] mx-auto transform transition-transform duration-300 group-hover:scale-105" />
-                  )}
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-4">
-                  {service.title}
-                </h3>
-                <ul className="space-y-2">
-                  {service.items.map((item, idx) => (
-                    <li key={idx} className="flex items-start text-gray-700">
-                      <span className="text-[#0073bc] mr-2 mt-1">•</span>
-                      <span className="text-sm">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </MotionFadeUp>
-            ))}
-          </MotionStagger>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.map((service, index) => {
+              const position = index % 3;
+              const variants = {
+                hidden: {
+                  opacity: 0,
+                  x: position === 0 ? 100 : position === 2 ? -100 : 0,
+                  scale: position === 1 ? 0.95 : 1,
+                  transition: {
+                    duration: 1.2,
+                    ease: "easeOut" as any,
+                    delay: 0.1
+                  }
+                },
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  scale: 1,
+                  transition: { duration: 1.2, ease: "easeOut" as any }
+                }
+              };
+
+              return (
+                <motion.div
+                  key={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={variants}
+                  className="group bg-gray-50 rounded-2xl p-8 shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-lg transition-shadow border border-gray-100"
+                >
+                  <div className="icon-wrap mb-6 mx-auto">
+                    {service.image ? (
+                      <img src={service.image} alt={`${service.title} icon`} className="icon-img icon-hover" />
+                    ) : (
+                      <service.icon className="h-12 w-12 md:h-14 md:w-14 text-[#0073bc] mx-auto transform transition-transform duration-300 group-hover:scale-105" />
+                    )}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">
+                    {service.title}
+                  </h3>
+                  <ul className="space-y-2">
+                    {service.items.map((item, idx) => (
+                      <li key={idx} className="flex items-start text-gray-700">
+                        <span className="text-[#0073bc] mr-2 mt-1">•</span>
+                        <span className="text-sm">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </section>
 

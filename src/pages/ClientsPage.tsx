@@ -1,7 +1,8 @@
 import { useState, useMemo } from 'react';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, Users, Star } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
-import { MotionFadeUp, MotionStagger, AnimatedHeading } from '../components/Animated';
+import { motion } from 'framer-motion';
+import { MotionFadeUp, AnimatedHeading } from '../components/Animated';
 import mpJalNigam from '../assets/clients/mp-jal-nigam.png';
 import bharatSarkar from '../assets/clients/bharat-sarkar.png';
 import mpudclIndoreDistrict from '../assets/clients/mpudcl-indore-district.png';
@@ -144,21 +145,71 @@ export default function ClientsPage() {
               </h2>
             </div>
           </div>
-          <MotionStagger className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6" stagger={0.04}>
-            {clients.map((c) => (
-              <MotionFadeUp
-                key={c.name}
-                whileHover={{ scale: 1.04 }}
-                className="bg-white rounded-xl border border-gray-200 p-4 shadow-sm text-center hover:shadow-md transition-shadow"
-                style={{ willChange: 'transform, opacity' }}
+          <div className="space-y-12 overflow-hidden py-8">
+            {/* First Row: Left-to-Right */}
+            <div className="relative flex overflow-hidden">
+              <motion.div
+                className="flex whitespace-nowrap gap-6"
+                initial={{ x: 0 }}
+                whileInView={{
+                  x: [0, "-50%"]
+                }}
+                viewport={{ once: false }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: 30,
+                    ease: "linear",
+                  },
+                }}
               >
-                <div className="flex items-center justify-center h-28">
-                  <img src={c.logo} alt={`${c.name} logo`} className="max-h-16 w-auto object-contain opacity-95 filter grayscale-0" />
-                </div>
-                <div className="mt-3 text-sm font-medium text-gray-700 truncate">{c.name}</div>
-              </MotionFadeUp>
-            ))}
-          </MotionStagger>
+                {[...clients, ...clients].map((c, i) => (
+                  <div
+                    key={`${c.name}-row1-${i}`}
+                    className="flex-shrink-0 w-48 bg-white rounded-xl border border-gray-100 p-6 shadow-sm text-center hover:shadow-md transition-shadow group"
+                  >
+                    <div className="flex items-center justify-center h-24 mb-4">
+                      <img src={c.logo} alt={`${c.name} logo`} className="max-h-16 w-auto object-contain transition-transform group-hover:scale-110" />
+                    </div>
+                    <div className="text-sm font-medium text-gray-700 truncate">{c.name}</div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+
+            {/* Second Row: Right-to-Left */}
+            <div className="relative flex overflow-hidden">
+              <motion.div
+                className="flex whitespace-nowrap gap-6"
+                initial={{ x: "-50%" }}
+                whileInView={{
+                  x: ["-50%", "0%"]
+                }}
+                viewport={{ once: false }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: 30,
+                    ease: "linear",
+                  },
+                }}
+              >
+                {[...clients, ...clients].map((c, i) => (
+                  <div
+                    key={`${c.name}-row2-${i}`}
+                    className="flex-shrink-0 w-48 bg-white rounded-xl border border-gray-100 p-6 shadow-sm text-center hover:shadow-md transition-shadow group"
+                  >
+                    <div className="flex items-center justify-center h-24 mb-4">
+                      <img src={c.logo} alt={`${c.name} logo`} className="max-h-16 w-auto object-contain transition-transform group-hover:scale-110" />
+                    </div>
+                    <div className="text-sm font-medium text-gray-700 truncate">{c.name}</div>
+                  </div>
+                ))}
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -179,7 +230,11 @@ export default function ClientsPage() {
                   <div>
                     <h3 className="font-semibold text-gray-900">Phone</h3>
                     <p className="text-gray-600 text-sm mb-2">Call us directly for immediate assistance</p>
-                    <a href="tel:+917024128029" className="text-[#0073bc] font-medium hover:text-[#005a94] transition-colors">+91 70241 28029</a>
+                    <div className="flex flex-col space-y-1">
+                      <a href="tel:7024128029" className="text-[#0073bc] font-medium hover:text-[#005a94] transition-colors">+91 70241 28029</a>
+                      <a href="tel:8817770367" className="text-[#0073bc] font-medium hover:text-[#005a94] transition-colors">+91 88177 70367</a>
+                      <a href="tel:9893091450" className="text-[#0073bc] font-medium hover:text-[#005a94] transition-colors">+91 98930 91450</a>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -189,7 +244,11 @@ export default function ClientsPage() {
                   <div>
                     <h3 className="font-semibold text-gray-900">Email</h3>
                     <p className="text-gray-600 text-sm mb-2">Send us an email for detailed inquiries</p>
-                    <a href="mailto:info@orbitengineerings.com" className="text-[#0073bc] font-medium">info@orbitengineerings.com</a>
+                    <div className="flex flex-col space-y-1">
+                      <a href="mailto:info@orbitengineerings.com" className="text-[#0073bc] font-medium hover:underline">info@orbitengineerings.com</a>
+                      <a href="mailto:vijaytiwari@orbitengineerings.com" className="text-[#0073bc] font-medium hover:underline">vijaytiwari@orbitengineerings.com</a>
+                      <a href="mailto:sales@orbitengineerings.com" className="text-[#0073bc] font-medium hover:underline">sales@orbitengineerings.com</a>
+                    </div>
                   </div>
                 </div>
               </div>

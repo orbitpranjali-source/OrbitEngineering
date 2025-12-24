@@ -1,7 +1,7 @@
 import { Droplets, Zap, Gauge, ThermometerSun, Activity, FlaskConical } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
-import { MotionFadeUp, MotionStagger } from '../components/Animated';
+import { motion } from 'framer-motion';
 // iconProductsSolutions removed; hero uses shared HeroSection
 import iconWTP from '../assets/icon/Water Treatment Plants.png';
 import iconSTP from '../assets/icon/Sewage Treatment Plants.png';
@@ -108,40 +108,64 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
 
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <MotionStagger className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" stagger={0.05}>
-            {productCategories.map((category, index) => (
-              <MotionFadeUp key={index} className="group bg-white rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 p-8 border border-gray-100 hover:border-[#0073bc]/20 transform hover:-translate-y-1">
-                <div className="icon-wrap mb-6 mx-auto group-hover:bg-[#0073bc]/10 transition-colors duration-300">
-                  {category.image ? (
-                    <img src={category.image} alt={`${category.title} icon`} className="icon-img icon-hover group-hover:scale-110 transition-transform duration-300" />
-                  ) : (
-                    <category.icon className="h-10 w-10 text-[#0073bc] mx-auto group-hover:scale-110 transition-transform duration-300" />
-                  )}
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {productCategories.map((category, index) => {
+              const position = index % 3;
+              const variants = {
+                hidden: {
+                  opacity: 0,
+                  x: position === 0 ? 100 : position === 2 ? -100 : 0,
+                  scale: position === 1 ? 0.95 : 1
+                },
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  scale: 1,
+                  transition: { duration: 1.2, ease: "easeOut" as any, delay: index * 0.05 }
+                }
+              };
 
-                <h3 className="text-xl font-bold text-gray-900 mb-3">
-                  {category.title === 'Water Treatment Plants' && '🚰 '}
-                  {category.title === 'Sewage Treatment Plants' && '🧼 '}
-                  {category.title === 'Reverse Osmosis Systems' && '💧 '}
-                  {category.title === 'Effluent Treatment Plants' && '🏭 '}
-                  {category.title === 'PLC Control Panels' && '📟 '}
-                  {category.title === 'IoT Sensors' && '📶 '}
-                  {category.title}
-                </h3>
-                <p className="text-gray-600 mb-6 text-sm">
-                  {category.description}
-                </p>
-                <ul className="space-y-2">
-                  {category.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-start text-sm text-gray-700">
-                      <span className="text-[#0073bc] mr-2">✓</span>
-                      <span>{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-              </MotionFadeUp>
-            ))}
-          </MotionStagger>
+              return (
+                <motion.div
+                  key={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={variants}
+                  className="group bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-xl transition-all duration-300 p-8 border border-gray-100 hover:border-[#0073bc]/20 transform hover:-translate-y-1"
+                >
+                  <div className="icon-wrap mb-6 mx-auto group-hover:bg-[#0073bc]/10 transition-colors duration-300">
+                    {category.image ? (
+                      <img src={category.image} alt={`${category.title} icon`} className="icon-img icon-hover group-hover:scale-110 transition-transform duration-300" />
+                    ) : (
+                      <category.icon className="h-10 w-10 text-[#0073bc] mx-auto group-hover:scale-110 transition-transform duration-300" />
+                    )}
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {category.title === 'Water Treatment Plants' && '🚰 '}
+                    {category.title === 'Sewage Treatment Plants' && '🧼 '}
+                    {category.title === 'Reverse Osmosis Systems' && '💧 '}
+                    {category.title === 'Effluent Treatment Plants' && '🏭 '}
+                    {category.title === 'PLC Control Panels' && '📟 '}
+                    {category.title === 'IoT Sensors' && '📶 '}
+                    {category.title}
+                  </h3>
+                  <p className="text-gray-600 mb-6 text-sm">
+                    {category.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {category.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start text-sm text-gray-700">
+                        <span className="text-[#0073bc] mr-2">✓</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
@@ -162,50 +186,50 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
                   Our flagship integrated water management platform combining advanced treatment processes with intelligent automation for optimal performance and efficiency.
                 </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-white bg-opacity-10 rounded-xl p-6 backdrop-blur-sm">
-                  <div className="text-3xl font-bold mb-2">30%</div>
-                  <div className="text-blue-100 text-sm">Lower Power Consumption</div>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  <div className="bg-white bg-opacity-10 rounded-xl p-6 backdrop-blur-sm">
+                    <div className="text-3xl font-bold mb-2">30%</div>
+                    <div className="text-blue-100 text-sm">Lower Power Consumption</div>
+                  </div>
+                  <div className="bg-white bg-opacity-10 rounded-xl p-6 backdrop-blur-sm">
+                    <div className="text-3xl font-bold mb-2">99.5%</div>
+                    <div className="text-blue-100 text-sm">Treatment Efficiency</div>
+                  </div>
+                  <div className="bg-white bg-opacity-10 rounded-xl p-6 backdrop-blur-sm">
+                    <div className="text-3xl font-bold mb-2">24/7</div>
+                    <div className="text-blue-100 text-sm">Remote Monitoring</div>
+                  </div>
                 </div>
-                <div className="bg-white bg-opacity-10 rounded-xl p-6 backdrop-blur-sm">
-                  <div className="text-3xl font-bold mb-2">99.5%</div>
-                  <div className="text-blue-100 text-sm">Treatment Efficiency</div>
-                </div>
-                <div className="bg-white bg-opacity-10 rounded-xl p-6 backdrop-blur-sm">
-                  <div className="text-3xl font-bold mb-2">24/7</div>
-                  <div className="text-blue-100 text-sm">Remote Monitoring</div>
-                </div>
-              </div>
 
-              <div className="space-y-3">
-                <h3 className="text-xl font-semibold mb-3">Key Features:</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  <div className="flex items-center space-x-2">
-                    <span className="text-blue-200">•</span>
-                    <span className="text-sm">Energy-optimized operation</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-blue-200">•</span>
-                    <span className="text-sm">Predictive maintenance</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-blue-200">•</span>
-                    <span className="text-sm">Cloud-based analytics</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-blue-200">•</span>
-                    <span className="text-sm">Mobile app control</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-blue-200">•</span>
-                    <span className="text-sm">Automated reporting</span>
-                  </div>
-                  <div className="flex items-center space-x-2">
-                    <span className="text-blue-200">•</span>
-                    <span className="text-sm">Scalable architecture</span>
+                <div className="space-y-3">
+                  <h3 className="text-xl font-semibold mb-3">Key Features:</h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div className="flex items-center space-x-2">
+                      <span className="text-blue-200">•</span>
+                      <span className="text-sm">Energy-optimized operation</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-blue-200">•</span>
+                      <span className="text-sm">Predictive maintenance</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-blue-200">•</span>
+                      <span className="text-sm">Cloud-based analytics</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-blue-200">•</span>
+                      <span className="text-sm">Mobile app control</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-blue-200">•</span>
+                      <span className="text-sm">Automated reporting</span>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-blue-200">•</span>
+                      <span className="text-sm">Scalable architecture</span>
+                    </div>
                   </div>
                 </div>
-              </div>
               </div>
             </div>
           </div>
@@ -220,7 +244,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
           <p className="text-lg text-gray-600 mb-8">
             Our engineering team can design and build products tailored to your specific requirements
           </p>
-          
+
         </div>
       </section>
     </div>

@@ -1,7 +1,8 @@
 import { Mail, Briefcase, Target } from 'lucide-react';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
 import HeroSection from '../components/HeroSection';
-import { MotionFadeUp, MotionStagger, MotionFadeScale, AnimatedHeading } from '../components/Animated';
+import { motion } from 'framer-motion';
+import { MotionFadeUp, MotionStagger, AnimatedHeading } from '../components/Animated';
 // ourTeamIcon removed: using shared HeroSection component instead
 import manojImg from '../assets/team/manoj-tiwari.jpeg';
 import vijayImg from '../assets/team/vijay-tiwari-2.jpg';
@@ -32,10 +33,12 @@ export default function TeamPage() {
     <div className="min-h-screen bg-gray-50">
       <HeroSection title="Our Team" subtitle="Meet the visionaries driving water innovation" />
 
-      <section className="py-20 bg-white">
+      <section className="py-24 bg-gray-50 border-y border-gray-100">
+
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <AnimatedHeading level={2} className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-16 relative z-10">
+            <AnimatedHeading level={2} className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">
               Meet the Visionaries
             </AnimatedHeading>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -43,9 +46,18 @@ export default function TeamPage() {
             </p>
           </div>
 
-          <MotionStagger className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto" stagger={0.06}>
+          <MotionStagger className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto" stagger={0.06}>
             {team.map((member, index) => (
-              <MotionFadeUp key={index} className="bg-gray-50 rounded-2xl shadow-lg p-8 border border-gray-100 hover:shadow-xl transition-shadow">
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="bg-white rounded-2xl p-10 border border-gray-200 shadow-sm hover:shadow-xl transition-all duration-300"
+              >
+
+
                 {member.photo ? (
                   <img
                     src={member.photo}
@@ -63,22 +75,25 @@ export default function TeamPage() {
                 <h3 className="text-2xl font-bold text-gray-900 text-center mb-2">
                   {member.name}
                 </h3>
-                <p className="text-[#0073bc] font-semibold text-center mb-4">
+                <p className="text-[#0073bc] font-bold text-center mb-4 uppercase tracking-wider text-sm">
                   {member.role}
                 </p>
-                <p className="text-gray-600 text-center mb-6 leading-relaxed">
+                <p className="text-gray-600 text-center mb-8 leading-relaxed">
                   {member.description}
                 </p>
-                <div className="flex items-center justify-center space-x-2 text-gray-700">
+
+                <div className="flex items-center justify-center space-x-2 text-gray-600">
                   <Mail className="h-4 w-4 text-[#0073bc]" />
                   <a
                     href={`mailto:${member.email}`}
-                    className="text-sm hover:text-[#0073bc] transition-colors"
+                    className="text-sm hover:text-[#0073bc] transition-colors font-semibold text-gray-700"
                   >
+
                     {member.email}
                   </a>
                 </div>
-              </MotionFadeUp>
+              </motion.div>
+
             ))}
           </MotionStagger>
         </div>
@@ -167,25 +182,46 @@ export default function TeamPage() {
             </MotionFadeUp>
           </div>
 
-          <MotionStagger className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch" stagger={0.06}>
-            <MotionFadeScale className="overflow-hidden rounded-2xl" whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 25px 50px -12px rgba(0, 115, 188, 0.4)",
+                borderColor: "rgba(0, 115, 188, 0.5)"
+              }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+              className="overflow-hidden rounded-2xl border-2 border-transparent bg-white shadow-lg cursor-pointer transform-gpu"
+            >
               <img
                 src={office2}
                 alt="Orbit Engineering Group Office"
                 loading="lazy"
-                className="w-full h-[480px] md:h-[640px] object-contain rounded-2xl bg-gray-50"
+                className="w-full h-[400px] md:h-[500px] object-cover"
               />
-            </MotionFadeScale>
-
-            <MotionFadeScale className="overflow-hidden rounded-2xl" whileHover={{ scale: 1.02 }} transition={{ duration: 0.4 }}>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              whileHover={{
+                scale: 1.05,
+                boxShadow: "0 25px 50px -12px rgba(0, 115, 188, 0.4)",
+                borderColor: "rgba(0, 115, 188, 0.5)"
+              }}
+              transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+              className="overflow-hidden rounded-2xl border-2 border-transparent bg-white shadow-lg cursor-pointer transform-gpu"
+            >
               <img
                 src={reception}
                 alt="Orbit Engineering Reception"
                 loading="lazy"
-                className="w-full h-[480px] md:h-[640px] object-contain rounded-2xl bg-gray-50"
+                className="w-full h-[400px] md:h-[500px] object-cover"
               />
-            </MotionFadeScale>
-          </MotionStagger>
+            </motion.div>
+          </div>
         </div>
       </section>
 

@@ -210,7 +210,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             </div>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p>
-                Founded in April 2022 in Bhopal, the company builds on a legacy exceeding four decades of engineering excellence through its parent firms, Rajat Engineering and Orbit Engineering, to deliver turnkey systems — from design and steel fabrication to PLC/SCADA integration and long-term O&M—through an ISO 9001-certified quality framework that guarantees reliability and ecological accountability.
+                Established in 1998 in Bhopal, the company builds on a legacy exceeding four decades of engineering excellence through its parent firms, Orbit Engineering and Orbit Engineering, to deliver turnkey systems — from design and steel fabrication to PLC/SCADA integration and long-term O&M—through an ISO 9001-certified quality framework that guarantees reliability and ecological accountability.
               </p>
               <p>
                 Our ambition is to lead in water innovation — offering holistic, sustainable, and affordable solutions that elevate access to clean water, optimise resource management, and uplift communities.
