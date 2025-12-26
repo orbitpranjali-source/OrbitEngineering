@@ -1,5 +1,6 @@
-import { useState, lazy, Suspense, useMemo } from 'react';
+import { useState, lazy, Suspense, useMemo, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, useLocation, useParams } from 'react-router-dom';
+import { ArrowUp } from 'lucide-react';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import LogoLoader from './components/LogoLoader';
@@ -93,6 +94,26 @@ function AppContent() {
     return 'home';
   };
 
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Show button if scrolled more than 300px
+      if (window.scrollY > 300) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-white">
       <Header onNavigate={handleNavigate} currentPage={getActivePage()} />
@@ -121,10 +142,19 @@ function AppContent() {
         </main>
       </div>
       <Footer onNavigate={handleNavigate} />
+
+      {/* Back to Top Button */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 z-50 p-3 bg-[#0073bc] text-white rounded-full shadow-lg hover:bg-[#005a94] transition-all duration-300 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#0073bc] focus:ring-offset-2 ${showBackToTop ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+          }`}
+        aria-label="Back to top"
+      >
+        <ArrowUp className="w-6 h-6" />
+      </button>
     </div>
   );
 }
-
 
 export default function App() {
   return (
