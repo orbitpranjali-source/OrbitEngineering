@@ -2,7 +2,12 @@ import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import HeroSection from '../components/HeroSection';
 import { AnimatedHeading } from '../components/Animated';
-import { Building2, CheckCircle2, Clock } from 'lucide-react';
+import { Building2, CheckCircle2, Clock, MapPin } from 'lucide-react';
+
+import mpudclLogo from '../assets/clients/mpudcl-indore-district.png';
+import bharatSarkarLogo from '../assets/clients/bharat-sarkar.png';
+import centralIndiaLogo from '../assets/clients/central-india-pvt-ltd.png';
+import mpJalNigamLogo from '../assets/clients/mp-jal-nigam.png';
 
 interface ProjectsPageProps {
   initialFilter?: 'all' | 'completed' | 'ongoing';
@@ -16,12 +21,48 @@ export default function ProjectsPage({ initialFilter = 'all', onNavigate }: Proj
   }, [initialFilter]);
 
   const completedProjects = [
-    { name: 'Kymore & Vijayraghavgarh (Package 5D)', client: 'MPUDCL Bhopal', location: 'Madhya Pradesh', status: 'Completed' },
-    { name: 'Amarpatan & Ramnagar (Package 7D)', client: 'MPUDCL Bhopal', location: 'Madhya Pradesh', status: 'Completed' },
-    { name: 'Harpalpur & Badagaon (Package 6G)', client: 'MPUDCL Bhopal', location: 'Madhya Pradesh', status: 'Completed' },
-    { name: 'Bankhedi Turnkey Project', client: 'Central India Pvt Ltd', location: 'Madhya Pradesh', status: 'Completed' },
-    { name: 'KARI & Lidhorakhas Water Meter SITC', client: 'Tikamgarh Nagar Parishads', location: 'Tikamgarh', status: 'Completed' },
-    { name: 'Gangadhar Meher Lift Irrigation Project', client: 'WRD Bhopal', location: 'Madhya Pradesh', status: 'Completed' },
+    {
+      name: 'Kymore & Vijayraghavgarh (Package 5D)',
+      client: 'MPUDCL Bhopal',
+      location: 'Madhya Pradesh',
+      status: 'Completed',
+      logo: mpudclLogo
+    },
+    {
+      name: 'Amarpatan & Ramnagar (Package 7D)',
+      client: 'MPUDCL Bhopal',
+      location: 'Madhya Pradesh',
+      status: 'Completed',
+      logo: mpudclLogo
+    },
+    {
+      name: 'Harpalpur & Badagaon (Package 6G)',
+      client: 'MPUDCL Bhopal',
+      location: 'Madhya Pradesh',
+      status: 'Completed',
+      logo: mpudclLogo
+    },
+    {
+      name: 'KARI & Lidhorakhas Water Meter SITC',
+      client: 'Tikamgarh Nagar Parishads',
+      location: 'Tikamgarh',
+      status: 'Completed',
+      logo: mpudclLogo
+    },
+    {
+      name: 'Gangadhar Meher Lift Irrigation Project',
+      client: 'WRD Bhopal',
+      location: 'Madhya Pradesh',
+      status: 'Completed',
+      logo: bharatSarkarLogo
+    },
+    {
+      name: 'Bankhedi Turnkey Project',
+      client: 'Central India Pvt Ltd',
+      location: 'Madhya Pradesh',
+      status: 'Completed',
+      logo: centralIndiaLogo
+    },
   ];
 
   const milestoneProjects = [
@@ -36,12 +77,54 @@ export default function ProjectsPage({ initialFilter = 'all', onNavigate }: Proj
   ];
 
   const ongoingProjects = [
-    { name: 'Gandhisagar Package 2', description: 'Multi-village water supply scheme automation', client: 'MP Jal Nigam - Dilip Buildcon', location: 'District Neemach', status: 'Ongoing' },
-    { name: 'Beohari Multi-Village Scheme', description: 'Comprehensive village water management system', client: 'MP Jal Nigam - Tejas Construction', location: 'Shahdol', status: 'Ongoing' },
-    { name: 'Rewa Bansagar Scheme', description: 'Large-scale water distribution automation', client: 'MP Jal Nigam - Dilip Buildcon', location: 'District Rewa', status: 'Ongoing' },
-    { name: 'Pahargarh Multi-Village Scheme', description: 'Rural water supply automation project', client: 'MP Jal Nigam - KNK Projects', location: 'District Rajgarh', status: 'Ongoing' },
-    { name: 'Narmada Gabhir Multi-Village Scheme', description: 'Advanced water management for multiple villages', client: 'MP Jal Nigam - Dilip Buildcon', location: 'District Ujjain', status: 'Ongoing' },
-    { name: 'Gohad Water Supply Scheme', description: 'Modern water supply system with full automation', client: 'MPUDCL Bhopal - Shree Contractor', location: 'Madhya Pradesh', status: 'Ongoing' },
+    {
+      name: 'Gandhisagar Package 2',
+      description: 'Multi-village water supply scheme automation',
+      client: 'MP Jal Nigam - Dilip Buildcon',
+      location: 'District Neemach',
+      status: 'Ongoing',
+      logo: mpJalNigamLogo
+    },
+    {
+      name: 'Beohari Multi-Village Scheme',
+      description: 'Comprehensive village water management system',
+      client: 'MP Jal Nigam - Tejas Construction',
+      location: 'Shahdol',
+      status: 'Ongoing',
+      logo: mpJalNigamLogo
+    },
+    {
+      name: 'Rewa Bansagar Scheme',
+      description: 'Large-scale water distribution automation',
+      client: 'MP Jal Nigam - Dilip Buildcon',
+      location: 'District Rewa',
+      status: 'Ongoing',
+      logo: mpJalNigamLogo
+    },
+    {
+      name: 'Pahargarh Multi-Village Scheme',
+      description: 'Rural water supply automation project',
+      client: 'MP Jal Nigam - KNK Projects',
+      location: 'District Rajgarh',
+      status: 'Ongoing',
+      logo: mpJalNigamLogo
+    },
+    {
+      name: 'Narmada Gabhir Multi-Village Scheme',
+      description: 'Advanced water management for multiple villages',
+      client: 'MP Jal Nigam - Dilip Buildcon',
+      location: 'District Ujjain',
+      status: 'Ongoing',
+      logo: mpJalNigamLogo
+    },
+    {
+      name: 'Gohad Water Supply Scheme',
+      description: 'Modern water supply system with full automation',
+      client: 'MPUDCL Bhopal - Shree Contractor',
+      location: 'Madhya Pradesh',
+      status: 'Ongoing',
+      logo: mpudclLogo
+    },
   ];
 
 
@@ -61,13 +144,23 @@ export default function ProjectsPage({ initialFilter = 'all', onNavigate }: Proj
   };
 
   const cardVariants = {
-    hidden: {
+    hidden: (index: number) => ({
       opacity: 0,
-      y: 30
-    },
+      x: index % 2 === 0 ? 50 : -50, // Move from center outwards (Left card comes from right, Right card comes from left)
+      y: 0,
+      scale: 0.9 // Start slightly smaller for "emerging" effect
+    }),
     visible: {
       opacity: 1,
-      y: 0
+      x: 0,
+      y: 0,
+      scale: 1,
+      transition: {
+        type: "spring" as const, // Explicitly typed as const to fix lint error
+        stiffness: 70,
+        damping: 20,
+        mass: 1
+      }
     }
   };
 
@@ -162,26 +255,45 @@ export default function ProjectsPage({ initialFilter = 'all', onNavigate }: Proj
                 {completedProjects.map((project, index) => (
                   <motion.div
                     key={index}
+                    custom={index}
                     variants={cardVariants}
-                    className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6 border border-gray-100 hover:border-green-200 hover:-translate-y-2"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 p-6 border border-[#2563EB] overflow-hidden"
                   >
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex-1">
-                        <span className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap shadow-sm mb-3 inline-block">
-                          Delivered
-                        </span>
-                        <h3 className="text-lg font-semibold text-gray-900 leading-relaxed">
-                          {project.name}
-                        </h3>
-                      </div>
+                    <div className="mb-6">
+                      <span className="border border-[#2563EB] text-[#2563EB] px-4 py-1.5 rounded-full text-sm font-semibold shadow-sm inline-block bg-white">
+                        Completed
+                      </span>
                     </div>
-                    <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <div className="space-y-1">
-                          <div className="text-sm text-gray-600">{project.client}</div>
-                          <div className="text-sm text-gray-500">{project.location}</div>
+
+                    <div className="relative z-10 pr-4 pb-4">
+                      <h3 className="text-[1.15rem] font-bold text-gray-900 leading-tight mb-6 min-h-[3.5rem] flex items-center">
+                        {project.name}
+                      </h3>
+
+                      <div className="space-y-3 pr-24">
+                        <div className="flex items-center text-gray-600">
+                          <Building2 className="h-5 w-5 mr-3 text-gray-400 shrink-0" strokeWidth={1.5} />
+                          <span className="text-sm font-medium line-clamp-1 text-gray-700">{project.client}</span>
+                        </div>
+                        <div className="flex items-center text-gray-600">
+                          <MapPin className="h-5 w-5 mr-3 text-gray-400 shrink-0" strokeWidth={1.5} />
+                          <span className="text-sm font-medium text-gray-700">{project.location}</span>
                         </div>
                       </div>
+                    </div>
+
+                    {/* Decorative Circle Background */}
+                    <div className="absolute -bottom-16 -right-16 w-36 h-36 bg-gray-50 rounded-full z-0 group-hover:scale-105 transition-transform duration-500 border border-[#0073bc]/30"></div>
+
+                    {/* Logo Container */}
+                    <div className="absolute bottom-[6px] right-[6px] w-14 h-14 bg-white rounded-full shadow-[0_2px_15px_rgba(0,0,0,0.06)] p-2.5 flex items-center justify-center z-20 border border-[#0073bc]/30 group-hover:scale-110 transition-transform duration-300">
+                      <img
+                        src={project.logo}
+                        alt={`${project.client} logo`}
+                        className="w-full h-full object-contain"
+                      />
                     </div>
                   </motion.div>
                 ))}
@@ -200,7 +312,7 @@ export default function ProjectsPage({ initialFilter = 'all', onNavigate }: Proj
                   <div className="relative bg-gradient-to-r from-blue-500/10 to-indigo-500/10 rounded-2xl p-6">
                     <div className="flex items-center">
                       <div className="bg-blue-500 p-3 rounded-xl mr-4 shadow-lg">
-                        <Building2 className="h-6 w-6 text-white" />
+                        <Building2 className="h-6 w-6 text-white" strokeWidth={1.5} />
                       </div>
                       <div>
                         <AnimatedHeading level={3} className="text-2xl font-bold text-gray-900">
@@ -212,35 +324,62 @@ export default function ProjectsPage({ initialFilter = 'all', onNavigate }: Proj
                   </div>
                 </div>
 
-                <motion.div
-                  variants={containerVariants}
-                  className="grid grid-cols-1 lg:grid-cols-2 gap-6"
-                >
-                  {milestoneProjects.map((project, index) => (
-                    <motion.div
-                      key={index}
-                      variants={cardVariants}
-                      className="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 p-5 border border-gray-100 hover:border-blue-200"
-                    >
-                      <div className="flex items-start justify-between mb-3">
-                        <span className="bg-blue-100 text-blue-700 px-2 py-1 rounded-full text-xs font-medium whitespace-nowrap">
-                          {project.year}
-                        </span>
-                      </div>
-                      <div className="space-y-2">
-                        <h4 className="text-base font-semibold text-gray-900">
-                          {project.name}
-                        </h4>
-                        <p className="text-sm text-gray-600 font-medium">
-                          {project.client}
-                        </p>
-                        <p className="text-sm text-gray-600 leading-relaxed">
-                          {project.description}
-                        </p>
-                      </div>
-                    </motion.div>
-                  ))}
-                </motion.div>
+                <div className="relative">
+                  {/* Central Timeline Line */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-blue-100 hidden md:block" />
+
+                  <div className="space-y-12 relative z-10">
+                    {milestoneProjects.map((project, index) => {
+                      const isEven = index % 2 === 0;
+                      return (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          viewport={{ once: true, margin: "-100px" }}
+                          transition={{ duration: 0.6, delay: 0.2 }}
+                          className={`flex flex-col md:flex-row items-center ${isEven ? 'md:flex-row-reverse' : ''}`}
+                        >
+                          {/* Empty Space for alignment */}
+                          <div className="flex-1 w-full md:w-1/2" />
+
+                          {/* Center Dot */}
+                          <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center w-8 h-8 rounded-full bg-blue-50 z-20 hidden md:flex">
+                            <div className="w-5 h-5 bg-white border-4 border-[#2563EB] rounded-full shadow-sm" />
+                          </div>
+
+                          {/* Content Card */}
+                          <div className={`flex-1 w-full md:w-1/2 ${isEven ? 'md:pr-12' : 'md:pl-12'}`}>
+                            <motion.div
+                              whileHover={{ scale: 1.02 }}
+                              className={`bg-white p-6 rounded-2xl border border-[#2563EB] shadow-sm hover:shadow-xl transition-all duration-300 relative group overflow-hidden ${isEven ? 'md:text-right' : 'md:text-left'}`}
+                            >
+                              {/* Year Badge */}
+                              <div className={`mb-4 flex ${isEven ? 'md:justify-end' : 'md:justify-start'}`}>
+                                <span className="border border-[#2563EB] text-[#2563EB] px-4 py-1 rounded-full text-sm font-semibold inline-block bg-white">
+                                  {project.year}
+                                </span>
+                              </div>
+
+                              <h3 className="text-xl font-bold text-gray-900 mb-1">
+                                {project.name}
+                              </h3>
+                              <p className="text-sm font-medium text-gray-500 mb-3">
+                                {project.client}
+                              </p>
+                              <p className="text-gray-600 leading-relaxed text-sm">
+                                {project.description}
+                              </p>
+
+                              {/* Decorative Circle Background */}
+                              <div className={`absolute -bottom-12 w-32 h-32 bg-blue-50 rounded-full z-0 group-hover:scale-110 transition-transform duration-500 opacity-50 ${isEven ? '-left-12' : '-right-12'}`}></div>
+                            </motion.div>
+                          </div>
+                        </motion.div>
+                      );
+                    })}
+                  </div>
+                </div>
               </motion.div>
             </motion.div>
           )}
@@ -260,7 +399,7 @@ export default function ProjectsPage({ initialFilter = 'all', onNavigate }: Proj
                 <div className="relative bg-gradient-to-r from-orange-500/10 to-amber-500/10 rounded-2xl p-8">
                   <div className="flex items-center mb-6">
                     <div className="bg-orange-500 p-3 rounded-xl mr-4 shadow-lg">
-                      <Clock className="h-8 w-8 text-white" />
+                      <Clock className="h-8 w-8 text-white" strokeWidth={1.5} />
                     </div>
                     <div>
                       <AnimatedHeading level={2} className="text-3xl font-bold text-gray-900">
@@ -279,27 +418,49 @@ export default function ProjectsPage({ initialFilter = 'all', onNavigate }: Proj
                 {ongoingProjects.map((project, index) => (
                   <motion.div
                     key={index}
+                    custom={index}
                     variants={cardVariants}
-                    className="bg-white rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6 border border-gray-100 hover:border-orange-200 hover:-translate-y-2"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="group relative bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 p-6 border border-[#2563EB] overflow-hidden"
                   >
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex-1">
-                        <span className="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap shadow-sm mb-3 inline-block">
-                          Ongoing
-                        </span>
-                        <h3 className="text-lg font-semibold text-gray-900 leading-relaxed">
-                          {project.name}
-                        </h3>
-                      </div>
+                    <div className="mb-6">
+                      <span className="border border-[#2563EB] text-[#2563EB] px-4 py-1.5 rounded-full text-sm font-semibold shadow-sm inline-block bg-white">
+                        Ongoing
+                      </span>
                     </div>
-                    <div className="space-y-3">
-                      <p className="text-sm text-gray-600 italic">
+
+                    <div className="relative z-10 pr-4 pb-4">
+                      <h3 className="text-[1.15rem] font-bold text-gray-900 leading-tight mb-2 min-h-[3.5rem] flex items-center">
+                        {project.name}
+                      </h3>
+
+                      <p className="text-gray-500 mb-6 text-sm leading-relaxed min-h-[40px]">
                         {project.description}
                       </p>
-                      <div className="space-y-1 text-sm">
-                        <div className="text-gray-600 font-medium">{project.client}</div>
-                        <div className="text-gray-500">{project.location}</div>
+
+                      <div className="space-y-3 pr-24">
+                        <div className="flex items-center text-gray-600">
+                          <Building2 className="h-5 w-5 mr-3 text-gray-400 shrink-0" strokeWidth={1.5} />
+                          <span className="text-sm font-medium line-clamp-1 text-gray-700">{project.client}</span>
+                        </div>
+                        <div className="flex items-center text-gray-600">
+                          <MapPin className="h-5 w-5 mr-3 text-gray-400 shrink-0" strokeWidth={1.5} />
+                          <span className="text-sm font-medium text-gray-700">{project.location}</span>
+                        </div>
                       </div>
+                    </div>
+
+                    {/* Decorative Circle Background */}
+                    <div className="absolute -bottom-16 -right-16 w-36 h-36 bg-gray-50 rounded-full z-0 group-hover:scale-105 transition-transform duration-500 border border-[#0073bc]/30"></div>
+
+                    {/* Logo Container */}
+                    <div className="absolute bottom-[6px] right-[6px] w-14 h-14 bg-white rounded-full shadow-[0_2px_15px_rgba(0,0,0,0.06)] p-2.5 flex items-center justify-center z-20 border border-[#0073bc]/30 group-hover:scale-110 transition-transform duration-300">
+                      <img
+                        src={project.logo}
+                        alt={`${project.client} logo`}
+                        className="w-full h-full object-contain"
+                      />
                     </div>
                   </motion.div>
                 ))}
