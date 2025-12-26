@@ -238,11 +238,11 @@ export default function ContactPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Working Office Map */}
-            <div className="flex flex-col group">
-              <div className="relative rounded-t-2xl overflow-hidden border-x border-t border-gray-200">
+            <div className="flex flex-col group h-full">
+              <div className="relative rounded-t-2xl overflow-hidden border-x border-t border-gray-200 shrink-0">
                 <img src={heroSectionImage} alt="Working Office Header" className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-black/60 transition-colors group-hover:bg-black/50" />
-                <div className="relative z-10 p-6">
+                <div className="relative z-10 p-6 min-h-[140px] flex flex-col justify-center">
                   <div className="flex items-center space-x-3 mb-2">
                     <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2">
                       <MapPin className="h-5 w-5 text-white" />
@@ -289,11 +289,11 @@ export default function ContactPage() {
             </div>
 
             {/* Head Office Map */}
-            <div className="flex flex-col group">
-              <div className="relative rounded-t-2xl overflow-hidden border-x border-t border-gray-200">
+            <div className="flex flex-col group h-full">
+              <div className="relative rounded-t-2xl overflow-hidden border-x border-t border-gray-200 shrink-0">
                 <img src={heroSectionImage} alt="Head Office Header" className="absolute inset-0 w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-black/60 transition-colors group-hover:bg-black/50" />
-                <div className="relative z-10 p-6">
+                <div className="relative z-10 p-6 min-h-[140px] flex flex-col justify-center">
                   <div className="flex items-center space-x-3 mb-2">
                     <div className="bg-white/20 backdrop-blur-sm rounded-lg p-2">
                       <MapPin className="h-5 w-5 text-white" />
