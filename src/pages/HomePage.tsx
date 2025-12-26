@@ -10,6 +10,7 @@ import iconAutomationSystems from '../assets/icon/Automation Systems.png';
 import iconCloudManagement from '../assets/icon/Cloud Management.png';
 import iconOMServices from '../assets/icon/O&M Services.png';
 import panoramicLake from '../assets/panaromic-view-of-upperlake.jpeg';
+import automationHeadingBg from '../assets/products/hero-section.jpg';
 // Note: Using original image for now, will be replaced with generated watermark-free version
 
 interface HomePageProps {
@@ -169,15 +170,22 @@ function AutomationSection() {
   return (
     <section className="py-20 bg-white" ref={ref}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Centered Heading with fade from top animation */}
-        <motion.h2
+        {/* Heading with Background Image */}
+        <motion.div
           variants={headingVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight text-center mb-12"
+          className="relative mb-12 rounded-lg overflow-hidden shadow-xl"
         >
-          Automation of Water Systems
-        </motion.h2>
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${automationHeadingBg})` }}
+          />
+          <div className="absolute inset-0 bg-black/50" />
+          <h2 className="relative z-10 py-16 text-3xl md:text-4xl font-bold text-white leading-tight text-center px-4">
+            Automation of Water Systems
+          </h2>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Left Side - Image with slide from left animation */}
@@ -192,7 +200,7 @@ function AutomationSection() {
               transition={{ duration: 0.3 }}
               src={panoramicLake}
               alt="Panoramic view of upper lake showcasing water infrastructure"
-              className="w-full h-[450px] md:h-[550px] lg:h-[600px] rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,115,188,0.3)] object-contain bg-gray-50 ring-1 ring-blue-100 cursor-pointer"
+              className="w-full h-[450px] md:h-[550px] lg:h-[600px] rounded-lg shadow-[0_20px_60px_-15px_rgba(0,115,188,0.3)] object-contain bg-gray-50 ring-1 ring-blue-100 cursor-pointer"
             />
           </motion.div>
 
