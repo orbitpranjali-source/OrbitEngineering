@@ -31,6 +31,7 @@ import bigJointingMachines from '../assets/products/big-jointing-machines.jpg';
 import buttFusionJointing from '../assets/products/butt-fusion-jointing.jpg';
 import electrofusionJointingMachine from '../assets/products/electrofusion-jointing-machine.jpg';
 import hdpeFittings from '../assets/products/hdpe-fittings.jpg';
+import chlorinator from '../assets/products/chlorinator.png';
 
 export const RAW_SUB_PRODUCTS = [
   {
@@ -39,36 +40,55 @@ export const RAW_SUB_PRODUCTS = [
       {
         name: 'Bulk Flow Meter',
         image: bulkFlowMeter,
+        datasheetUrl: '/datasheets/bulk-flow-meter.pdf',
         paragraphs: [
-          'The bulk flow meter flow meter is precision made positive displacement liquid measuring instruments which maintain accurate metering over long periods of operation.The simplicity of design and construction together with the sustained accuracy of an Avery Hardoll bulk meter has led to the widespread use of these meters on aviation refueling vehicles in oil terminals throughout the world and also as master meters for use in calibration. The bulk flow meter (PD meter) is a system with freely-moving blades used to measure white petroleum products such as fuels bio-fuels and refined liquid hydrocarbons.'
+          'The bulk flow meter is precision made positive displacement liquid measuring instruments which maintain accurate metering over long periods of operation. The simplicity of design and construction together with the sustained accuracy has led to widespread use.'
         ],
         bullets: [
-          'Serviceability: Designed for quick and easy maintenance.',
-          'Automatic additive injector available.',
-          'Electronic control available.'
+          'Serviceability: Designed for quick and easy maintenance',
+          'Automatic additive injector available',
+          'Electronic control available'
         ]
       },
       {
         name: 'Electromagnetic Flow Meter',
         image: electromagneticFlowMeter,
+        datasheetUrl: '/datasheets/electromagnetic-flow-meter.pdf',
         paragraphs: [
-          'Electromagnetic flow meters (or magmeters) are a type of velocity or volumetric flow meter that operate pursuant to Faradays law of electromagnetic induction – which states that a voltage will be induced when a conductor moves through a magnetic field. Magmeters can detect the flow rate of conductive fluids only.'
+          'Electromagnetic flow meters (or magmeters) are a type of velocity or volumetric flow meter that operate pursuant to Faraday\'s law of electromagnetic induction – which states that a voltage will be induced when a conductor moves through a magnetic field. Magmeters can detect the flow rate of conductive fluids only.'
+        ],
+        bullets: [
+          'No moving parts',
+          'High accuracy for conductive fluids',
+          'Operates on Faraday\'s law of electromagnetic induction'
         ]
       },
       {
-        name: 'Ultrasonic Flow Meter',
+        name: 'Ultrasonic flow meter',
         image: ultrasonicLevelTx,
+        datasheetUrl: '/datasheets/ultrasonic-flow-meter.pdf',
         paragraphs: [
-          'An ultrasonic flow meter is a type of flow meter that measures the velocity of a fluid with ultrasound to calculate volume flow. Using ultrasonic transducers the flow meter can measure the average velocity along the path of an emitted beam of ultrasound by averaging the difference in measured transit time between the pulses of ultrasound propagating into and against the direction of the flow or by measuring the frequency shift from the Doppler effect. Ultrasonic flow meters are affected by the acoustic properties of the fluid and can be impacted by temperature density viscosity and suspended particulates depending on the exact flow meter. They vary greatly in purchase price but are often inexpensive to use and maintain because they do not use moving parts unlike mechanical flow meters.'
+          'An ultrasonic flow meter is a type of flow meter that measures the velocity of a fluid with ultrasound to calculate volume flow. Using ultrasonic transducers the flow meter can measure the average velocity along the path of an emitted beam.'
+        ],
+        bullets: [
+          'Non-contact measurement',
+          'No moving parts',
+          'Low maintenance costs',
+          'Affected by acoustic properties of fluid'
         ]
       },
       {
         name: 'Water Meter',
         image: waterMeter,
+        datasheetUrl: '/datasheets/water-meter.pdf',
         paragraphs: [
-          'Water metering is the practice of measuring water use. Water meters measure the volume of water used by residential and commercial building units that are supplied with water by a public water supply system. They are also used to determine flow through a particular portion of the system.',
-          'In most of the world water meters are calibrated in cubic metres (m3) or litres[1] but in the United States and some other countries water meters are calibrated in cubic feet (ft.3) or US gallons on a mechanical or electronic register. Modern meters typically can display rate-of-flow in addition to total volume.',
-          'Several types of water meters are in common use and may be characterized by the flow measurement method the type of end-user the required flow rates and accuracy requirements.'
+          'Water metering is the practice of measuring water use. Water meters measure the volume of water used by residential and commercial building units that are supplied with water by a public water supply system. They are also used to determine flow.'
+        ],
+        bullets: [
+          'Residential/Commercial use',
+          'Accurate billing measurement',
+          'Available in cubic meters or gallons',
+          'Rate-of-flow display'
         ]
       }
     ]
@@ -216,45 +236,76 @@ export const RAW_SUB_PRODUCTS = [
     category: 'Valves & Piping',
     items: [
       {
-        name: 'Butterfly valves',
+        name: 'Butterfly Valves',
         image: butterflyValves,
+        datasheetUrl: '/datasheets/butterfly-valves.pdf',
         paragraphs: [
-          'Butterfly valves are used where space is limited. Unlike gate valves butterfly valves can be used for throttling or regulating flow as well as in the full open and fully closed position. The pressure loss through a butterfly valve is small in comparison with the gate valve.'
+          'Butterfly valves are used where space is limited. Unlike gate valves butterfly valves can be used for throttling or regulating flow as well as in the full open and fully closed position. The pressure loss through a butterfly valve is small in comparison with the gate valve. Type- Lined Size range – 50 mm to 600 mm Pressure- PN 25 Seating material – EPDM/Viton/ Nitrile.'
         ],
         bullets: [
-          'Type- Lined Size range – 50 mm to 600 mm Pressure- PN 25Seating material – EPDM/Viton/ Nitrile'
+          'Space-saving design',
+          'Throttling capability',
+          'Low pressure loss',
+          'Size range: 50-600mm',
+          'PN 25 pressure rating'
         ]
       },
       {
-        name: 'GATE VALUE',
+        name: 'Gate Valve',
         image: gateValve,
+        datasheetUrl: '/datasheets/gate-valve-di.pdf',
+        paragraphs: [
+          'Gate valves are designed for fully open or fully closed service. They are installed in pipelines as isolating valves, and should not be used as control or regulating valves.'
+        ],
         bullets: [
-          'MOC- DI',
-          'Connection – Flanged End',
-          'Size- Upto 400 MM',
-          'Pressure – PN 16'
+          'MOC: Ductile Iron (DI)',
+          'Connection: Flanged End',
+          'Size: Up to 400 MM',
+          'Pressure Rating: PN 16'
         ]
       },
       {
-        name: 'HDPE pipe',
+        name: 'HDPE Pipe & Fittings',
         image: hdpeFittings,
+        datasheetUrl: '/datasheets/hdpe-pipes.pdf',
         paragraphs: [
-          'HDPE pipe is a type of flexible plastic pipe used for fluid and gas transfer and is often used to replace ageing concrete or steel mains pipeline.',
-          'We offered range of HDPE pipes & fittings up to 2500mm outer diameter.'
+          'HDPE pipe is a type of flexible plastic pipe used for fluid and gas transfer and is often used to replace ageing concrete or steel mains pipeline. We offer a comprehensive range of HDPE pipes and fittings.',
+          'Our range extends up to 2500mm outer diameter, providing solutions for even the largest municipal and industrial projects.'
+        ],
+        bullets: [
+          'Flexible and durable construction',
+          'Corrosion and chemical resistant',
+          'Size range up to 2500mm',
+          'Suitable for fluid and gas transfer'
         ]
       },
       {
         name: 'Motorized Ball Valve',
         image: motorizedBallValve,
+        datasheetUrl: '/datasheets/motorized-ball-valve.pdf',
         paragraphs: [
-          'A motorized valve is an automated device used for controlling the flow of liquids gases and other materials in industrial commercial and manufacturing settings. This type of valve uses a motor to open and close the valve allowing for precise control over the output pressure and flow rate.'
+          'A motorized valve is an automated device used for controlling the flow of liquids, gases, and other materials in industrial, commercial, and manufacturing settings.',
+          'This type of valve uses a motor to open and close the valve, allowing for precise control over the output pressure and flow rate.'
+        ],
+        bullets: [
+          'Precise motorized control',
+          'High operational reliability',
+          'Automated pressure regulation',
+          'Suitable for diverse industrial media'
         ]
       },
       {
-        name: 'Gate valves',
+        name: 'Sluice Valve',
         image: sluceValves,
+        datasheetUrl: '/datasheets/sluice-valves.pdf',
         paragraphs: [
-          'A complete range of Gate valves for all of your applications. We offer the valves in sizes up to 24″ (600 mm).'
+          'A complete range of Sluice/Gate valves for all of your water management applications. These valves provide reliable isolation in water distribution networks.'
+        ],
+        bullets: [
+          'Robust construction',
+          'Low maintenance requirements',
+          'Available in sizes up to 24" (600 mm)',
+          'Reliable long-term operation'
         ]
       }
     ]
@@ -262,26 +313,54 @@ export const RAW_SUB_PRODUCTS = [
   {
     category: 'Automation (IoT / PLC / RTU / SCADA)',
     items: [
-      { name: 'IOT', image: iot, paragraphs: ['IOT- We offer an Integrated IOT Platform to manage Customer Device and Data. We also provided integration plugins with popular CRMs Billing and ERP solutions.'] },
-      { name: 'PLC', image: 'https://syncwatertech.com/wp-content/uploads/2024/08/PLC.jpg', paragraphs: [''] },
-      { name: 'RTU', image: rtu, paragraphs: ['RTU=  Event based secure protocol connects clients (producers and subscribers) to get live data (semi real-time) even on non-real-time connections. The dedicated protocol ensures optimal latency with lowest possible traffic even on mobile networks (also 2G) and Narrow Band Iot (NBIoT).'] },
       {
-        name: 'SCADA', image: scada, bullets: [
-          'SCADA= Process visualization with network function',
-          'Real time operation',
-          'Batch related and continuous logging',
-          'Process group and trend pictures',
-          'Alarm or event lists',
-          'Management of up to 50 plants per PC',
-          'Visualization of up to 100 plants per network',
-          'Mobile Access',
-          'App for Android and iOS systems',
-          'Mobile access to devices',
-          'Batch related and continuous logging',
-          'Process group and trend pictures',
-          'Alarm or event lists',
-          'Management of up to 50 plants per PC',
-          'Visualization of up to 100 plants per network'
+        name: 'IoT',
+        image: iot,
+        datasheetUrl: '/datasheets/iot-platform.pdf',
+        paragraphs: ['We offer an Integrated IOT Platform to manage Customer Device and Data. We also provided integration plugins with popular CRMs Billing and ERP solutions.'],
+        bullets: [
+          'Integrated platform',
+          'Device and data management',
+          'CRM/Billing/ERP integration',
+          'Real-time monitoring'
+        ]
+      },
+      {
+        name: 'PLC',
+        image: 'https://syncwatertech.com/wp-content/uploads/2024/08/PLC.jpg',
+        datasheetUrl: '/datasheets/plc-systems.pdf',
+        paragraphs: ['Programmable Logic Controllers for industrial automation and process control in water treatment systems.'],
+        bullets: [
+          'Industrial grade reliability',
+          'Modular design flexibility',
+          'Programming versatility',
+          'Real-time processing'
+        ]
+      },
+      {
+        name: 'RTU',
+        image: rtu,
+        datasheetUrl: '/datasheets/rtu-units.pdf',
+        paragraphs: ['Event based secure protocol connects clients (producers and subscribers) to get live data (semi real-time) even on non-real-time connections.'],
+        bullets: [
+          'Event-based secure protocol',
+          'Semi real-time data',
+          'Optimal latency',
+          'Mobile network support',
+          'NBIoT compatible'
+        ]
+      },
+      {
+        name: 'SCADA',
+        image: scada,
+        datasheetUrl: '/datasheets/scada-systems.pdf',
+        paragraphs: ['Process visualization with network function. Real time operation. Batch related and continuous logging for comprehensive plant management.'],
+        bullets: [
+          'Real-time process visualization',
+          'Manage up to 50 plants per PC',
+          '100 plants per network',
+          'Mobile app support',
+          'Continuous logging'
         ]
       }
     ]
@@ -292,6 +371,7 @@ export const RAW_SUB_PRODUCTS = [
       {
         name: 'Bullet Camera',
         image: bulletCamera,
+        datasheetUrl: '/datasheets/bullet-camera.pdf',
         paragraphs: ['Fixed direction surveillance camera designed for outdoor monitoring applications. Features weatherproof housing and infrared night vision capabilities for 24/7 security coverage.'],
         bullets: [
           'Weatherproof design',
@@ -304,6 +384,7 @@ export const RAW_SUB_PRODUCTS = [
       {
         name: 'Dome Camera',
         image: domeCamera,
+        datasheetUrl: '/datasheets/dome-camera.pdf',
         paragraphs: ['360-degree surveillance dome camera with vandal-resistant design. Provides discreet monitoring with wide-angle coverage for comprehensive area surveillance.'],
         bullets: [
           '360-degree coverage',
@@ -316,6 +397,7 @@ export const RAW_SUB_PRODUCTS = [
       {
         name: 'High Speed Camera',
         image: highSpeedCamera,
+        datasheetUrl: '/datasheets/high-speed-camera.pdf',
         paragraphs: ['High frame rate recording camera designed for capturing rapid motion and detailed analysis. Professional-grade equipment for specialized monitoring applications.'],
         bullets: [
           'High frame rate capture',
@@ -328,6 +410,7 @@ export const RAW_SUB_PRODUCTS = [
       {
         name: 'PTZ Camera',
         image: ptzCamera,
+        datasheetUrl: '/datasheets/ptz-camera.pdf',
         paragraphs: ['Pan-Tilt-Zoom controllable camera with remote operation capabilities. Features motorized movement and zoom functions for dynamic surveillance coverage.'],
         bullets: [
           'Pan-tilt-zoom control',
@@ -340,6 +423,7 @@ export const RAW_SUB_PRODUCTS = [
       {
         name: 'Servers',
         image: servers,
+        datasheetUrl: '/datasheets/surveillance-servers.pdf',
         paragraphs: ['High-capacity video recording and storage servers designed for surveillance systems. Features redundant storage and remote access capabilities for reliable data management.'],
         bullets: [
           'High storage capacity',
@@ -352,6 +436,7 @@ export const RAW_SUB_PRODUCTS = [
       {
         name: 'Software',
         image: softwares,
+        datasheetUrl: '/datasheets/surveillance-software.pdf',
         paragraphs: ['Comprehensive video management and analytics software for surveillance systems. Provides multi-camera support, intelligent analytics, and user-friendly interface for efficient monitoring.'],
         bullets: [
           'Multi-camera management',
@@ -366,38 +451,43 @@ export const RAW_SUB_PRODUCTS = [
   {
     category: 'Jointing Machines',
     items: [
-      { name: 'Big Jointing Machines', image: bigJointingMachines, paragraphs: ['Lovable AI'] },
       {
-        name: 'HDPE Butt Fusion Welding Machine – Application & Features :', image: buttFusionJointing, bullets: [
-          'Suitable for butt fusion welding Of plastic pipes and fittings made Of PE PP. and PVDF in construction site or workshop.',
-          'Consists of basic frame heating plate planning tool and support (for planning tool & heating plate).',
-          'Removable PTFE coated heating plate with inbuilt Digital temperature control system with countdown timers for heating TI T2 & cooling phase T5.',
-          'Electric facer cutter With double cutting edge blades.',
-          'Low starting pressure ensures reliable welding quality Of small pipes.',
-          'It is made of lightweight and high strength material; simple structure and easy to operate.',
-          'Trolley style wheel & handle system for easy mobility.',
-          'Use of high quality pressure casting allows low weight without compromising strength and performance while providing extra strength when welding not perfectly round pipe.',
-          'Size- 50 to 250 MM'
+        name: 'Big Jointing Machine',
+        image: bigJointingMachines,
+        datasheetUrl: '/datasheets/big-jointing-machine.pdf',
+        paragraphs: ['Heavy-duty pipe jointing equipment designed for large diameter pipe installations in water infrastructure project.'],
+        bullets: [
+          'Heavy-duty construction',
+          'Large diameter capability',
+          'Precision alignment',
+          'Infrastructure grade',
+          'Reliable joint formation'
         ]
       },
       {
-        name: 'Electrofusion welding machines', image: electrofusionJointingMachine, bullets: [
-          'Electrofusion welding machines are universal devices used to connect thermoplastic pipes and fittings (PE PP PVDF) resistance method using electrofusion fittings. They are widely used in the construction and repair of gas pipelines water supply sewage industrial installations etc.',
-          'Automatic control',
-          'Optical and acoustic signaling of the welding process.',
-          'Automatic compensation of welding time depending on the ambient temperature.',
-          'An electronic control system that responds to changes in power parameters in real time.',
-          'Automatic setting of voltage and cycle times depending on the type of fitting.',
-          'Ability to program work parameters:',
-          'automatic mode using barcode scanner',
-          'automatic mode by entering the digital barcode from the barcode',
-          'manual (manual) mode by entering voltage and time parameters from the fitting',
-          '“last time” mode – automatic programming using settings of the last weld.',
-          'Real-time monitoring weld status abnormal welding process could be terminated in short time.',
-          'Built in memory can record more than 3000welding records.',
-          'Welding records could be download to USB flash disk via USB interface.',
-          'Operation modes: (1) Manually Set (2) Read in by bar code scanner.',
-          'Welding Range(mm)- 20 -800 mm'
+        name: 'Butt Fusion Jointing',
+        image: buttFusionJointing,
+        datasheetUrl: '/datasheets/butt-fusion-welding.pdf',
+        paragraphs: ['HDPE Butt Fusion Welding Machine – Application & Features: Suitable for butt fusion welding Of plastic pipes and fittings made Of PE PP. and PVDF in construction site or workshop.'],
+        bullets: [
+          'PE, PP, PVDF compatible',
+          'Digital temperature control',
+          'Electric facer cutter',
+          'Size range: 50-250mm',
+          'Portable design'
+        ]
+      },
+      {
+        name: 'Electrofusion Jointing Machine',
+        image: electrofusionJointingMachine,
+        datasheetUrl: '/datasheets/electrofusion-welding.pdf',
+        paragraphs: ['Electrofusion welding machines are universal devices used to connect thermoplastic pipes and fittings (PE PP PVDF) resistance method using electrofusion fittings.'],
+        bullets: [
+          'Automatic control system',
+          'Real-time monitoring',
+          '3000+ weld record memory',
+          'Temperature compensation',
+          '20-800mm welding range'
         ]
       }
     ]
@@ -406,37 +496,58 @@ export const RAW_SUB_PRODUCTS = [
     category: 'Rosemount 3051S Series Coplanar Pressure Transmitter',
     items: [
       {
+        name: 'Blind Type Pressure Transmitter',
+        image: blindTypePressureTransmitters,
+        datasheetUrl: '/datasheets/blind-pressure-transmitter.pdf',
+        paragraphs: ['Gauge pressure measurement without display'],
+        bullets: [
+          'Compact design',
+          'High accuracy',
+          '4-20mA output'
+        ]
+      },
+      {
         name: 'Differential Pressure Transmitter',
         image: differentialPressureTransmitter,
+        datasheetUrl: '/datasheets/differential-pressure-transmitter.pdf',
+        paragraphs: ['0 to 250 mbar – 0 to 1.6 bar relative / 0 to 600 mbar – 0 to 25 bar absolute. Welded measuring system. Compact 71mm design.'],
         bullets: [
-          '0 to 250 mbar – 0 to 1.6 bar relative / 0 to 600 mbar – 0 to 25 bar absolute',
-          'Welded measuring system',
-          'Compact design: as of 71 mm in length',
-          'High bursting strength'
+          'Wide pressure ranges',
+          'Compact 71mm design',
+          'HART interface',
+          '0.07% linearity',
+          '1:200 turndown ratio'
         ]
       },
       {
-        name: 'Smart Type Pressure Transmitter',
+        name: 'SMART TYPE Pressure Transmitter',
         image: smartTypePressureTransmitter,
+        datasheetUrl: '/datasheets/smart-pressure-transmitter.pdf',
+        paragraphs: ['HART® interface. Optional explosion protection Ex ia according to ATEX GOST-R. Linearity 0.07 %. Turn down 1:200.'],
         bullets: [
-          'HART® interface',
-          'Ex d explosion protection according to ATEX GOST-R',
-          'Linearity 0.07 %',
-          'Turn down: 1:200',
-          'Simple operation with rotary knob',
-          'Characteristic line and display also adjustable for flow measurement'
+          'HART communication',
+          'Explosion protection options',
+          '0.07% linearity',
+          '1:200 turndown',
+          'Flow measurement capability'
         ]
-      },
+      }
+    ]
+  },
+  {
+    category: 'Chlorinators',
+    items: [
       {
-        name: 'Pressure Transmitter (Optional Ex ia)',
-        image: blindTypePressureTransmitters,
+        name: 'Chlorinator',
+        image: chlorinator,
+        datasheetUrl: '/datasheets/chlorinator-system.pdf',
+        paragraphs: ['Chlorinator adds chlorine to drinking water to eliminate parasites bacteria and viruses. Chlorinators are also used in various industrial and municipal applications for water disinfection.'],
         bullets: [
-          'HART® interface',
-          'Optional explosion protection Ex ia according to ATEX GOST-R',
-          'Linearity 0.07 %',
-          'Turn down: 1:200',
-          'Simple operation with rotary knob',
-          'Characteristic line and display also adjustable for flow measurement'
+          'Eliminates parasites and bacteria',
+          'Swimming pool applications',
+          'Odor control capability',
+          'Marine growth prevention',
+          'Service water system use'
         ]
       }
     ]

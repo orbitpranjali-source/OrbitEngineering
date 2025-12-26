@@ -32,6 +32,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
     { label: 'Cameras & Vision', page: 'product-info:cameras' },
     { label: 'Jointing Machines', page: 'product-info:jointing' },
     { label: 'Rosemount 3051S Series Coplanar Pressure Transmitter', page: 'product-info:rosemount' },
+    { label: 'Chlorinators', page: 'product-info:chlorinators' },
   ];
 
   // Close dropdown when clicking outside

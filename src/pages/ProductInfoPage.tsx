@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Gauge, Activity, Zap, Camera, Wrench, BarChart3, CheckCircle, ArrowRight } from 'lucide-react';
+import { Gauge, Activity, Zap, Camera, Wrench, BarChart3, CheckCircle, ArrowRight, X, Droplet } from 'lucide-react';
 import { RAW_SUB_PRODUCTS } from '../data/rawProducts';
 import { MotionFadeUp, AnimatedHeading } from '../components/Animated';
 
@@ -12,17 +12,21 @@ interface ProductInfoPageProps {
 export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
   const { variant: urlVariant } = useParams<{ variant: string }>();
   const variant = urlVariant; // Use URL param as the source of truth
-  const [expandedMap, setExpandedMap] = useState<Record<string, boolean>>({});
+  const [selectedProduct, setSelectedProduct] = useState<any | null>(null);
 
-  const toggleExpanded = (key: string) => {
-    setExpandedMap(prev => ({ ...prev, [key]: !prev[key] }));
+  const openProductDetail = (item: any) => {
+    setSelectedProduct(item);
+  };
+
+  const closeProductDetail = () => {
+    setSelectedProduct(null);
   };
 
   const getItemsByCategory = (categoryName: string) => {
     return (RAW_SUB_PRODUCTS.find(c => c.category === categoryName)?.items || []);
   };
 
-  const renderGallery = (categoryName: string, subtitle: string) => {
+  const renderGallery = (categoryName: string) => {
     const items = getItemsByCategory(categoryName);
     // Check if current variant is flow-meters or automation to apply specific grid layout
     const isTwoColumnLayout = variant === 'flow-meters' || variant === 'automation';
@@ -31,16 +35,15 @@ export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Product Range</h2>
-            <p className="text-lg text-gray-600">{subtitle}</p>
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">Product Range</h2>
+            <p className="text-gray-500 text-lg mb-4">{items.length} products available</p>
+            <div className="w-20 h-1 bg-[#0073bc] mx-auto rounded-full mb-6 opacity-20"></div>
           </div>
           <div className="flex flex-wrap gap-4 md:gap-5">
             {items.map((item, idx) => {
-              const key = `${categoryName}-${idx}`;
-              const isExpanded = !!expandedMap[key];
               const firstParagraph = Array.isArray(item.paragraphs) && item.paragraphs[0] ? item.paragraphs[0] : '';
-              const hasBullets = Array.isArray(item.bullets) && item.bullets.length > 0;
-              const hasDetails = (!!firstParagraph) || hasBullets;
+              const bullets = Array.isArray(item.bullets) ? item.bullets : [];
+              const hasBullets = bullets.length > 0;
 
               // Dynamic width class based on layout requirement
               const widthClass = isTwoColumnLayout
@@ -48,33 +51,37 @@ export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
                 : "w-full sm:w-[48%] lg:w-[31%]"; // Stacks on small, 2-col on SM/MD, 3-col on LG
 
               return (
-                <MotionFadeUp key={idx} className={`${widthClass} group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full min-h-[420px]`}>
-                  <div className="bg-gray-50 flex items-center justify-center p-6">
-                    <img src={item.image} alt={item.name} className="h-[220px] w-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                <MotionFadeUp key={idx} className={`${widthClass} group bg-white rounded-2xl border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden flex flex-col h-full min-h-[480px]`}>
+                  <div className="bg-gray-50 flex items-center justify-center p-6 h-[260px]">
+                    <img src={item.image} alt={item.name} className="h-full w-full object-contain rounded-lg transition-transform duration-500 group-hover:scale-105" loading="lazy" />
                   </div>
-                  <div className="p-6 flex flex-col gap-4 flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 text-center">{item.name}</h3>
-                    {hasDetails && (
-                      <div className="mt-auto">
-                        <button
-                          onClick={() => toggleExpanded(key)}
-                          className="inline-flex items-center justify-center w-full px-6 py-3 rounded-xl text-sm font-bold bg-[#0073bc] text-white hover:bg-[#005a94] shadow-md hover:shadow-lg transition-all active:scale-95"
-                        >
-                          {isExpanded ? 'Show Less' : 'Read More'}
-                        </button>
-                      </div>
+                  <div className="p-6 flex flex-col gap-3 flex-1">
+                    <h3 className="text-xl font-bold text-gray-900">{item.name}</h3>
+                    {firstParagraph && (
+                      <p className="text-gray-500 text-sm leading-6 line-clamp-3 mb-2">{firstParagraph}</p>
                     )}
-                    <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isExpanded ? 'max-h-[520px] opacity-100' : 'max-h-0 opacity-0'}`}>
-                      {firstParagraph && (
-                        <p className="mt-3 text-gray-600 text-sm leading-6">{firstParagraph}</p>
-                      )}
-                      {hasBullets && (
-                        <ul className="mt-3 list-disc list-inside space-y-1 text-gray-700 text-sm">
-                          {item.bullets!.map((b, i) => (
-                            <li key={i}>{b}</li>
+
+                    {hasBullets && (
+                      <div className="flex-1">
+                        <p className="text-sm font-bold text-gray-900 mb-2">Key Features:</p>
+                        <ul className="space-y-2">
+                          {bullets.slice(0, 4).map((b, i) => (
+                            <li key={i} className="flex items-start gap-2 text-xs text-gray-600">
+                              <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-1.5 flex-shrink-0" />
+                              <span>{b}</span>
+                            </li>
                           ))}
                         </ul>
-                      )}
+                      </div>
+                    )}
+
+                    <div className="mt-4 pt-4 border-t border-gray-100 flex justify-center">
+                      <button
+                        onClick={() => openProductDetail(item)}
+                        className="px-8 py-2.5 rounded-lg text-sm font-bold bg-[#0073bc] text-white hover:bg-[#005a94] shadow-md hover:shadow-lg transition-all active:scale-95"
+                      >
+                        Details
+                      </button>
                     </div>
                   </div>
                 </MotionFadeUp>
@@ -295,6 +302,35 @@ export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
         { parameter: 'Ambient Temperature', value: '-40°C to +85°C' },
         { parameter: 'Process Temperature', value: '-40°C to +120°C' }
       ]
+    },
+    'chlorinators': {
+      title: 'Chlorinators',
+      description: 'Reliable chlorination systems for automated water disinfection in various industrial and municipal applications.',
+      icon: Droplet,
+      features: [
+        'Automated chlorine dosing',
+        'Precise concentration control',
+        'Safe chemical handling',
+        'Real-time monitoring',
+        'Durable corrosion-resistant construction',
+        'Easy maintenance design'
+      ],
+      applications: [
+        'Drinking water treatment',
+        'Swimming pool disinfection',
+        'Cooling tower maintenance',
+        'Wastewater treatment',
+        'Industrial process water',
+        'Marine growth prevention'
+      ],
+      specifications: [
+        { parameter: 'Dosage Rate', value: 'Adjustable up to 50 kg/h' },
+        { parameter: 'Control System', value: 'Digital microprocessor' },
+        { parameter: 'Material', value: 'PVC / Titanium / Hastelloy' },
+        { parameter: 'Power Supply', value: '110-240V AC' },
+        { parameter: 'Mounting', value: 'Wall or floor mount' },
+        { parameter: 'Accuracy', value: '±1% of set point' }
+      ]
     }
   };
 
@@ -328,13 +364,14 @@ export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
       </section>
 
       {/* Product Galleries by Category */}
-      {variant === 'flow-meters' && renderGallery('Flow Meters', 'Explore our complete lineup of flow meters')}
-      {variant === 'analyzers' && renderGallery('Analyzers & Transmitters', 'Advanced analyzers and transmitters for continuous monitoring')}
-      {variant === 'valves' && renderGallery('Valves & Piping', 'Engineered valves and piping solutions for critical applications')}
-      {variant === 'automation' && renderGallery('Automation (IoT / PLC / RTU / SCADA)', 'Integrated automation platforms for intelligent water management')}
-      {variant === 'cameras' && renderGallery('Cameras & Vision', 'Rugged vision and surveillance systems for utilities')}
-      {variant === 'jointing' && renderGallery('Jointing Machines', 'Professional jointing equipment for plastic piping systems')}
-      {variant === 'rosemount' && renderGallery('Rosemount 3051S Series Coplanar Pressure Transmitter', 'Premium 3051S models and options')}
+      {variant === 'flow-meters' && renderGallery('Flow Meters')}
+      {variant === 'analyzers' && renderGallery('Analyzers & Transmitters')}
+      {variant === 'valves' && renderGallery('Valves & Piping')}
+      {variant === 'automation' && renderGallery('Automation (IoT / PLC / RTU / SCADA)')}
+      {variant === 'cameras' && renderGallery('Cameras & Vision')}
+      {variant === 'jointing' && renderGallery('Jointing Machines')}
+      {variant === 'rosemount' && renderGallery('Rosemount 3051S Series Coplanar Pressure Transmitter')}
+      {variant === 'chlorinators' && renderGallery('Chlorinators')}
 
       {/* Features Section */}
       {page.features.length > 0 && (
@@ -420,6 +457,86 @@ export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
             </div>
           </div>
         </section>
+      )}
+
+      {/* Product Detail Modal */}
+      {selectedProduct && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm cursor-pointer"
+          onClick={closeProductDetail}
+        >
+          <MotionFadeUp
+            className="bg-white rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto relative p-6 md:p-10 cursor-default"
+            onClick={(e: React.MouseEvent) => e.stopPropagation()}
+          >
+            <button
+              onClick={closeProductDetail}
+              className="absolute top-6 right-6 p-2 rounded-full bg-white/80 backdrop-blur-sm border border-gray-200 text-gray-400 hover:text-gray-900 hover:bg-white shadow-sm transition-all z-10"
+            >
+              <X className="w-6 h-6" />
+            </button>
+
+            <div className="flex flex-col gap-8">
+              <h2 className="text-3xl font-bold text-gray-900">{selectedProduct.name}</h2>
+
+              <div className="bg-gray-50 rounded-3xl p-6 md:p-10 flex items-center justify-center border border-gray-100 overflow-hidden min-h-[300px] md:min-h-[450px]">
+                <img
+                  src={selectedProduct.image}
+                  alt={selectedProduct.name}
+                  className="max-w-full max-h-[500px] w-auto h-auto object-contain drop-shadow-xl transition-transform duration-500 hover:scale-105"
+                />
+              </div>
+
+              <div>
+                <h3 className="text-lg font-bold text-blue-600 mb-4">Product Description</h3>
+                <div className="space-y-4 text-gray-600 leading-relaxed">
+                  {Array.isArray(selectedProduct.paragraphs) ? (
+                    selectedProduct.paragraphs.map((p: string, i: number) => <p key={i}>{p}</p>)
+                  ) : (
+                    <p>{selectedProduct.paragraphs}</p>
+                  )}
+                </div>
+              </div>
+
+              {Array.isArray(selectedProduct.bullets) && selectedProduct.bullets.length > 0 && (
+                <div>
+                  <h3 className="text-lg font-bold text-blue-600 mb-4">Key Features & Specifications</h3>
+                  <div className="grid grid-cols-1 gap-3">
+                    {selectedProduct.bullets.map((bullet: string, i: number) => (
+                      <div key={i} className="flex items-center gap-4 p-4 rounded-xl border border-gray-100 bg-white hover:border-blue-200 transition-colors">
+                        <div className="w-2 h-2 rounded-full bg-blue-600 flex-shrink-0" />
+                        <span className="text-gray-800 font-medium">{bullet}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div className="mt-4 p-8 rounded-2xl bg-blue-50/50 border border-blue-100">
+                <h3 className="text-xl font-bold text-blue-600 mb-2">Need More Information?</h3>
+                <p className="text-gray-600 mb-6">Contact our technical team for detailed specifications, pricing, and custom solutions.</p>
+                <div className="flex flex-wrap gap-4">
+                  <button
+                    onClick={() => {
+                      closeProductDetail();
+                      onNavigate?.('contact');
+                    }}
+                    className="px-6 py-3 rounded-xl bg-[#0073bc] text-white font-bold hover:bg-[#005a94] transition-all active:scale-95 shadow-lg shadow-blue-200"
+                  >
+                    Contact Technical Team
+                  </button>
+                  <a
+                    href={selectedProduct.datasheetUrl || '#'}
+                    download
+                    className="px-6 py-3 rounded-xl border-2 border-blue-200 text-[#0073bc] font-bold hover:bg-blue-50 transition-all active:scale-95 text-center flex items-center justify-center"
+                  >
+                    Download Datasheet
+                  </a>
+                </div>
+              </div>
+            </div>
+          </MotionFadeUp>
+        </div>
       )}
 
       {/* CTA Section */}
