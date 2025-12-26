@@ -75,7 +75,7 @@ function AppContent() {
     setTimeout(() => {
       navigate(targetPath);
       setIsTransitioning(false);
-    }, 1500);
+    }, 300);
   };
 
   const getActivePage = () => {

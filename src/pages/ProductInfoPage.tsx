@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Gauge, Activity, Zap, Camera, Wrench, BarChart3, CheckCircle, ArrowRight } from 'lucide-react';
 import { RAW_SUB_PRODUCTS } from '../data/rawProducts';
 import { MotionFadeUp, AnimatedHeading } from '../components/Animated';
@@ -8,7 +9,9 @@ interface ProductInfoPageProps {
   onNavigate?: (page: string) => void;
 }
 
-export default function ProductInfoPage({ variant, onNavigate }: ProductInfoPageProps) {
+export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
+  const { variant: urlVariant } = useParams<{ variant: string }>();
+  const variant = urlVariant; // Use URL param as the source of truth
   const [expandedMap, setExpandedMap] = useState<Record<string, boolean>>({});
 
   const toggleExpanded = (key: string) => {

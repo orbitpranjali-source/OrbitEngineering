@@ -118,7 +118,16 @@ export const RAW_SUB_PRODUCTS = [
           'Can be combined with tecLine Ci tecLine Ci-S ecoLine Ci conductivity and temperature sensors'
         ]
       },
-      { name: 'Turbidity Transmitter', image: turbidityTransmitter, paragraphs: [''] },
+      {
+        name: 'Turbidity Transmitter',
+        image: turbidityTransmitter,
+        paragraphs: ['Water clarity and suspended solids measurement'],
+        bullets: [
+          'Real-time monitoring',
+          'Low maintenance',
+          'High sensitivity'
+        ]
+      },
       {
         name: 'Capacitance Level Transmitter',
         image: capacitanceLevelTransmitter,
@@ -200,7 +209,7 @@ export const RAW_SUB_PRODUCTS = [
           'For challenging applications such as long distance measurement and light dust during filling'
         ]
       },
-      
+
     ]
   },
   {
@@ -256,69 +265,141 @@ export const RAW_SUB_PRODUCTS = [
       { name: 'IOT', image: iot, paragraphs: ['IOT- We offer an Integrated IOT Platform to manage Customer Device and Data. We also provided integration plugins with popular CRMs Billing and ERP solutions.'] },
       { name: 'PLC', image: 'https://syncwatertech.com/wp-content/uploads/2024/08/PLC.jpg', paragraphs: [''] },
       { name: 'RTU', image: rtu, paragraphs: ['RTU=  Event based secure protocol connects clients (producers and subscribers) to get live data (semi real-time) even on non-real-time connections. The dedicated protocol ensures optimal latency with lowest possible traffic even on mobile networks (also 2G) and Narrow Band Iot (NBIoT).'] },
-      { name: 'SCADA', image: scada, bullets: [
-        'SCADA= Process visualization with network function',
-        'Real time operation',
-        'Batch related and continuous logging',
-        'Process group and trend pictures',
-        'Alarm or event lists',
-        'Management of up to 50 plants per PC',
-        'Visualization of up to 100 plants per network',
-        'Mobile Access',
-        'App for Android and iOS systems',
-        'Mobile access to devices',
-        'Batch related and continuous logging',
-        'Process group and trend pictures',
-        'Alarm or event lists',
-        'Management of up to 50 plants per PC',
-        'Visualization of up to 100 plants per network'
-      ] }
+      {
+        name: 'SCADA', image: scada, bullets: [
+          'SCADA= Process visualization with network function',
+          'Real time operation',
+          'Batch related and continuous logging',
+          'Process group and trend pictures',
+          'Alarm or event lists',
+          'Management of up to 50 plants per PC',
+          'Visualization of up to 100 plants per network',
+          'Mobile Access',
+          'App for Android and iOS systems',
+          'Mobile access to devices',
+          'Batch related and continuous logging',
+          'Process group and trend pictures',
+          'Alarm or event lists',
+          'Management of up to 50 plants per PC',
+          'Visualization of up to 100 plants per network'
+        ]
+      }
     ]
   },
   {
     category: 'Cameras & Vision',
     items: [
-      { name: 'BULLET CAMERA', image: bulletCamera, paragraphs: ['Lovable AI'] },
-      { name: 'DOME CAMERA', image: domeCamera, paragraphs: ['Lovable AI'] },
-      { name: 'High Speed Camera', image: highSpeedCamera, paragraphs: ['Lovable AI'] },
-      { name: 'PTZ Camera', image: ptzCamera, paragraphs: ['Lovable AI'] },
-      { name: 'Servers', image: servers, paragraphs: ['Lovable AI'] },
-      { name: 'Softwares', image: softwares, paragraphs: ['Lovable AI'] }
+      {
+        name: 'Bullet Camera',
+        image: bulletCamera,
+        paragraphs: ['Fixed direction surveillance camera designed for outdoor monitoring applications. Features weatherproof housing and infrared night vision capabilities for 24/7 security coverage.'],
+        bullets: [
+          'Weatherproof design',
+          'Infrared night vision',
+          'Fixed direction monitoring',
+          '24/7 operation',
+          'High resolution imaging'
+        ]
+      },
+      {
+        name: 'Dome Camera',
+        image: domeCamera,
+        paragraphs: ['360-degree surveillance dome camera with vandal-resistant design. Provides discreet monitoring with wide-angle coverage for comprehensive area surveillance.'],
+        bullets: [
+          '360-degree coverage',
+          'Vandal-resistant housing',
+          'Discreet appearance',
+          'Wide-angle lens',
+          'Professional surveillance'
+        ]
+      },
+      {
+        name: 'High Speed Camera',
+        image: highSpeedCamera,
+        paragraphs: ['High frame rate recording camera designed for capturing rapid motion and detailed analysis. Professional-grade equipment for specialized monitoring applications.'],
+        bullets: [
+          'High frame rate capture',
+          'Motion analysis capability',
+          'Professional grade',
+          'Detailed recording',
+          'Specialized applications'
+        ]
+      },
+      {
+        name: 'PTZ Camera',
+        image: ptzCamera,
+        paragraphs: ['Pan-Tilt-Zoom controllable camera with remote operation capabilities. Features motorized movement and zoom functions for dynamic surveillance coverage.'],
+        bullets: [
+          'Pan-tilt-zoom control',
+          'Remote operation',
+          'Motorized movement',
+          'Dynamic coverage',
+          'Auto-tracking features'
+        ]
+      },
+      {
+        name: 'Servers',
+        image: servers,
+        paragraphs: ['High-capacity video recording and storage servers designed for surveillance systems. Features redundant storage and remote access capabilities for reliable data management.'],
+        bullets: [
+          'High storage capacity',
+          'Redundant backup systems',
+          'Remote access capability',
+          'Reliable data management',
+          'Scalable architecture'
+        ]
+      },
+      {
+        name: 'Software',
+        image: softwares,
+        paragraphs: ['Comprehensive video management and analytics software for surveillance systems. Provides multi-camera support, intelligent analytics, and user-friendly interface for efficient monitoring.'],
+        bullets: [
+          'Multi-camera management',
+          'Intelligent analytics',
+          'User-friendly interface',
+          'Real-time monitoring',
+          'Advanced reporting'
+        ]
+      }
     ]
   },
   {
     category: 'Jointing Machines',
     items: [
       { name: 'Big Jointing Machines', image: bigJointingMachines, paragraphs: ['Lovable AI'] },
-      { name: 'HDPE Butt Fusion Welding Machine – Application & Features :', image: buttFusionJointing, bullets: [
-        'Suitable for butt fusion welding Of plastic pipes and fittings made Of PE PP. and PVDF in construction site or workshop.',
-        'Consists of basic frame heating plate planning tool and support (for planning tool & heating plate).',
-        'Removable PTFE coated heating plate with inbuilt Digital temperature control system with countdown timers for heating TI T2 & cooling phase T5.',
-        'Electric facer cutter With double cutting edge blades.',
-        'Low starting pressure ensures reliable welding quality Of small pipes.',
-        'It is made of lightweight and high strength material; simple structure and easy to operate.',
-        'Trolley style wheel & handle system for easy mobility.',
-        'Use of high quality pressure casting allows low weight without compromising strength and performance while providing extra strength when welding not perfectly round pipe.',
-        'Size- 50 to 250 MM'
-      ] },
-      { name: 'Electrofusion welding machines', image: electrofusionJointingMachine, bullets: [
-        'Electrofusion welding machines are universal devices used to connect thermoplastic pipes and fittings (PE PP PVDF) resistance method using electrofusion fittings. They are widely used in the construction and repair of gas pipelines water supply sewage industrial installations etc.',
-        'Automatic control',
-        'Optical and acoustic signaling of the welding process.',
-        'Automatic compensation of welding time depending on the ambient temperature.',
-        'An electronic control system that responds to changes in power parameters in real time.',
-        'Automatic setting of voltage and cycle times depending on the type of fitting.',
-        'Ability to program work parameters:',
-        'automatic mode using barcode scanner',
-        'automatic mode by entering the digital barcode from the barcode',
-        'manual (manual) mode by entering voltage and time parameters from the fitting',
-        '“last time” mode – automatic programming using settings of the last weld.',
-        'Real-time monitoring weld status abnormal welding process could be terminated in short time.',
-        'Built in memory can record more than 3000welding records.',
-        'Welding records could be download to USB flash disk via USB interface.',
-        'Operation modes: (1) Manually Set (2) Read in by bar code scanner.',
-        'Welding Range(mm)- 20 -800 mm'
-      ] }
+      {
+        name: 'HDPE Butt Fusion Welding Machine – Application & Features :', image: buttFusionJointing, bullets: [
+          'Suitable for butt fusion welding Of plastic pipes and fittings made Of PE PP. and PVDF in construction site or workshop.',
+          'Consists of basic frame heating plate planning tool and support (for planning tool & heating plate).',
+          'Removable PTFE coated heating plate with inbuilt Digital temperature control system with countdown timers for heating TI T2 & cooling phase T5.',
+          'Electric facer cutter With double cutting edge blades.',
+          'Low starting pressure ensures reliable welding quality Of small pipes.',
+          'It is made of lightweight and high strength material; simple structure and easy to operate.',
+          'Trolley style wheel & handle system for easy mobility.',
+          'Use of high quality pressure casting allows low weight without compromising strength and performance while providing extra strength when welding not perfectly round pipe.',
+          'Size- 50 to 250 MM'
+        ]
+      },
+      {
+        name: 'Electrofusion welding machines', image: electrofusionJointingMachine, bullets: [
+          'Electrofusion welding machines are universal devices used to connect thermoplastic pipes and fittings (PE PP PVDF) resistance method using electrofusion fittings. They are widely used in the construction and repair of gas pipelines water supply sewage industrial installations etc.',
+          'Automatic control',
+          'Optical and acoustic signaling of the welding process.',
+          'Automatic compensation of welding time depending on the ambient temperature.',
+          'An electronic control system that responds to changes in power parameters in real time.',
+          'Automatic setting of voltage and cycle times depending on the type of fitting.',
+          'Ability to program work parameters:',
+          'automatic mode using barcode scanner',
+          'automatic mode by entering the digital barcode from the barcode',
+          'manual (manual) mode by entering voltage and time parameters from the fitting',
+          '“last time” mode – automatic programming using settings of the last weld.',
+          'Real-time monitoring weld status abnormal welding process could be terminated in short time.',
+          'Built in memory can record more than 3000welding records.',
+          'Welding records could be download to USB flash disk via USB interface.',
+          'Operation modes: (1) Manually Set (2) Read in by bar code scanner.',
+          'Welding Range(mm)- 20 -800 mm'
+        ]
+      }
     ]
   },
   {

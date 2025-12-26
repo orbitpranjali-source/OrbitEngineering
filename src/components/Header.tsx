@@ -112,21 +112,21 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
 
                 {productsDropdownOpen && (
                   <div
-                    className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg dropdown-shadow border border-gray-100 overflow-hidden animate-slide-up z-50"
+                    className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg dropdown-shadow border border-gray-100 animate-slide-up z-50 max-h-[70vh] overflow-hidden flex flex-col"
                     onMouseLeave={() => setProductsDropdownOpen(false)}
                   >
-                    <div className="py-2">
-                      <div className="px-4 py-2 border-b border-gray-100">
-                        <button
-                          onClick={() => {
-                            onNavigate('products');
-                            setProductsDropdownOpen(false);
-                          }}
-                          className="text-sm font-semibold text-[#005B9A] hover:text-[#005a94] transition-colors"
-                        >
-                          All Products
-                        </button>
-                      </div>
+                    <div className="px-4 py-2 border-b border-gray-100 flex-shrink-0">
+                      <button
+                        onClick={() => {
+                          onNavigate('products');
+                          setProductsDropdownOpen(false);
+                        }}
+                        className="text-sm font-semibold text-[#005B9A] hover:text-[#005a94] transition-colors"
+                      >
+                        All Products
+                      </button>
+                    </div>
+                    <div className="py-2 overflow-y-auto flex-1">
                       {productCategories.map((category) => (
                         <button
                           key={category.page}
@@ -226,7 +226,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
               </button>
 
               {mobileProductsDropdownOpen && (
-                <div className="ml-4 space-y-1 animate-slide-up">
+                <div className="ml-4 space-y-1 animate-slide-up max-h-[50vh] overflow-y-auto">
                   <button
                     onClick={() => {
                       onNavigate('products');

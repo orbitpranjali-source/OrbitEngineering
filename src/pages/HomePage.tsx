@@ -9,6 +9,8 @@ import iconWaterTreatmentPlants from '../assets/icon/Water Treatment Plants.png'
 import iconAutomationSystems from '../assets/icon/Automation Systems.png';
 import iconCloudManagement from '../assets/icon/Cloud Management.png';
 import iconOMServices from '../assets/icon/O&M Services.png';
+import panoramicLake from '../assets/panaromic-view-of-upperlake.jpeg';
+// Note: Using original image for now, will be replaced with generated watermark-free version
 
 interface HomePageProps {
   onNavigate: (page: string) => void;
@@ -88,6 +90,169 @@ function DualAnimationSection() {
   );
 }
 
+// Automation Section Component with Enhanced Animations
+function AutomationSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  // Heading animation - fade from top
+  const headingVariants = {
+    hidden: { opacity: 0, y: -40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7
+      }
+    }
+  };
+
+  // Image animation - slide from left
+  const imageVariants = {
+    hidden: { opacity: 0, x: -100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.9,
+        delay: 0.2
+      }
+    }
+  };
+
+  // Content container animation - slide from right
+  const contentVariants = {
+    hidden: { opacity: 0, x: 100 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.9,
+        delay: 0.3
+      }
+    }
+  };
+
+  // Stagger container for bullet points
+  const listContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.5
+      }
+    }
+  };
+
+  // Individual bullet animation
+  const bulletVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.5
+      }
+    }
+  };
+
+  const bulletPoints = [
+    "Modernising existing infrastructure (dams, canals) to meet rising water demands.",
+    "Smart water management systems combining SCADA and GIS for centralised urban water utility control.",
+    "Sensor & IoT integration for real-time monitoring of flow, quality, levels, soil moisture and weather conditions.",
+    "Data-driven decision-making utilising analytics and predictive maintenance to optimise resource allocation, detect leaks and plan upkeep.",
+    "Enhanced conservation by precisely controlling distribution to reduce leaks, overflows and inefficient irrigation.",
+    "Cost-efficiency gains via automation of pump stations, distribution networks and maintenance alerts—minimising manual labour and resource wastage."
+  ];
+
+  return (
+    <section className="py-20 bg-white" ref={ref}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Centered Heading with fade from top animation */}
+        <motion.h2
+          variants={headingVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="text-3xl md:text-4xl font-bold text-gray-900 leading-tight text-center mb-12"
+        >
+          Automation of Water Systems
+        </motion.h2>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+          {/* Left Side - Image with slide from left animation */}
+          <motion.div
+            variants={imageVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="order-2 lg:order-1 lg:-ml-8"
+          >
+            <motion.img
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
+              src={panoramicLake}
+              alt="Panoramic view of upper lake showcasing water infrastructure"
+              className="w-full h-[450px] md:h-[550px] lg:h-[600px] rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,115,188,0.3)] object-contain bg-gray-50 ring-1 ring-blue-100 cursor-pointer"
+            />
+          </motion.div>
+
+          {/* Right Side - Content with slide from right animation */}
+          <motion.div
+            variants={contentVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            className="order-1 lg:order-2 space-y-6 lg:pl-8"
+          >
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Orbit Engineering Group specialises in advanced automation — adopting state-of-the-art technologies to enhance water resource management, efficiency and sustainability:
+            </p>
+
+            {/* Bullet Points with staggered animations */}
+            <motion.ul
+              variants={listContainerVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              className="space-y-4"
+            >
+              {bulletPoints.map((point, index) => (
+                <motion.li
+                  key={index}
+                  variants={bulletVariants}
+                  whileHover={{ x: 5 }}
+                  className="flex items-start space-x-3 transition-all duration-300"
+                >
+                  <div className="flex-shrink-0 mt-1">
+                    <motion.div
+                      whileHover={{ scale: 1.2, rotate: 360 }}
+                      transition={{ duration: 0.5 }}
+                      className="h-6 w-6 rounded-full bg-[#0073bc] flex items-center justify-center shadow-md"
+                    >
+                      <Droplets className="h-4 w-4 text-white" />
+                    </motion.div>
+                  </div>
+                  <span className="text-gray-700 leading-relaxed">{point}</span>
+                </motion.li>
+              ))}
+            </motion.ul>
+
+            {/* Closing Statement with delayed fade-in */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 1.5 }}
+              className="pt-4 border-t border-gray-200"
+            >
+              <p className="text-lg font-semibold text-[#0073bc] leading-relaxed">
+                Orbit Engineering Group empowers communities with smarter, greener, and more reliable water infrastructure across both rural and urban settings.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function HomePage({ onNavigate }: HomePageProps) {
   const [showLearnMore, setShowLearnMore] = useState(false);
   const services = [
@@ -156,6 +321,9 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
       {/* Section 2: moved DualAnimationSection into this position */}
       <DualAnimationSection />
+
+      {/* Section 3: Automation of Water Systems */}
+      <AutomationSection />
 
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
