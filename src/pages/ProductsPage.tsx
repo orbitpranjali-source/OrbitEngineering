@@ -2,6 +2,7 @@ import { Droplets, Zap, Gauge, ThermometerSun, Activity, FlaskConical } from 'lu
 import HeroSection from '../components/HeroSection';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 // iconProductsSolutions removed; hero uses shared HeroSection
 import iconWTP from '../assets/icon/Water Treatment Plants.png';
 import iconSTP from '../assets/icon/Sewage Treatment Plants.png';
@@ -104,6 +105,13 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Water Treatment Products & Solutions | WTP, STP, RO, ETP - Orbit Engineering"
+        description="Explore Orbit Engineering's comprehensive range of water treatment products, including WTP, STP, RO systems, ETP, and industrial automation solutions in Bhopal."
+      />
+      {/* Hidden H1 for SEO */}
+      <h1 className="sr-only">Orbit Engineering Group Products | Water Treatment Plants (WTP), STP, RO, ETP, PLC Control Panels & IoT Sensors Bhopal</h1>
+
       <HeroSection title="Products & Solutions" subtitle="Advanced water treatment technologies and automation systems" />
 
       <section className="py-20 bg-white">
@@ -136,7 +144,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
                 >
                   <div className="icon-wrap mb-6 mx-auto group-hover:bg-[#0073bc]/10 transition-colors duration-300">
                     {category.image ? (
-                      <img src={category.image} alt={`${category.title} icon`} className="icon-img icon-hover group-hover:scale-110 transition-transform duration-300" />
+                      <img src={category.image} alt={`${category.title} system design and installation by Orbit Engineering Bhopal`} className="icon-img icon-hover group-hover:scale-110 transition-transform duration-300" />
                     ) : (
                       <category.icon className="h-10 w-10 text-[#0073bc] mx-auto group-hover:scale-110 transition-transform duration-300" />
                     )}

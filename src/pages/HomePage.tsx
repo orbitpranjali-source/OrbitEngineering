@@ -2,6 +2,7 @@ import { ArrowRight, Cpu, Cloud, Droplets, Settings, X } from 'lucide-react';
 import { motion, useInView } from 'framer-motion';
 import { MotionFadeUp, MotionStagger, AnimatedHeading } from '../components/Animated';
 import { useState, useRef } from 'react';
+import SEO from '../components/SEO';
 import heroGirl from '../assets/hero-village-girl.jpg';
 import heroBg from '../assets/products/hero-bg.jpg';
 import villageProject2 from '../assets/village-project-2.jpg';
@@ -81,7 +82,7 @@ function DualAnimationSection() {
           <motion.div variants={rightVariants} className="flex justify-center items-center">
             <img
               src={villageProject2}
-              alt="Village water project showcasing sustainable water infrastructure"
+              alt="Village water project in Bhopal showcasing sustainable water infrastructure by Orbit Engineering"
               className="w-full h-[400px] md:h-[500px] rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,115,188,0.3)] object-cover ring-1 ring-blue-100"
             />
           </motion.div>
@@ -200,7 +201,7 @@ function AutomationSection() {
               transition={{ duration: 0.3 }}
               src={panoramicLake}
               alt="Panoramic view of upper lake showcasing water infrastructure"
-              className="w-full h-[450px] md:h-[550px] lg:h-[600px] rounded-lg shadow-[0_20px_60px_-15px_rgba(0,115,188,0.3)] object-contain bg-gray-50 ring-1 ring-blue-100 cursor-pointer"
+              className="w-full h-[450px] md:h-[550px] lg:h-[600px] rounded-2xl shadow-[0_20px_60px_-15px_rgba(0,115,188,0.3)] object-contain bg-gray-50 ring-1 ring-blue-100 cursor-pointer"
             />
           </motion.div>
 
@@ -274,6 +275,13 @@ export default function HomePage({ onNavigate }: HomePageProps) {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Orbit Engineering Group | Water Treatment & Automation Bhopal"
+        description="Orbit Engineering Group Bhopal: Leaders in WTP, STP, RO, SCADA, and PLC automation. Solving complex water challenges in India since 1998."
+      />
+      {/* Hidden H1 for SEO */}
+      <h1 className="sr-only">Orbit Engineering Group Bhopal | Water Treatment Plants (WTP), SCADA, PLC Automation & Sustainable Engineering Solutions</h1>
+
       <section
         className="relative text-white overflow-hidden"
         style={{
@@ -287,14 +295,14 @@ export default function HomePage({ onNavigate }: HomePageProps) {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="max-w-3xl lg:pr-10">
-              <motion.h1
+              <motion.h2
                 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: 'easeOut', delay: 0 }}
               >
                 Water Tech for a Greener, Resilient and Sustainable Tomorrow
-              </motion.h1>
+              </motion.h2>
               <motion.p
                 className="text-lg md:text-xl text-blue-100 mb-8 leading-relaxed"
                 initial={{ opacity: 0, y: 20 }}
@@ -315,7 +323,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             <div className="relative lg:pl-6">
               <motion.img
                 src={heroGirl}
-                alt="Village girl drinking water from a tap"
+                alt="Village girl drinking clean water from Orbit Engineering's automated water supply scheme"
                 className="w-full h-auto max-h-[520px] object-cover rounded-2xl shadow-2xl ring-1 ring-white/20"
                 initial={{ opacity: 0, x: 100 }}
                 animate={{ opacity: 1, x: 0 }}
