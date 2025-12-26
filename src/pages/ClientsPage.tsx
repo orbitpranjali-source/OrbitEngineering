@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle, Users, Star } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
+import SEO from '../components/SEO';
 import { motion } from 'framer-motion';
 import { MotionFadeUp, AnimatedHeading } from '../components/Animated';
 import mpJalNigam from '../assets/clients/mp-jal-nigam.png';
@@ -53,7 +54,15 @@ export default function ClientsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <HeroSection title="Our Ecosystem" subtitle="Trusted technology and automation partners we work with" />
+      <SEO
+        title="Our Clients & Partners | Trusted by Government & Industry - Orbit Engineering"
+        description="Orbit Engineering Group is proud to partner with MPUDCL, MP Jal Nigam, and leading industrial organizations across India for water solutions."
+        keywords="MP Jal Nigam, MPUDCL Bhopal, Bhopal Municipal Corporation, Indore District Administration, Tikamgarh Nagar Parishads, WRD Bhopal, Prism Cement, Lupin Pharmaceuticals, Vindhyachal Distillery, Central India Pvt Ltd, Dilip Buildcon, Tejas Construction, water infrastructure partners, orbit engineering clients, ecosystem partners, engineering consultants bhopal, government contractors mp"
+      />
+      {/* Hidden H1 for SEO */}
+      <h1 className="sr-only">Orbit Engineering Group Clients | Trusted by MPUDCL, MP Jal Nigam, and municipal corporations across India</h1>
+
+      <HeroSection title="Our Trusted Clients" subtitle="Building long-term partnerships with government and private organizations" />
 
       {/* Named clients grid like the reference */}
       <section className="py-14 bg-gray-50">
@@ -171,7 +180,7 @@ export default function ClientsPage() {
                   const firstRowPartners = clients.slice(0, 6);
                   return [...firstRowPartners, ...firstRowPartners].map((c, i) => (
                     <div
-                      key={`${c.name}-row1-${i}`}
+                      key={`row1-${c.name}-${i}`}
                       className="flex-shrink-0 w-48 bg-white rounded-xl border border-gray-100 p-6 shadow-sm text-center hover:shadow-md transition-shadow group"
                     >
                       <div className="flex items-center justify-center h-24 mb-4">
@@ -206,7 +215,7 @@ export default function ClientsPage() {
                   const secondRowPartners = clients.slice(6);
                   return [...secondRowPartners, ...secondRowPartners].map((c, i) => (
                     <div
-                      key={`${c.name}-row2-${i}`}
+                      key={`row2-${c.name}-${i}`}
                       className="flex-shrink-0 w-48 bg-white rounded-xl border border-gray-100 p-6 shadow-sm text-center hover:shadow-md transition-shadow group"
                     >
                       <div className="flex items-center justify-center h-24 mb-4">

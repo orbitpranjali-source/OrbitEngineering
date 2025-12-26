@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import HeroSection from '../components/HeroSection';
+import SEO from '../components/SEO';
 import { AnimatedHeading } from '../components/Animated';
 import { Building2, CheckCircle2, Clock, MapPin } from 'lucide-react';
 
@@ -183,6 +184,13 @@ export default function ProjectsPage({ initialFilter = 'all', onNavigate }: Proj
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Industrial & Municipal Water Projects | SCADA Automation - Orbit Engineering"
+        description="Case studies of our successful water infrastructure and automation projects across India, featuring 45 MLD WTPs and advanced SCADA systems."
+      />
+      {/* Hidden H1 for SEO */}
+      <h1 className="sr-only">Orbit Engineering Group Projects | Completed and ongoing water infrastructure projects in India with SCADA & PLC automation</h1>
+
       <HeroSection title="Our Projects" subtitle="Delivering water infrastructure excellence across India with PLC, SCADA & Automation Systems" />
 
       {/* Navigation Tabs */}

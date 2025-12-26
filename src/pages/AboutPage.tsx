@@ -9,6 +9,7 @@ import subHeadingImage from '../assets/products/sub-heading.jpg';
 import HeroSection from '../components/HeroSection';
 import { motion } from 'framer-motion';
 import { AnimatedHeading } from '../components/Animated';
+import SEO from '../components/SEO';
 
 export default function AboutPage() {
   const whyChooseUs = [
@@ -46,6 +47,13 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="About Orbit Engineering Group | 25+ Years of Engineering Excellence in Bhopal"
+        description="Learn about Orbit Engineering Group's journey since 1998, our mission to revolutionize water infrastructure, and our commitment to sustainable engineering."
+      />
+      {/* Hidden H1 for SEO */}
+      <h1 className="sr-only">About Orbit Engineering Group Bhopal | Innovating water infrastructure since 1998 with advanced engineering and technology</h1>
+
       <HeroSection title="About Orbit Engineerings" subtitle="Pioneering water innovation for sustainable communities" />
 
       <section className="py-20 bg-white">
