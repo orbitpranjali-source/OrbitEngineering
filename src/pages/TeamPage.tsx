@@ -3,6 +3,7 @@ import subHeadingImage from '../assets/products/sub-heading.jpg';
 import HeroSection from '../components/HeroSection';
 import { motion } from 'framer-motion';
 import { MotionFadeUp, MotionStagger, AnimatedHeading } from '../components/Animated';
+import SEO from '../components/SEO';
 // ourTeamIcon removed: using shared HeroSection component instead
 import manojImg from '../assets/team/manoj-tiwari.jpeg';
 import vijayImg from '../assets/team/vijay-tiwari-2.jpg';
@@ -70,6 +71,13 @@ export default function TeamPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Our Team | Leaders in Water Infrastructure - Orbit Engineering Group"
+        description="Meet the visionaries at Orbit Engineering Group Bhopal. Led by Manoj Tiwari and Vijay Tiwari, our team brings decades of expertise in water technology and SCADA automation."
+      />
+      {/* Hidden H1 for SEO */}
+      <h1 className="sr-only">Orbit Engineering Group Team | Manoj Tiwari, Vijay Tiwari, Rohit Arora & Amit Tiwari - Experts in Water Infrastructure & Automation</h1>
+
       <HeroSection title="Our Team" subtitle="Meet the visionaries driving water innovation" />
 
       <section className="py-24 bg-gray-50 border-y border-gray-100">
@@ -100,8 +108,8 @@ export default function TeamPage() {
                 {member.photo ? (
                   <img
                     src={member.photo}
-                    alt={`${member.name} photo`}
-                    className="w-28 h-28 rounded-full object-cover mx-auto mb-6 ring-4 ring-[#0073bc]/10 shadow-sm"
+                    alt={`${member.name} - ${member.role} at Orbit Engineering Group Bhopal`}
+                    className="w-36 h-36 rounded-full object-cover mx-auto mb-6 ring-4 ring-[#0073bc]/10 shadow-sm"
                     loading="lazy"
                   />
                 ) : (

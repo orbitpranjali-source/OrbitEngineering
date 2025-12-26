@@ -2,6 +2,7 @@
 import { Droplets, Settings, FileText, Wrench, Cloud, Cpu } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import iconWaterTreatmentPlants from '../assets/icon/Water Treatment Plants.png';
 import iconAutomationSystems from '../assets/icon/Automation Systems.png';
 import iconOMServices from '../assets/icon/O&M Services.png';
@@ -106,6 +107,13 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO
+        title="Our Technical Services | WTP Maintenance & SCADA Automation - Orbit Engineering"
+        description="Professional services for water infrastructure: PLC/SCADA integration, O&M, consultancy, and turnkey automation by Orbit Engineering Group."
+      />
+      {/* Hidden H1 for SEO */}
+      <h1 className="sr-only">Orbit Engineering Group Services | Water treatment solutions, PLC/SCADA automation, IoT integration, O&M services, and consultancy in Bhopal</h1>
+
       <HeroSection title="Our Services" subtitle="Comprehensive water infrastructure solutions from concept to maintenance" />
 
       <section className="py-20 bg-white">
@@ -143,7 +151,7 @@ export default function ServicesPage({ onNavigate }: ServicesPageProps) {
                 >
                   <div className="icon-wrap mb-6 mx-auto">
                     {service.image ? (
-                      <img src={service.image} alt={`${service.title} icon`} className="icon-img icon-hover" />
+                      <img src={service.image} alt={`${service.title} engineering services by Orbit Group Bhopal`} className="icon-img icon-hover" />
                     ) : (
                       <service.icon className="h-12 w-12 md:h-14 md:w-14 text-[#0073bc] mx-auto transform transition-transform duration-300 group-hover:scale-105" />
                     )}

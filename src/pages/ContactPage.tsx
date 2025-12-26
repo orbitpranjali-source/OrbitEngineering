@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import heroSectionImage from '../assets/products/hero-section.jpg';
-import HeroSection from '../components/HeroSection';
-import { MotionFadeUp, MotionStagger, AnimatedHeading } from '../components/Animated';
 import { Mail, Phone, MapPin, Send, CheckCircle } from 'lucide-react';
+import HeroSection from '../components/HeroSection';
+import SEO from '../components/SEO';
+import heroSectionImage from '../assets/products/hero-section.jpg';
+import { MotionFadeUp, MotionStagger, AnimatedHeading } from '../components/Animated';
 // iconContact removed; hero uses shared HeroSection
 
 export default function ContactPage() {
@@ -37,7 +38,17 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <HeroSection title="Contact Us" subtitle="Let's discuss how we can help with your water infrastructure needs" />
+      <SEO
+        title="Contact Us | Orbit Engineering Group Bhopal - Get a Free Consultation"
+        description="Reach out to Orbit Engineering Group for your water treatment and automation needs. Offices in Arera Colony and Bagsewaniya, Bhopal."
+      />
+      {/* Hidden H1 for SEO */}
+      <h1 className="sr-only">Contact Orbit Engineering Group Bhopal | Office address, phone numbers, and email for water treatment experts</h1>
+
+      <HeroSection
+        title="Contact Us"
+        subtitle="We're here to help you solve your water infrastructure challenges"
+      />
 
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
