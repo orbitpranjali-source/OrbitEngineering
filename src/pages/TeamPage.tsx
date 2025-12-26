@@ -1,4 +1,4 @@
-import { Mail, Briefcase, Target } from 'lucide-react';
+import { Mail, Briefcase, Target, Award, Users } from 'lucide-react';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
 import HeroSection from '../components/HeroSection';
 import { motion } from 'framer-motion';
@@ -14,6 +14,7 @@ export default function TeamPage() {
     {
       name: 'Manoj Tiwari',
       role: 'Managing Director',
+      experience: '40+ Years Experience',
       email: 'mktiwari@orbitengineering.com',
       description: 'Visionary leader with expertise in water infrastructure and sustainable technology solutions',
       photo: manojImg
@@ -21,13 +22,51 @@ export default function TeamPage() {
     {
       name: 'Vijay Tiwari',
       role: 'Co-Founder & CTO',
+      experience: '18+ Years Experience',
       email: 'vijay@orbitengineerings.com',
       description: 'Technical expert specializing in automation, IoT, and advanced water treatment systems',
       photo: vijayImg
     }
   ];
 
-  // Removed unused openPositions array
+  const teamStats = [
+    {
+      icon: <Award className="h-6 w-6 text-[#0073bc]" />,
+      title: "40-Year Legacy",
+      description: "Built on decades of steel staging and chlorination expertise"
+    },
+    {
+      icon: <Briefcase className="h-6 w-6 text-[#0073bc]" />,
+      title: "27-Year Automation Experience",
+      description: "Orbit Engineering's strength in automation and SCADA systems"
+    },
+    {
+      icon: <Users className="h-6 w-6 text-[#0073bc]" />,
+      title: "Multi-Disciplinary Team",
+      description: "Engineers, project leads, marketing strategists, and finance experts"
+    }
+  ];
+
+  const statVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+      scale: 0.5,
+      rotate: -180
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        type: "spring" as const,
+        stiffness: 60,
+        damping: 15,
+        duration: 0.8
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -75,9 +114,14 @@ export default function TeamPage() {
                 <h3 className="text-2xl font-bold text-gray-900 text-center mb-2">
                   {member.name}
                 </h3>
-                <p className="text-[#0073bc] font-bold text-center mb-4 uppercase tracking-wider text-sm">
+                <p className="text-[#0073bc] font-bold text-center mb-3 uppercase tracking-wider text-sm">
                   {member.role}
                 </p>
+                <div className="flex justify-center mb-6">
+                  <span className="inline-block px-4 py-1.5 rounded-full border border-gray-200 text-gray-700 text-sm font-semibold shadow-sm bg-gray-50/50">
+                    {member.experience}
+                  </span>
+                </div>
                 <p className="text-gray-600 text-center mb-8 leading-relaxed">
                   {member.description}
                 </p>
@@ -96,6 +140,34 @@ export default function TeamPage() {
 
             ))}
           </MotionStagger>
+
+          {/* Team Stats Section */}
+          <div className="mt-20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {teamStats.map((stat, index) => (
+                <motion.div
+                  key={index}
+                  variants={statVariants}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2 }}
+                  whileHover={{ y: -5 }}
+                  className="bg-white rounded-2xl p-8 border border-[#0073bc] shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-center text-center"
+                >
+                  <div className="bg-blue-50 rounded-full p-4 mb-6">
+                    {stat.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {stat.title}
+                  </h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {stat.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
