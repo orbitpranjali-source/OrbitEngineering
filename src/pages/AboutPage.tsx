@@ -10,6 +10,7 @@ import HeroSection from '../components/HeroSection';
 import { motion } from 'framer-motion';
 import { AnimatedHeading } from '../components/Animated';
 import SEO from '../components/SEO';
+import mapGif from '../assets/my_map.gif';
 
 export default function AboutPage() {
   const whyChooseUs = [
@@ -160,7 +161,40 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="bg-white py-12">
+        {/* Header content with white background */}
+        <div className="relative px-4 mb-8">
+          <div className="relative z-10 text-center max-w-4xl mx-auto">
+            <AnimatedHeading level={2} className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+              Our Trusted Partner in Smart Water Management
+            </AnimatedHeading>
+            <p className="text-xl md:text-2xl text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed">
+              Enhancing productivity and sustainability through smart automation.
+            </p>
+          </div>
+        </div>
+
+        {/* GIF Section */}
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="relative rounded-3xl shadow-2xl overflow-hidden bg-white border border-gray-100"
+          >
+            <div className="aspect-video w-full overflow-hidden relative">
+              <img
+                src={mapGif}
+                alt="Global Presence Map"
+                className="w-full h-full object-cover contrast-125 saturate-110"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
