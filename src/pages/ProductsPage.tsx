@@ -1,6 +1,7 @@
-import { Droplets, Zap, Gauge, ThermometerSun, Activity, FlaskConical } from 'lucide-react';
+import { Droplets, Zap, Gauge, ThermometerSun, Activity, FlaskConical, Wrench, Camera, BarChart3 } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
+import productsHeroBg from '../assets/products/hero-section.jpg';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 // iconProductsSolutions removed; hero uses shared HeroSection
@@ -99,6 +100,84 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
         'Level sensors',
         'Wireless connectivity'
       ]
+    },
+    {
+      icon: Gauge,
+      page: 'product-info:flow-meters',
+      title: 'Flow Meters',
+      description: 'Precision flow measurement for all applications',
+      features: [
+        'Electromagnetic flow meters',
+        'Ultrasonic flow meters',
+        'High accuracy ±0.5%',
+        'Wide flow range',
+        'Digital outputs'
+      ]
+    },
+    {
+      icon: Activity,
+      page: 'product-info:analyzers',
+      title: 'Analyzers & Transmitters',
+      description: 'Continuous online water quality monitoring',
+      features: [
+        'pH/ORP analyzers',
+        'Conductivity transmitters',
+        'Dissolved oxygen sensors',
+        'Turbidity meters',
+        'Multi-parameter systems'
+      ]
+    },
+    {
+      icon: Wrench,
+      page: 'product-info:valves',
+      title: 'Valves & Piping',
+      description: 'Industrial grade valves and piping solutions',
+      features: [
+        'Butterfly valves',
+        'Gate & Globe valves',
+        'Check valves',
+        'Actuated valves',
+        'Corrosion resistant material'
+      ]
+    },
+    {
+      icon: Camera,
+      page: 'product-info:cameras',
+      title: 'Cameras & Vision',
+      description: 'Rugged surveillance for water infrastructure',
+      features: [
+        'CCTV systems',
+        'Night vision',
+        'Remote monitoring',
+        'Motion detection',
+        'IP67 rated housing'
+      ]
+    },
+    {
+      icon: Wrench,
+      page: 'product-info:jointing',
+      title: 'Jointing Machines',
+      description: 'HDPE pipe jointing and fusion equipment',
+      features: [
+        'Butt fusion machines',
+        'Electrofusion units',
+        'Pipe scrapers',
+        'Data logging',
+        'Field proven reliability'
+      ]
+    },
+    {
+      icon: BarChart3,
+      page: 'product-info:rosemount',
+      title: 'Rosemount Transmitters',
+      description: 'High-performance pressure and level transmitters',
+      features: [
+        '3051S Series',
+        'Coplanar design',
+        'High stability',
+        'Advanced diagnostics',
+        'HART communication'
+      ]
     }
   ];
 
@@ -117,7 +196,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {productCategories.map((category, index) => {
+            {productCategories.slice(0, 6).map((category, index) => {
               const position = index % 3;
               const variants = {
                 hidden: {
@@ -140,7 +219,13 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
                   whileInView="visible"
                   viewport={{ once: true, margin: "-50px" }}
                   variants={variants}
-                  className="group bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-xl transition-all duration-300 p-8 border border-gray-100 hover:border-[#0073bc]/20 transform hover:-translate-y-1"
+                  className={`group bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-xl transition-all duration-300 p-8 border border-gray-100 hover:border-[#0073bc]/20 transform hover:-translate-y-1 ${(category as any).page ? 'cursor-pointer' : ''
+                    }`}
+                  onClick={() => {
+                    if ((category as any).page && onNavigate) {
+                      onNavigate((category as any).page);
+                    }
+                  }}
                 >
                   <div className="icon-wrap mb-6 mx-auto group-hover:bg-[#0073bc]/10 transition-colors duration-300">
                     {category.image ? (
@@ -157,6 +242,81 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
                     {category.title === 'Effluent Treatment Plants' && '🏭 '}
                     {category.title === 'PLC Control Panels' && '📟 '}
                     {category.title === 'IoT Sensors' && '📶 '}
+                    {category.title}
+                  </h3>
+                  <p className="text-gray-600 mb-6 text-sm">
+                    {category.description}
+                  </p>
+                  <ul className="space-y-2">
+                    {category.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-start text-sm text-gray-700">
+                        <span className="text-[#0073bc] mr-2">✓</span>
+                        <span>{feature}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              );
+            })}
+          </div>
+
+          {/* New Hero Section for remaining products */}
+          <div className="relative rounded-2xl overflow-hidden shadow-xl my-16 h-[300px] flex items-center justify-center">
+            <img
+              src={productsHeroBg}
+              alt="Products Banner"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/50" />
+            <div className="relative z-10 text-center px-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">All Products</h2>
+              <p className="text-xl md:text-2xl text-white/90 font-medium">Explore Our Complete Range of Smart & Reliable Solutions</p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {productCategories.slice(6).map((category, index) => {
+              // Adjust index for staggered animation continuity
+              const actualIndex = index + 6;
+              const position = actualIndex % 3;
+              const variants = {
+                hidden: {
+                  opacity: 0,
+                  x: position === 0 ? 100 : position === 2 ? -100 : 0,
+                  scale: position === 1 ? 0.95 : 1
+                },
+                visible: {
+                  opacity: 1,
+                  x: 0,
+                  scale: 1,
+                  transition: { duration: 1.2, ease: "easeOut" as any, delay: index * 0.05 }
+                }
+              };
+
+              return (
+                <motion.div
+                  key={actualIndex}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, margin: "-50px" }}
+                  variants={variants}
+                  className={`group bg-white rounded-2xl shadow-[0_10px_30px_rgba(0,0,0,0.1)] hover:shadow-xl transition-all duration-300 p-8 border border-gray-100 hover:border-[#0073bc]/20 transform hover:-translate-y-1 ${(category as any).page ? 'cursor-pointer' : ''
+                    }`}
+                  onClick={() => {
+                    if ((category as any).page && onNavigate) {
+                      onNavigate((category as any).page);
+                    }
+                  }}
+                >
+                  <div className="icon-wrap mb-6 mx-auto group-hover:bg-[#0073bc]/10 transition-colors duration-300">
+                    {category.image ? (
+                      <img src={category.image} alt={`${category.title} system design and installation by Orbit Engineering Bhopal`} className="icon-img icon-hover group-hover:scale-110 transition-transform duration-300" />
+                    ) : (
+                      <category.icon className="h-10 w-10 text-[#0073bc] mx-auto group-hover:scale-110 transition-transform duration-300" />
+                    )}
+                  </div>
+
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
                     {category.title}
                   </h3>
                   <p className="text-gray-600 mb-6 text-sm">

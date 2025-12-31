@@ -250,7 +250,7 @@ export default function ClientsPage() {
                     <p className="text-gray-600 text-sm mb-2">Call us directly for immediate assistance</p>
                     <div className="flex flex-col space-y-1">
                       <a href="tel:7024128029" className="text-[#0073bc] font-medium hover:text-[#005a94] transition-colors">+91 70241 28029</a>
-                      <a href="tel:8817770367" className="text-[#0073bc] font-medium hover:text-[#005a94] transition-colors">+91 88177 70367</a>
+                      <a href="tel:+917440969201" className="text-[#0073bc] font-medium hover:text-[#005a94] transition-colors">+91 7440969201</a>
                       <a href="tel:9893091450" className="text-[#0073bc] font-medium hover:text-[#005a94] transition-colors">+91 98930 91450</a>
                     </div>
                   </div>

@@ -64,7 +64,7 @@ export const RAW_SUB_PRODUCTS = [
         ]
       },
       {
-        name: 'Ultrasonic flow meter',
+        name: 'Open Channel Ultrasonic Flow Meter',
         image: ultrasonicLevelTx,
         datasheetUrl: '/datasheets/ultrasonic-flow-meter.pdf',
         paragraphs: [

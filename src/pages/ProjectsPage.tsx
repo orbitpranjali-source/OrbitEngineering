@@ -203,22 +203,38 @@ export default function ProjectsPage({ initialFilter = 'all', onNavigate }: Proj
             className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8"
           >
             <button
-              onClick={() => setFilter('all')}
-              className="relative z-30 flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-gray-600 to-gray-700 text-white font-semibold hover:from-gray-700 hover:to-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer"
+              onClick={() => {
+                setFilter('all');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className={`relative z-30 flex items-center px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer font-semibold ${filter === 'all'
+                  ? 'bg-gradient-to-r from-gray-700 to-gray-900 text-white scale-105'
+                  : 'bg-white text-gray-700 hover:bg-gray-50'
+                }`}
             >
               <Building2 className="h-5 w-5 mr-2" />
               All Projects
             </button>
             <button
-              onClick={() => scrollToSection('completed')}
-              className="relative z-30 flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold hover:from-green-600 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer"
+              onClick={() => {
+                setFilter('completed');
+              }}
+              className={`relative z-30 flex items-center px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer font-semibold ${filter === 'completed'
+                  ? 'bg-gradient-to-r from-green-500 to-green-600 text-white scale-105'
+                  : 'bg-white text-gray-700 hover:bg-green-50 hover:text-green-600'
+                }`}
             >
               <CheckCircle2 className="h-5 w-5 mr-2" />
               Completed Projects
             </button>
             <button
-              onClick={() => scrollToSection('ongoing')}
-              className="relative z-30 flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-[#0073bc] to-[#005a94] text-white font-semibold hover:from-[#005a94] hover:to-[#004080] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer"
+              onClick={() => {
+                setFilter('ongoing');
+              }}
+              className={`relative z-30 flex items-center px-6 py-3 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 cursor-pointer font-semibold ${filter === 'ongoing'
+                  ? 'bg-gradient-to-r from-[#0073bc] to-[#005a94] text-white scale-105'
+                  : 'bg-white text-gray-700 hover:bg-blue-50 hover:text-[#0073bc]'
+                }`}
             >
               <Clock className="h-5 w-5 mr-2" />
               Ongoing Projects

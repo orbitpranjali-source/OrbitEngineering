@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Gauge, Activity, Zap, Camera, Wrench, BarChart3, CheckCircle, ArrowRight } from 'lucide-react';
+import { Gauge, Activity, Zap, Camera, Wrench, BarChart3, CheckCircle, ArrowRight, FlaskConical } from 'lucide-react';
 import { RAW_SUB_PRODUCTS } from '../data/rawProducts';
 import { MotionFadeUp, AnimatedHeading } from '../components/Animated';
 
@@ -34,7 +34,7 @@ export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Product Range</h2>
             <p className="text-lg text-gray-600">{subtitle}</p>
           </div>
-          <div className="flex flex-wrap gap-4 md:gap-5">
+          <div className="flex flex-wrap justify-center gap-4 md:gap-5">
             {items.map((item, idx) => {
               const key = `${categoryName}-${idx}`;
               const isExpanded = !!expandedMap[key];
@@ -295,6 +295,35 @@ export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
         { parameter: 'Ambient Temperature', value: '-40°C to +85°C' },
         { parameter: 'Process Temperature', value: '-40°C to +120°C' }
       ]
+    },
+    'chlorinators': {
+      title: 'Chlorinators',
+      description: 'Safe and efficient chlorination systems for water disinfection and purification.',
+      icon: FlaskConical,
+      features: [
+        'Vacuum operated safety',
+        'Automatic switchover systems',
+        'Remote vacuum regulation',
+        'Precise dosage control',
+        'Gas warning systems',
+        'Easy maintenance design'
+      ],
+      applications: [
+        'Drinking water treatment',
+        'Swimming pools & aquatics',
+        'Wastewater disinfection',
+        'Industrial cooling water',
+        'Food & beverage processing',
+        'Power plant cooling'
+      ],
+      specifications: [
+        { parameter: 'Dosage Capacity', value: 'Up to 200 kg/h' },
+        { parameter: 'Control Type', value: 'Manual, Automatic (Flow/Residual)' },
+        { parameter: 'Mounting', value: 'Wall, Floor, Direct-mount' },
+        { parameter: 'Backpressure', value: 'Up to 10 bar' },
+        { parameter: 'Material', value: 'High-grade PVC/ABS' },
+        { parameter: 'Vacuum', value: 'Operating vacuum < 0.1 bar' }
+      ]
     }
   };
 
@@ -335,6 +364,7 @@ export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
       {variant === 'cameras' && renderGallery('Cameras & Vision', 'Rugged vision and surveillance systems for utilities')}
       {variant === 'jointing' && renderGallery('Jointing Machines', 'Professional jointing equipment for plastic piping systems')}
       {variant === 'rosemount' && renderGallery('Rosemount 3051S Series Coplanar Pressure Transmitter', 'Premium 3051S models and options')}
+      {variant === 'chlorinators' && renderGallery('Chlorinators', 'Reliable chlorination systems for water safety')}
 
       {/* Features Section */}
       {page.features.length > 0 && (

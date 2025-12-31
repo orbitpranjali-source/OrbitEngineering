@@ -101,7 +101,7 @@ export default function ContactPage() {
                     <h3 className="font-semibold text-gray-900 mb-1">Phone</h3>
                     <div className="text-gray-600 space-y-1">
                       <div><a href="tel:7024128029" className="hover:text-[#0073bc] transition-colors">+91 70241 28029</a></div>
-                      <div><a href="tel:8817770367" className="hover:text-[#0073bc] transition-colors">+91 88177 70367</a></div>
+                      <div><a href="tel:+917440969201" className="hover:text-[#0073bc] transition-colors">+91 7440969201</a></div>
                       <div><a href="tel:9893091450" className="hover:text-[#0073bc] transition-colors">+91 98930 91450</a></div>
                     </div>
                   </div>

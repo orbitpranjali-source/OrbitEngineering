@@ -6,11 +6,12 @@ import iconCommunity from '../assets/icon/Community Focus.png';
 import iconEndToEnd from '../assets/icon/End-to-End Solutions.png';
 import iconResults from '../assets/icon/Results Oriented.png';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
+import headingBg from '../assets/products/hero-section.jpg';
 import HeroSection from '../components/HeroSection';
 import { motion } from 'framer-motion';
 import { AnimatedHeading } from '../components/Animated';
 import SEO from '../components/SEO';
-import mapGif from '../assets/my_map.gif';
+import mapGif from '../assets/my_VisitedPlaces.gif';
 
 export default function AboutPage() {
   const whyChooseUs = [
@@ -162,13 +163,16 @@ export default function AboutPage() {
       </section>
 
       <section className="bg-white py-12">
-        {/* Header content with white background */}
-        <div className="relative px-4 mb-8">
-          <div className="relative z-10 text-center max-w-4xl mx-auto">
-            <AnimatedHeading level={2} className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+
+        {/* Header content with background image */}
+        <div className="relative w-full h-[400px] mb-16 flex items-center justify-center overflow-hidden">
+          <img src={headingBg} alt="Background" className="absolute inset-0 w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-black/60" />
+          <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+            <AnimatedHeading level={2} className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">
               Our Trusted Partner in Smart Water Management
             </AnimatedHeading>
-            <p className="text-xl md:text-2xl text-gray-600 font-medium max-w-2xl mx-auto leading-relaxed">
+            <p className="text-xl md:text-2xl text-blue-100 font-medium max-w-2xl mx-auto leading-relaxed">
               Enhancing productivity and sustainability through smart automation.
             </p>
           </div>
@@ -181,14 +185,25 @@ export default function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative rounded-3xl shadow-2xl overflow-hidden bg-white border border-gray-100"
+            className="relative rounded-3xl shadow-2xl overflow-hidden bg-white border border-gray-100 transform hover:shadow-[0_20px_50px_rgba(0,0,0,0.15)] transition-shadow duration-500"
           >
             <div className="aspect-video w-full overflow-hidden relative">
-              <img
+              <motion.img
                 src={mapGif}
                 alt="Global Presence Map"
-                className="w-full h-full object-cover contrast-125 saturate-110"
+                initial={{ scale: 1.02 }} // Start slightly scaled to help with general edge artifacts
+                animate={{ scale: 1.08 }} // Subtle breathing/zoom animation
+                transition={{
+                  duration: 12,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                  ease: "easeInOut"
+                }}
+                className="w-full h-full object-cover contrast-110 saturate-110" // Reduced contrast slightly to hide artifacts
+                style={{ clipPath: 'inset(0 4px 0 0)' }} // Crops 4px from the right side to remove black border
               />
+              {/* Inner shadow for depth and to mask edges further */}
+              <div className="absolute inset-0 shadow-[inset_0_0_40px_rgba(0,0,0,0.1)] pointer-events-none" />
             </div>
           </motion.div>
         </div>
@@ -224,7 +239,7 @@ export default function AboutPage() {
               <h3 className="font-semibold text-gray-900 mb-2">Phone</h3>
               <div className="text-gray-600 text-sm space-y-1">
                 <p><a href="tel:7024128029" className="hover:text-[#0073bc] transition-colors">+91 70241 28029</a></p>
-                <p><a href="tel:8817770367" className="hover:text-[#0073bc] transition-colors">+91 88177 70367</a></p>
+                <p><a href="tel:+917440969201" className="hover:text-[#0073bc] transition-colors">+91 7440969201</a></p>
                 <p><a href="tel:9893091450" className="hover:text-[#0073bc] transition-colors">+91 98930 91450</a></p>
               </div>
             </div>
