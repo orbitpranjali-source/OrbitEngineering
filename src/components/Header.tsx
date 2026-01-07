@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Waves, Activity, Settings, Cpu, Camera, Wrench, Gauge, Droplets, Grid } from 'lucide-react';
 import logo2 from '/src/assets/Orbit LOGO.png';
 
 interface HeaderProps {
@@ -25,14 +25,14 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
   ];
 
   const productCategories = [
-    { label: 'Flow Meters', page: 'product-info:flow-meters' },
-    { label: 'Analyzers & Transmitters', page: 'product-info:analyzers' },
-    { label: 'Valves & Piping', page: 'product-info:valves' },
-    { label: 'Automation (IoT / PLC / RTU / SCADA)', page: 'product-info:automation' },
-    { label: 'Cameras & Vision', page: 'product-info:cameras' },
-    { label: 'Jointing Machines', page: 'product-info:jointing' },
-    { label: 'Rosemount 3051S Series Coplanar Pressure Transmitter', page: 'product-info:rosemount' },
-    { label: 'Chlorinators', page: 'product-info:chlorinators' },
+    { label: 'Flow Meters', page: 'product-info:flow-meters', icon: Waves },
+    { label: 'Analyzers & Transmitters', page: 'product-info:analyzers', icon: Activity },
+    { label: 'Valves & Piping', page: 'product-info:valves', icon: Settings },
+    { label: 'Automation (IoT / PLC / RTU / SCADA)', page: 'product-info:automation', icon: Cpu },
+    { label: 'Cameras & Vision', page: 'product-info:cameras', icon: Camera },
+    { label: 'Jointing Machines', page: 'product-info:jointing', icon: Wrench },
+    { label: 'Rosemount 3051S Series Coplanar Pressure Transmitter', page: 'product-info:rosemount', icon: Gauge },
+    { label: 'Chlorinators', page: 'product-info:chlorinators', icon: Droplets },
   ];
 
   // Close dropdown when clicking outside
@@ -122,8 +122,9 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                           onNavigate('products');
                           setProductsDropdownOpen(false);
                         }}
-                        className="text-sm font-semibold text-[#005B9A] hover:text-[#005a94] transition-colors"
+                        className="flex items-center text-sm font-semibold text-[#005B9A] hover:text-[#005a94] transition-colors"
                       >
+                        <Grid className="w-4 h-4 mr-2" />
                         All Products
                       </button>
                     </div>
@@ -135,8 +136,9 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                             onNavigate(category.page);
                             setProductsDropdownOpen(false);
                           }}
-                          className="block w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-[#005B9A] hover:text-white transition-all duration-300 rounded-lg mx-2 my-1"
+                          className="group flex items-center w-full text-left px-4 py-3 text-sm text-gray-700 hover:bg-[#005B9A] hover:text-white transition-all duration-300 rounded-lg mx-2 my-1"
                         >
+                          <category.icon className="w-4 h-4 mr-3 text-[#005B9A] group-hover:text-white transition-colors" />
                           {category.label}
                         </button>
                       ))}
@@ -234,9 +236,10 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                       setMobileMenuOpen(false);
                       setMobileProductsDropdownOpen(false);
                     }}
-                    className={`block w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${currentPage === 'products' ? 'bg-[#005B9A] text-white shadow-lg' : 'text-gray-600 hover:bg-blue-50 hover:text-[#005B9A]'
+                    className={`flex items-center w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${currentPage === 'products' ? 'bg-[#005B9A] text-white shadow-lg' : 'text-gray-600 hover:bg-blue-50 hover:text-[#005B9A]'
                       }`}
                   >
+                    <Grid className="w-4 h-4 mr-3" />
                     All Products
                   </button>
                   {productCategories.map((category) => (
@@ -247,9 +250,10 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
                         setMobileMenuOpen(false);
                         setMobileProductsDropdownOpen(false);
                       }}
-                      className={`block w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${currentPage === category.page ? 'bg-[#005B9A] text-white shadow-lg' : 'text-gray-600 hover:bg-blue-50 hover:text-[#005B9A]'
+                      className={`flex items-center w-full text-left px-4 py-3 rounded-full text-sm font-medium transition-all duration-300 ${currentPage === category.page ? 'bg-[#005B9A] text-white shadow-lg' : 'text-gray-600 hover:bg-blue-50 hover:text-[#005B9A]'
                         }`}
                     >
+                      <category.icon className="w-4 h-4 mr-3" />
                       {category.label}
                     </button>
                   ))}
