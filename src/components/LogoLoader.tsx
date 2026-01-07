@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import logo from '/src/assets/Orbit logo_1.png';
+import logo from '../assets/Orbit logo_1.png';
 
 interface LogoLoaderProps {
     isVisible: boolean;
@@ -127,7 +127,7 @@ export default function LogoLoader({ isVisible }: LogoLoaderProps) {
                                     ease: "easeInOut"
                                 }}
                                 style={{
-                                    mixBlendingMode: 'overlay',
+                                    mixBlendMode: 'overlay',
                                     maskImage: `url(${logo})`,
                                     WebkitMaskImage: `url(${logo})`,
                                     maskSize: 'contain',
