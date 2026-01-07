@@ -31,7 +31,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Orbit Engineering on LinkedIn"
-                className="text-gray-400 hover:text-[#0073bc] transition-colors"
+                className="text-gray-400 hover:text-[#0A66C2] transition-colors"
               >
                 <Linkedin className="h-5 w-5" />
               </a>
@@ -40,7 +40,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Orbit Engineering on Instagram"
-                className="text-gray-400 hover:text-[#0073bc] transition-colors"
+                className="text-gray-400 hover:text-[#E4405F] transition-colors"
               >
                 <Instagram className="h-5 w-5" />
               </a>
@@ -49,7 +49,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Orbit Engineering on WhatsApp"
-                className="text-gray-400 hover:text-[#0073bc] transition-colors"
+                className="text-gray-400 hover:text-[#25D366] transition-colors"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
