@@ -324,6 +324,34 @@ export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
         { parameter: 'Material', value: 'High-grade PVC/ABS' },
         { parameter: 'Vacuum', value: 'Operating vacuum < 0.1 bar' }
       ]
+    },
+    'transformers': {
+      title: 'Transformers',
+      description: 'High-performance power and distribution transformers for grid stability and industrial applications.',
+      icon: Zap,
+      features: [
+        'High efficiency design',
+        'Short circuit strength',
+        'Low noise operation',
+        'Weather resistant',
+        'Long operational life',
+        'KEMA Tested'
+      ],
+      applications: [
+        'Power transmission',
+        'Grid interconnection',
+        'Urban & Rural distribution',
+        'Renewable energy',
+        'Industrial facilities',
+        'Railway traction'
+      ],
+      specifications: [
+        { parameter: 'Voltage Range', value: '11kV to 765kV' },
+        { parameter: 'Power Ratings', value: 'Up to 1500 MVA' },
+        { parameter: 'Efficiency', value: '98%+' },
+        { parameter: 'Type', value: 'Auto, Distribution, Shunt, Traction' },
+        { parameter: 'Standard', value: 'ANSI, IEC' }
+      ]
     }
   };
 
@@ -363,7 +391,8 @@ export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
       {variant === 'automation' && renderGallery('Automation (IoT / PLC / RTU / SCADA)', 'Integrated automation platforms for intelligent water management')}
       {variant === 'cameras' && renderGallery('Cameras & Vision', 'Rugged vision and surveillance systems for utilities')}
       {variant === 'jointing' && renderGallery('Jointing Machines', 'Professional jointing equipment for plastic piping systems')}
-      {variant === 'rosemount' && renderGallery('Rosemount 3051S Series Coplanar Pressure Transmitter', 'Premium 3051S models and options')}
+      {variant === 'rosemount' && renderGallery('Pressure Transmitter', 'Premium models and options')}
+      {variant === 'transformers' && renderGallery('Transformers', 'High-performance power and distribution solutions')}
       {variant === 'chlorinators' && renderGallery('Chlorinators', 'Reliable chlorination systems for water safety')}
 
       {/* Features Section */}

@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Menu, X, ChevronDown, Waves, Activity, Settings, Cpu, Camera, Wrench, Gauge, Droplets, Grid } from 'lucide-react';
+import { Menu, X, ChevronDown, Waves, Activity, Settings, Cpu, Camera, Wrench, Gauge, Droplets, Grid, Zap } from 'lucide-react';
 import logo2 from '/src/assets/Orbit LOGO.png';
 
 interface HeaderProps {
@@ -31,7 +31,8 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
     { label: 'Automation (IoT / PLC / RTU / SCADA)', page: 'product-info:automation', icon: Cpu },
     { label: 'Cameras & Vision', page: 'product-info:cameras', icon: Camera },
     { label: 'Jointing Machines', page: 'product-info:jointing', icon: Wrench },
-    { label: 'Rosemount 3051S Series Coplanar Pressure Transmitter', page: 'product-info:rosemount', icon: Gauge },
+    { label: 'Pressure Transmitter', page: 'product-info:rosemount', icon: Gauge },
+    { label: 'Transformers', page: 'product-info:transformers', icon: Zap },
     { label: 'Chlorinators', page: 'product-info:chlorinators', icon: Droplets },
   ];
 

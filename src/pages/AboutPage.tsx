@@ -67,7 +67,7 @@ export default function AboutPage() {
               </AnimatedHeading>
               <div className="space-y-4 text-gray-700 leading-relaxed">
                 <p>
-                  Orbit is at the forefront of transforming India's water infrastructure through innovative technology and sustainable practices. Since our inception, we have been committed to addressing the nation's water challenges with intelligent, scalable solutions.
+                  <strong>Orbit</strong> is at the forefront of transforming India's water infrastructure through innovative technology and sustainable practices. Since our inception, we have been committed to addressing the nation's water challenges with intelligent, scalable solutions.
                 </p>
                 <p>
                   Our expertise spans the complete spectrum of water management from treatment plant automation and IoT-enabled monitoring to comprehensive operation and maintenance services. We specialize in integrating cutting-edge PLC-based automation, SCADA systems, and cloud platforms to deliver real-time control and unprecedented efficiency.
@@ -76,7 +76,7 @@ export default function AboutPage() {
                   With a portfolio of projects valued at over 200 crores, we have touched millions of lives across urban municipal corporations and rural communities. Our solutions are designed not just for today, but to create resilient water infrastructure for generations to come.
                 </p>
                 <p>
-                  At Orbit, we believe that sustainable water management is the cornerstone of healthy communities and environmental stewardship. Every project we undertake reflects our commitment to excellence, innovation, and positive social impact.
+                  At <strong>Orbit</strong>, we believe that sustainable water management is the cornerstone of healthy communities and environmental stewardship. Every project we undertake reflects our commitment to excellence, innovation, and positive social impact.
                 </p>
               </div>
             </div>

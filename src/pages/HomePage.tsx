@@ -394,13 +394,13 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             </div>
             <div className="space-y-4 text-gray-700 leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
               <p>
-                Established in 1998 in Bhopal, Orbit Engineering Group builds on a legacy exceeding four decades of engineering excellence. We deliver turnkey systems — from design and steel fabrication to PLC/SCADA integration and long-term O&M — through an ISO 9001-certified quality framework.
+                Established in <strong>1998</strong> in Bhopal, <strong>Orbit</strong> Engineering Group builds on a legacy exceeding four decades of engineering excellence. We deliver turnkey systems — from design and steel fabrication to PLC/SCADA integration and long-term O&M — through an <strong>ISO 9001</strong>-certified quality framework.
               </p>
               <p>
                 Our ambition is to lead in water innovation — offering holistic, sustainable, and affordable solutions that elevate access to clean water, optimize resource management, and uplift communities across India and beyond.
               </p>
               <p>
-                <strong>Our Mission:</strong> To innovate with purpose, deliver with integrity, and provide water systems grounded in environmental stewardship. At Orbit, every project is a promise fulfilled — for a cleaner, more resilient tomorrow.
+                <strong>Our Mission:</strong> To innovate with purpose, deliver with integrity, and provide water systems grounded in environmental stewardship. At <strong>Orbit</strong>, every project is a promise fulfilled — for a cleaner, more resilient tomorrow.
               </p>
             </div>
           </div>

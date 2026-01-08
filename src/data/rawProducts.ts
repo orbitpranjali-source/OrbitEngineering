@@ -5,8 +5,8 @@ import ultrasonicLevelTx from '../assets/products/ultrasonic-level-tx.jpg';
 import waterMeter from '../assets/products/water-meter.jpg';
 import chlorineTransmitter from '../assets/products/chlorine-transmitter.jpg';
 import doTransmitter from '../assets/products/do-transmitter.png';
-import phTransmitter from '../assets/products/ph-transmitter.jpg';
-import turbidityTransmitter from '../assets/products/turbidity-transmitter.jpg';
+import phAnalyzer from '../assets/products/ph-analyzer.png';
+import turbidityTransmitter from '../assets/products/turbidity-transmitter.png';
 import differentialPressureTransmitter from '../assets/products/differential-pressure-transmitter.jpg';
 import smartTypePressureTransmitter from '../assets/products/smart-type-pressure-transmitter.jpg';
 import hydrostaticLevelTx from '../assets/products/hydrostatic-level-tx.jpg';
@@ -32,6 +32,12 @@ import buttFusionJointing from '../assets/products/butt-fusion-jointing.jpg';
 import electrofusionJointingMachine from '../assets/products/electrofusion-jointing-machine.jpg';
 import hdpeFittings from '../assets/products/hdpe-fittings.jpg';
 import chlorinator from '../assets/products/chlorinator.png';
+import plc from '../assets/products/plc.png';
+import autoTransformer from '../assets/products/auto-transformer.png';
+import distributionTransformer from '../assets/products/distribution-transformer.png';
+import shuntReactor from '../assets/products/shunt-reactor.png';
+import locomotiveTransformer from '../assets/products/locomotive-transformer.png';
+import sf6CircuitBreaker from '../assets/products/sf6-circuit-breaker.png';
 
 export const RAW_SUB_PRODUCTS = [
   {
@@ -123,8 +129,8 @@ export const RAW_SUB_PRODUCTS = [
         ]
       },
       {
-        name: 'pH Transmitter',
-        image: phTransmitter,
+        name: 'pH Analyzer',
+        image: phAnalyzer,
         bullets: [
           'Up to four analysis inputs in any combination for direct connection of sensors for liquid analysis',
           'Up to 21 further measuring signals can be connected either directly or via interface',
@@ -327,7 +333,7 @@ export const RAW_SUB_PRODUCTS = [
       },
       {
         name: 'PLC',
-        image: 'https://syncwatertech.com/wp-content/uploads/2024/08/PLC.jpg',
+        image: plc,
         datasheetUrl: '/datasheets/plc-systems.pdf',
         paragraphs: ['Programmable Logic Controllers for industrial automation and process control in water treatment systems.'],
         bullets: [
@@ -493,7 +499,7 @@ export const RAW_SUB_PRODUCTS = [
     ]
   },
   {
-    category: 'Rosemount 3051S Series Coplanar Pressure Transmitter',
+    category: 'Pressure Transmitter',
     items: [
       {
         name: 'Blind Type Pressure Transmitter',
@@ -548,6 +554,107 @@ export const RAW_SUB_PRODUCTS = [
           'Odor control capability',
           'Marine growth prevention',
           'Service water system use'
+        ]
+      }
+    ]
+  },
+  {
+    category: 'Transformers',
+    items: [
+      {
+        name: 'Auto Transformers',
+        image: autoTransformer,
+        paragraphs: [
+          'Auto Transformers are frequently used in power applications to interconnect systems operating at different voltage classes, for example 400 kV to 220 kV for transmission. They are also often used for providing conversions between the two common domestic main voltage bands in the world (400, 200, 66 kV).',
+          'The links between the UK 400 kV and 275 kV SuperGrid networks are normally three-phase autotransformers with taps at the common neutral end. Autotransformers are built with common main winding and a separate low voltage winding. For long distance rural power distribution lines, special autotransformers with automatic tap-changing equipment are inserted as voltage regulators.'
+        ],
+        bullets: [
+          'Better short circuit strength',
+          'Compact design',
+          'Durability',
+          'Optimum losses',
+          'KEMA Tested',
+          'Epoxy bonded CTC for improved short circuit withstand',
+          'Voltage: 132 to 765 kV',
+          'Ratings: 50 to 1500 MVA',
+          'Standard: ANSI',
+          'Applications: Power transmission, Grid interconnection, Voltage regulation for rural distribution, SuperGrid networks'
+        ]
+      },
+      {
+        name: 'Distribution Transformers',
+        image: distributionTransformer,
+        paragraphs: [
+          'Distribution Transformer is an essential electrical device used to step down the high voltage from power transmission lines to a lower voltage suitable for safe use in homes, offices, and industries.',
+          'It ensures efficient distribution of electricity at the consumer level while minimizing power losses. These transformers are generally installed on poles, pads, or substations and play a vital role in providing reliable and continuous power supply in the distribution network. They are designed for maximum efficiency and long operational life.'
+        ],
+        bullets: [
+          'High efficiency design',
+          'Low power losses',
+          'Pole/Pad mountable',
+          'Weather resistant',
+          'Long operational life',
+          'Minimal maintenance required',
+          'Voltage: 11kV to 33kV',
+          'Installation: Pole/Pad/Substation',
+          'Efficiency: 98%+',
+          'Applications: Residential distribution, Commercial buildings, Industrial facilities, Rural electrification, Urban substations'
+        ]
+      },
+      {
+        name: 'Shunt Reactors',
+        image: shuntReactor,
+        paragraphs: [
+          'Shunt Reactors are used to improve power system stability by absorbing excess reactive power in high-voltage transmission lines. They enhance voltage regulation, reduce losses, and ensure efficient grid performance.',
+          'Essential components for modern power grids, shunt reactors manage reactive power to maintain voltage stability across long transmission distances. They prevent over-voltage conditions and optimize power flow efficiency with low-noise operation.'
+        ],
+        bullets: [
+          'Reactive power compensation',
+          'Voltage stabilization',
+          'Low noise operation',
+          'Oil-immersed design',
+          'Gapped core technology',
+          'Extended service intervals',
+          'Voltage: Up to 765 kV',
+          'Type: Oil Immersed',
+          'Core: Gapped Design',
+          'Applications: High-voltage transmission, Grid stabilization, Reactive power management, Long transmission lines'
+        ]
+      },
+      {
+        name: 'Locomotive & Trackside Transformers',
+        image: locomotiveTransformer,
+        paragraphs: [
+          'Locomotive and Trackside Power Transformers provide reliable and efficient power solutions for railway operations. They are engineered to withstand dynamic loads, ensure smooth traction, and support continuous, safe rail network performance.',
+          'Designed specifically for the demanding railway environment, these transformers handle the unique challenges of traction power systems. From high-speed trains to metro networks, our solutions ensure uninterrupted power delivery with robust vibration resistance.'
+        ],
+        bullets: [
+          'Dynamic load handling',
+          'Vibration resistant design',
+          'Compact footprint',
+          'High efficiency ratings',
+          'Weather resistant enclosure',
+          'Quick fault recovery',
+          'Application: Railway Traction',
+          'Design: Compact & Robust',
+          'Performance: High Efficiency',
+          'Applications: Electric locomotives, Metro systems, High-speed rail, Trackside substations, Railway electrification'
+        ]
+      },
+      {
+        name: 'AIS (SF6) Circuit Breaker Up To 800 kV',
+        image: sf6CircuitBreaker,
+        paragraphs: [
+          'AIS (Air Insulated Substation) SF₆ Circuit Breaker up to 800 kV is a high-voltage switching device used in air-insulated substations to control, protect, and isolate electrical equipment in transmission networks.',
+          'It utilizes sulfur hexafluoride (SF₆) gas as the insulating and arc-quenching medium, which provides excellent dielectric strength and high interrupting capability, enabling safe and reliable operation even at ultra-high voltages like 800 kV. This technology ensures minimal footprint and maximum reliability.'
+        ],
+        bullets: [
+          'SF₆ gas insulation',
+          'High interrupting capability',
+          'Excellent dielectric strength',
+          'Ultra-high voltage rated',
+          'Reliable arc quenching',
+          'Compact design'
         ]
       }
     ]

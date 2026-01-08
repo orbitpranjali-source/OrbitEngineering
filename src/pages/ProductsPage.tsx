@@ -169,7 +169,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
     {
       icon: BarChart3,
       page: 'product-info:rosemount',
-      title: 'Rosemount Transmitters',
+      title: 'Pressure Transmitter',
       description: 'High-performance pressure and level transmitters',
       features: [
         '3051S Series',
@@ -177,6 +177,19 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
         'High stability',
         'Advanced diagnostics',
         'HART communication'
+      ]
+    },
+    {
+      icon: Zap,
+      page: 'product-info:transformers',
+      title: 'Transformers',
+      description: 'Power and distribution transformers for grid stability',
+      features: [
+        'Auto Transformers',
+        'Distribution Transformers',
+        'Shunt Reactors',
+        'Locomotive Transformers',
+        'High Efficiency'
       ]
     }
   ];
