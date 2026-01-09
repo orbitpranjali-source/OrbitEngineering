@@ -29,7 +29,7 @@ import highSpeedCamera from '../assets/products/high-speed-camera.jpg';
 import ptzCamera from '../assets/products/ptz-camera.jpg';
 import bigJointingMachines from '../assets/products/big-jointing-machines.jpg';
 import buttFusionJointing from '../assets/products/butt-fusion-jointing.jpg';
-import electrofusionJointingMachine from '../assets/products/electrofusion-jointing-machine.jpg';
+import electrofusionJointingMachine from '../assets/products/electrofusion.jpeg';
 import hdpeFittings from '../assets/products/hdpe-fittings.jpg';
 import chlorinator from '../assets/products/chlorinator.png';
 import plc from '../assets/products/plc.png';
