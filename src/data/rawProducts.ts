@@ -3,7 +3,7 @@ import bulkFlowMeter from '../assets/products/bulk-flow-meter.jpg';
 import electromagneticFlowMeter from '../assets/products/electromagnetic-flow-meter.jpg';
 import ultrasonicLevelTx from '../assets/products/ultrasonic-level-tx.jpg';
 import waterMeter from '../assets/products/water-meter.jpg';
-import chlorineTransmitter from '../assets/products/chlorine-transmitter.jpg';
+import chlorineTransmitter from '../assets/products/chlorine-transmitter-new.jpg';
 import doTransmitter from '../assets/products/do-transmitter.png';
 import phAnalyzer from '../assets/products/ph-analyzer.png';
 import turbidityTransmitter from '../assets/products/turbidity-transmitter.png';
@@ -18,7 +18,7 @@ import butterflyValves from '../assets/products/butter-fly-valves.jpg';
 import gateValve from '../assets/products/gate-valve.jpg';
 import motorizedBallValve from '../assets/products/motorized-ball-valve.jpg';
 import sluceValves from '../assets/products/sluce-valves.jpg';
-import rtu from '../assets/products/rtu.jpg';
+import rtu from '../assets/products/rtu-remote.png';
 import scada from '../assets/products/scada.jpg';
 import iot from '../assets/products/iot.png';
 import servers from '../assets/products/servers.jpg';
@@ -344,7 +344,7 @@ export const RAW_SUB_PRODUCTS = [
         ]
       },
       {
-        name: 'RTU',
+        name: 'RTU (Remote Terminal Unit)',
         image: rtu,
         datasheetUrl: '/datasheets/rtu-units.pdf',
         paragraphs: ['Event based secure protocol connects clients (producers and subscribers) to get live data (semi real-time) even on non-real-time connections.'],

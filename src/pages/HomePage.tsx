@@ -36,13 +36,19 @@ function DualAnimationSection() {
     }
   };
 
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.7 } }
+  };
+
   const leftVariants = {
     hidden: { opacity: 0, x: -80 },
     visible: {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.9
+        duration: 0.9,
+        staggerChildren: 0.3
       }
     }
   };
@@ -70,12 +76,12 @@ function DualAnimationSection() {
         >
           {/* Left Side - Text Content */}
           <motion.div variants={leftVariants} className="space-y-6">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+            <motion.h2 variants={itemVariants} className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight tracking-tight">
               Innovative Tech to Drive Sustainable Water Management
-            </h2>
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#0073bc] leading-tight">
+            </motion.h2>
+            <motion.h3 variants={itemVariants} className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#0073bc] leading-tight">
               Leveraging advanced automation and cloud-based systems to revolutionize water infrastructure.
-            </h3>
+            </motion.h3>
           </motion.div>
 
           {/* Right Side - Image Content */}
@@ -122,17 +128,10 @@ function AutomationSection() {
     }
   };
 
-  // Content container animation - slide from right
-  const contentVariants = {
-    hidden: { opacity: 0, x: 100 },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: 0.9,
-        delay: 0.3
-      }
-    }
+  // Individual item animation for staggered content
+  const contentItemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
 
   // Stagger container for bullet points
@@ -169,7 +168,7 @@ function AutomationSection() {
   ];
 
   return (
-    <section className="py-20 bg-white" ref={ref}>
+    <section className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading with Background Image */}
         <motion.div
@@ -207,14 +206,21 @@ function AutomationSection() {
 
           {/* Right Side - Content with slide from right animation */}
           <motion.div
-            variants={contentVariants}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: { opacity: 1, transition: { staggerChildren: 0.3 } }
+            }}
+            ref={ref}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
             className="order-1 lg:order-2 space-y-6 lg:pl-8"
           >
-            <p className="text-lg text-gray-700 leading-relaxed">
+            <motion.p
+              variants={contentItemVariants}
+              className="text-lg text-gray-600 leading-relaxed font-light"
+            >
               Orbit Engineering Group specialises in advanced automation — adopting state-of-the-art technologies to enhance water resource management, efficiency and sustainability:
-            </p>
+            </motion.p>
 
             {/* Bullet Points with staggered animations */}
             <motion.ul
@@ -387,22 +393,35 @@ export default function HomePage({ onNavigate }: HomePageProps) {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between mb-4">
-              <h3 className="text-2xl font-bold text-[#0073bc]">About Orbit Engineering Group</h3>
+              <h3 className="text-2xl font-bold text-[#0073bc] tracking-tight">About Orbit Engineering Group</h3>
               <button aria-label="Close" onClick={() => setShowLearnMore(false)} className="p-2 rounded-full hover:bg-gray-100 transition-colors">
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <div className="space-y-4 text-gray-700 leading-relaxed max-h-[60vh] overflow-y-auto pr-2">
-              <p>
-                Established in <strong>1998</strong> in Bhopal, <strong>Orbit</strong> Engineering Group builds on a legacy exceeding four decades of engineering excellence. We deliver turnkey systems — from design and steel fabrication to PLC/SCADA integration and long-term O&M — through an <strong>ISO 9001</strong>-certified quality framework.
-              </p>
-              <p>
+            <motion.div
+              className="space-y-4 text-gray-600 leading-relaxed max-h-[60vh] overflow-y-auto pr-2 font-light"
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.2
+                  }
+                }
+              }}
+              initial="hidden"
+              animate="visible"
+            >
+              <motion.p variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}>
+                Established in <strong className="text-[#0073bc]">1998</strong> in Bhopal, <strong className="text-[#0073bc]">Orbit</strong> Engineering Group builds on a legacy exceeding four decades of engineering excellence. We deliver turnkey systems — from design and steel fabrication to PLC/SCADA integration and long-term O&M — through an <strong className="text-[#0073bc]">ISO 9001</strong>-certified quality framework.
+              </motion.p>
+              <motion.p variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}>
                 Our ambition is to lead in water innovation — offering holistic, sustainable, and affordable solutions that elevate access to clean water, optimize resource management, and uplift communities across India and beyond.
-              </p>
-              <p>
-                <strong>Our Mission:</strong> To innovate with purpose, deliver with integrity, and provide water systems grounded in environmental stewardship. At <strong>Orbit</strong>, every project is a promise fulfilled — for a cleaner, more resilient tomorrow.
-              </p>
-            </div>
+              </motion.p>
+              <motion.p variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0 } }}>
+                <strong>Our Mission:</strong> To innovate with purpose, deliver with integrity, and provide water systems grounded in environmental stewardship. At <strong className="text-[#0073bc]">Orbit</strong>, every project is a promise fulfilled — for a cleaner, more resilient tomorrow.
+              </motion.p>
+            </motion.div>
           </div>
         </div>
       )}

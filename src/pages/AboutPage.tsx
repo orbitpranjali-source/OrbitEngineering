@@ -61,25 +61,39 @@ export default function AboutPage() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <AnimatedHeading level={2} className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: { staggerChildren: 0.3 }
+                }
+              }}
+            >
+              <motion.h2
+                variants={{ hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0 } }}
+                className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 tracking-tight"
+              >
                 Pioneering Water Innovation for a Sustainable Future
-              </AnimatedHeading>
-              <div className="space-y-4 text-gray-700 leading-relaxed">
-                <p>
-                  <strong>Orbit</strong> is at the forefront of transforming India's water infrastructure through innovative technology and sustainable practices. Since our inception, we have been committed to addressing the nation's water challenges with intelligent, scalable solutions.
-                </p>
-                <p>
+              </motion.h2>
+              <div className="space-y-4 text-gray-600 leading-relaxed font-light">
+                <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
+                  <strong className="text-[#0073bc]">Orbit</strong> is at the forefront of transforming India's water infrastructure through innovative technology and sustainable practices. Since our inception, we have been committed to addressing the nation's water challenges with intelligent, scalable solutions.
+                </motion.p>
+                <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
                   Our expertise spans the complete spectrum of water management from treatment plant automation and IoT-enabled monitoring to comprehensive operation and maintenance services. We specialize in integrating cutting-edge PLC-based automation, SCADA systems, and cloud platforms to deliver real-time control and unprecedented efficiency.
-                </p>
-                <p>
+                </motion.p>
+                <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
                   With a portfolio of projects valued at over 200 crores, we have touched millions of lives across urban municipal corporations and rural communities. Our solutions are designed not just for today, but to create resilient water infrastructure for generations to come.
-                </p>
-                <p>
-                  At <strong>Orbit</strong>, we believe that sustainable water management is the cornerstone of healthy communities and environmental stewardship. Every project we undertake reflects our commitment to excellence, innovation, and positive social impact.
-                </p>
+                </motion.p>
+                <motion.p variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}>
+                  At <strong className="text-[#0073bc]">Orbit</strong>, we believe that sustainable water management is the cornerstone of healthy communities and environmental stewardship. Every project we undertake reflects our commitment to excellence, innovation, and positive social impact.
+                </motion.p>
               </div>
-            </div>
+            </motion.div>
             <motion.div
               initial={{ opacity: 0, x: 100 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -90,12 +104,12 @@ export default function AboutPage() {
               <img src={subHeadingImage} alt="Mission and Vision background" className="absolute inset-0 w-full h-full object-cover" />
               <div className="absolute inset-0 bg-black/40" />
               <div className="relative z-10 p-8 md:p-12">
-                <AnimatedHeading level={3} className="text-2xl font-bold mb-6">Our Mission</AnimatedHeading>
-                <p className="text-blue-100 mb-8 leading-relaxed text-lg">
+                <h3 className="text-2xl font-bold mb-4 tracking-tight">Our Mission</h3>
+                <p className="text-blue-50/90 mb-10 leading-relaxed text-lg font-light">
                   To provide innovative, sustainable, and accessible water management solutions that empower communities, protect natural resources, and build a resilient future for all.
                 </p>
-                <AnimatedHeading level={3} className="text-2xl font-bold mb-6">Our Vision</AnimatedHeading>
-                <p className="text-blue-100 leading-relaxed text-lg">
+                <h3 className="text-2xl font-bold mb-4 tracking-tight">Our Vision</h3>
+                <p className="text-blue-50/90 leading-relaxed text-lg font-light">
                   To be India's most trusted partner in water infrastructure, recognized for technological excellence, environmental responsibility, and unwavering commitment to community welfare.
                 </p>
               </div>
@@ -107,10 +121,10 @@ export default function AboutPage() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <AnimatedHeading level={2} className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">
               Why Orbit Stands Apart
-            </AnimatedHeading>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            </h2>
+            <p className="text-lg text-gray-500 max-w-2xl mx-auto font-light leading-relaxed">
               Our unique combination of expertise, innovation, and commitment sets us apart
             </p>
           </div>

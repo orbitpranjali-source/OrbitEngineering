@@ -141,7 +141,7 @@ export default function Footer({ onNavigate }: FooterProps) {
 
         <div className="mt-12 pt-8 border-t border-gray-800 text-center">
           <p className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} <button onClick={() => onNavigate('home')} className="hover:text-[#0073bc] transition-colors">Orbit Engineering Group</button>. Established in <strong>1998</strong>. All rights reserved.
+            &copy; {new Date().getFullYear()} <button onClick={() => onNavigate('home')} className="hover:text-[#0073bc] transition-colors">Orbit Engineering Group</button>. Established in <strong className="text-[#0073bc]">1998</strong>. All rights reserved.
           </p>
         </div>
       </div>
