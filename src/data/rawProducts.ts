@@ -28,7 +28,7 @@ import domeCamera from '../assets/products/dome-camera.jpg';
 import highSpeedCamera from '../assets/products/high-speed-camera.jpg';
 import ptzCamera from '../assets/products/ptz-camera.jpg';
 import bigJointingMachines from '../assets/products/big-jointing-machines.jpg';
-import buttFusionJointing from '../assets/products/butt-fusion-jointing.jpg';
+import weldingMachine from '../assets/products/welding_machine.jpg';
 import electrofusionJointingMachine from '../assets/products/electrofusion.jpeg';
 import hdpeFittings from '../assets/products/hdpe-fittings.jpg';
 import chlorinator from '../assets/products/chlorinator.png';
@@ -471,20 +471,23 @@ export const RAW_SUB_PRODUCTS = [
         ]
       },
       {
-        name: 'Butt Fusion Jointing',
-        image: buttFusionJointing,
+        name: 'Welding Machine ZEEN-3000 PLUS',
+        image: weldingMachine,
         datasheetUrl: '/datasheets/butt-fusion-welding.pdf',
-        paragraphs: ['HDPE Butt Fusion Welding Machine – Application & Features: Suitable for butt fusion welding Of plastic pipes and fittings made Of PE PP. and PVDF in construction site or workshop.'],
+        paragraphs: [
+          'The device supports fittings used in the plumbing and gas industry. It allows four programming modes: manual, scanner, barcode manual, as last. The welder\'s aluminium housing and built-in fan facilitate transformer cooling.',
+          'A plywood transport box is included to protect against mechanical damage and to ensure convenient transport and storage of the machine. Simple and clear operation of the welding machine control programme. Possibility to connect a barcode scanner (optional accessory). The temperature measurement system of the transformer protects the welder from overheating.'
+        ],
         bullets: [
-          'PE, PP, PVDF compatible',
-          'Digital temperature control',
-          'Electric facer cutter',
-          'Size range: 50-250mm',
-          'Portable design'
+          'Four programming modes: manual, scanner, barcode manual',
+          'Aluminium housing with built-in fan',
+          'Temperature measurement system prevents overheating',
+          'Plywood transport box included',
+          'Optional barcode scanner connectivity'
         ]
       },
       {
-        name: 'Electrofusion Jointing Machine',
+        name: 'Electrofusion welding Machine',
         image: electrofusionJointingMachine,
         datasheetUrl: '/datasheets/electrofusion-welding.pdf',
         paragraphs: ['Electrofusion welding machines are universal devices used to connect thermoplastic pipes and fittings (PE PP PVDF) resistance method using electrofusion fittings.'],
