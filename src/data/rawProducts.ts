@@ -39,6 +39,8 @@ import shuntReactor from '../assets/products/shunt-reactor.png';
 import locomotiveTransformer from '../assets/products/locomotive-transformer.png';
 import sf6CircuitBreaker from '../assets/products/sf6-circuit-breaker.png';
 import solarStreetLight from '../assets/products/smart-solar-street-light.png';
+import solarPanel from '../assets/products/solar-panel.jpg';
+
 
 
 export const RAW_SUB_PRODUCTS = [
@@ -665,7 +667,7 @@ export const RAW_SUB_PRODUCTS = [
     ]
   },
   {
-    category: 'Solar Solutions',
+    category: 'Solar sensor',
     items: [
       {
         name: 'Smart Solar Street Light with PV Panels',
@@ -678,7 +680,23 @@ export const RAW_SUB_PRODUCTS = [
           'Frame: Anodized Aluminium',
           'Life Span: 25 Years'
         ]
+      },
+      {
+        name: 'Solar Panel (Module)',
+        image: solarPanel,
+        bullets: [
+          'Type: Monocrystalline / Polycrystalline',
+          'Rated Power: 330 Wp – 550 Wp (per panel)',
+          'Efficiency: 18% – 22%',
+          'Operating Voltage (Vmp): 30 – 42 V',
+          'Operating Current (Imp): 8 – 13 A',
+          'Open Circuit Voltage (Voc): 38 – 50 V',
+          'Short Circuit Current (Isc): 9 – 14 A',
+          'Glass: Toughened / Tempered Glass (3.2 mm)',
+          'Frame Material: Anodized Aluminium'
+        ]
       }
+
     ]
   }
 ];

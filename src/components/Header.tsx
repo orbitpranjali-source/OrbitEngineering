@@ -33,7 +33,7 @@ export default function Header({ onNavigate, currentPage }: HeaderProps) {
     { label: 'Jointing Machines', page: 'product-info:jointing', icon: Wrench },
     { label: 'Pressure Transmitter', page: 'product-info:rosemount', icon: Gauge },
     { label: 'Transformers', page: 'product-info:transformers', icon: Zap },
-    { label: 'Solar Solutions', page: 'product-info:solar', icon: Sun },
+    { label: 'Solar sensor', page: 'product-info:solar', icon: Sun },
     { label: 'Chlorinators', page: 'product-info:chlorinators', icon: Droplets },
   ];
 

@@ -354,7 +354,7 @@ export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
       ]
     },
     'solar': {
-      title: 'Solar Solutions',
+      title: 'Solar sensor',
       description: 'Renewable and sustainable energy solutions with high-efficiency solar panels and smart lighting systems.',
       icon: Sun,
       features: [
@@ -422,7 +422,7 @@ export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
       {variant === 'jointing' && renderGallery('Jointing Machines', 'Professional jointing equipment for plastic piping systems')}
       {variant === 'rosemount' && renderGallery('Pressure Transmitter', 'Premium models and options')}
       {variant === 'transformers' && renderGallery('Transformers', 'High-performance power and distribution solutions')}
-      {variant === 'solar' && renderGallery('Solar Solutions', 'Sustainable solar energy and smart lighting solutions')}
+      {variant === 'solar' && renderGallery('Solar sensor', 'Sustainable solar energy and smart lighting solutions')}
       {variant === 'chlorinators' && renderGallery('Chlorinators', 'Reliable chlorination systems for water safety')}
 
       {/* Features Section */}
