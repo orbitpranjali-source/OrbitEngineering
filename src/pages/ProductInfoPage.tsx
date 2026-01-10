@@ -24,8 +24,8 @@ export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
 
   const renderGallery = (categoryName: string, subtitle: string) => {
     const items = getItemsByCategory(categoryName);
-    // Check if current variant is flow-meters or automation to apply specific grid layout
-    const isTwoColumnLayout = variant === 'flow-meters' || variant === 'automation';
+    // Check if current variant is flow-meters, automation, or has exactly 2 items to apply specific grid layout
+    const isTwoColumnLayout = variant === 'flow-meters' || variant === 'automation' || items.length === 2;
 
     return (
       <section className="py-16 bg-gray-50">
