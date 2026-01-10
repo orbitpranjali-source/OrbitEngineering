@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { Gauge, Activity, Zap, Camera, Wrench, BarChart3, CheckCircle, ArrowRight, FlaskConical } from 'lucide-react';
+import { Gauge, Activity, Zap, Camera, Wrench, BarChart3, CheckCircle, ArrowRight, FlaskConical, Sun } from 'lucide-react';
 import { RAW_SUB_PRODUCTS } from '../data/rawProducts';
 import { MotionFadeUp, AnimatedHeading } from '../components/Animated';
 
@@ -352,6 +352,35 @@ export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
         { parameter: 'Type', value: 'Auto, Distribution, Shunt, Traction' },
         { parameter: 'Standard', value: 'ANSI, IEC' }
       ]
+    },
+    'solar': {
+      title: 'Solar Solutions',
+      description: 'Renewable and sustainable energy solutions with high-efficiency solar panels and smart lighting systems.',
+      icon: Sun,
+      features: [
+        'High-efficiency monocrystalline/polycrystalline PV modules',
+        'Smart automatic dusk-to-dawn operation',
+        'Robust anodized aluminum frames',
+        'Long life span (up to 25 years)',
+        'Weatherproof (IP65/IP67) designs',
+        'Sustainable and cost-effective energy'
+      ],
+      applications: [
+        'Street and highway lighting',
+        'Park and garden illumination',
+        'Industrial and commercial campus security',
+        'Rural electrification projects',
+        'Remote site power systems',
+        'Smart city infrastructure'
+      ],
+      specifications: [
+        { parameter: 'PV Module Type', value: 'Monocrystalline / Polycrystalline' },
+        { parameter: 'Wattage Range', value: '100 Wp – 200 Wp' },
+        { parameter: 'Module Efficiency', value: '≥18%' },
+        { parameter: 'Operating Voltage', value: '18–24 V DC' },
+        { parameter: 'Frame Material', value: 'Anodized Aluminium' },
+        { parameter: 'Rated Life Span', value: '25 Years' }
+      ]
     }
   };
 
@@ -393,6 +422,7 @@ export default function ProductInfoPage({ onNavigate }: ProductInfoPageProps) {
       {variant === 'jointing' && renderGallery('Jointing Machines', 'Professional jointing equipment for plastic piping systems')}
       {variant === 'rosemount' && renderGallery('Pressure Transmitter', 'Premium models and options')}
       {variant === 'transformers' && renderGallery('Transformers', 'High-performance power and distribution solutions')}
+      {variant === 'solar' && renderGallery('Solar Solutions', 'Sustainable solar energy and smart lighting solutions')}
       {variant === 'chlorinators' && renderGallery('Chlorinators', 'Reliable chlorination systems for water safety')}
 
       {/* Features Section */}

@@ -38,6 +38,8 @@ import distributionTransformer from '../assets/products/distribution-transformer
 import shuntReactor from '../assets/products/shunt-reactor.png';
 import locomotiveTransformer from '../assets/products/locomotive-transformer.png';
 import sf6CircuitBreaker from '../assets/products/sf6-circuit-breaker.png';
+import solarStreetLight from '../assets/products/smart-solar-street-light.png';
+
 
 export const RAW_SUB_PRODUCTS = [
   {
@@ -655,6 +657,23 @@ export const RAW_SUB_PRODUCTS = [
           'Ultra-high voltage rated',
           'Reliable arc quenching',
           'Compact design'
+        ]
+      }
+    ]
+  },
+  {
+    category: 'Solar Solutions',
+    items: [
+      {
+        name: 'Smart Solar Street Light with PV Panels',
+        image: solarStreetLight,
+        bullets: [
+          'Type: Monocrystalline / Polycrystalline PV Module',
+          'Wattage: 100 Wp – 200 Wp (as per site requirement)',
+          'Efficiency: ≥18%',
+          'Voltage: 18–24 V DC',
+          'Frame: Anodized Aluminium',
+          'Life Span: 25 Years'
         ]
       }
     ]
