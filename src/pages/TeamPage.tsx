@@ -1,8 +1,7 @@
-import { useState, useRef, useEffect } from 'react';
 import { Mail, Briefcase, Target, Award, Users } from 'lucide-react';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
 import HeroSection from '../components/HeroSection';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { MotionFadeUp, MotionStagger, AnimatedHeading } from '../components/Animated';
 import SEO from '../components/SEO';
 // ourTeamIcon removed: using shared HeroSection component instead
@@ -12,78 +11,48 @@ import office2 from '../assets/Office-2.png';
 import reception from '../assets/reception.png';
 
 function OfficeImages() {
-  const officeRef = useRef<HTMLDivElement>(null);
-  const [isDesktop, setIsDesktop] = useState(false);
-
-  useEffect(() => {
-    const checkDesktop = () => setIsDesktop(window.innerWidth >= 1024);
-    checkDesktop();
-    window.addEventListener('resize', checkDesktop);
-    return () => window.removeEventListener('resize', checkDesktop);
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: officeRef,
-    offset: ["start 75%", "center center"]
-  });
-
-  // Smooth out the scroll progress
-  // Note: We need to import useSpring for this
-  const smoothProgress = useTransform(scrollYProgress, v => v); // Or useSpring if imported, but let's stick to direct transform for robustness unless explicitly needed. 
-  // Actually, standard scroll animations usually don't need useSpring unless avoiding jitter.
-  // The user asked for "smooth", which often implies an easing function or a wider range. I widened the range to "start 75%".
-
-  // Desktop Transforms (Horizontal Separation)
-  const xLeft = useTransform(smoothProgress, [0, 1], ["50%", "0%"]);
-  const xRight = useTransform(smoothProgress, [0, 1], ["-50%", "0%"]);
-
-  // Mobile Transforms (Vertical Separation)
-  // Top image moves Up (starts down at 50%), Bottom image moves Down (starts up at -50%)?
-  // Actually, in a grid-cols-1, Image 1 is top, Image 2 is bottom.
-  // To appear "together" in the middle, Image 1 moves DOWN (50%), Image 2 moves UP (-50%).
-  // Then they separate to 0.
-  const yTop = useTransform(smoothProgress, [0, 1], ["50%", "0%"]);
-  const yBottom = useTransform(smoothProgress, [0, 1], ["-50%", "0%"]);
-
-  const opacity = useTransform(smoothProgress, [0, 0.4], [0, 1]);
+  const imageReveal = {
+    hidden: { y: "100%" },
+    visible: {
+      y: "0%",
+      transition: {
+        duration: 1.2,
+        ease: [0.25, 0.1, 0.25, 1.0] as const
+      }
+    }
+  };
 
   return (
-    <div ref={officeRef} className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 items-stretch relative">
-      <motion.div
-        style={{
-          x: isDesktop ? xLeft : 0,
-          y: isDesktop ? 0 : yTop, // Mobile: Move from center (down) to top (0)
-          opacity
-        }}
-        // Remove initial/whileInView as we are controlling fully via style-linked scroll
-        className="overflow-hidden rounded-2xl border-2 border-transparent bg-white shadow-lg cursor-pointer transform-gpu w-full z-10"
-      >
-        <div className="w-full aspect-[3/2]">
-          <img
-            src={office2} // Top Image (Left on Desktop)
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-10 items-stretch relative">
+      <div className="overflow-hidden rounded-2xl border-2 border-transparent bg-white shadow-lg cursor-pointer transform-gpu w-full z-10">
+        <div className="w-full aspect-[3/2] overflow-hidden relative">
+          <motion.img
+            src={office2}
             alt="Orbit Engineering Group Office"
             loading="lazy"
             className="w-full h-full object-cover"
+            variants={imageReveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-10%" }}
           />
         </div>
-      </motion.div>
-      <motion.div
-        style={{
-          x: isDesktop ? xRight : 0,
-          y: isDesktop ? 0 : yBottom, // Mobile: Move from center (up) to bottom (0)
-          opacity
-        }}
-        className="overflow-hidden rounded-2xl border-2 border-transparent bg-white shadow-lg cursor-pointer transform-gpu w-full z-10"
-      >
-        <div className="w-full aspect-[3/2]">
-          <img
-            src={reception} // Bottom Image (Right on Desktop)
+      </div>
+
+      <div className="overflow-hidden rounded-2xl border-2 border-transparent bg-white shadow-lg cursor-pointer transform-gpu w-full z-10">
+        <div className="w-full aspect-[3/2] overflow-hidden relative">
+          <motion.img
+            src={reception}
             alt="Orbit Engineering Reception"
             loading="lazy"
             className="w-full h-full object-cover"
+            variants={imageReveal}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-10%" }}
           />
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

@@ -13,6 +13,12 @@ import dblBuildcon from '../assets/clients/dbl-buildcon.png';
 import tejasConstructions from '../assets/clients/tejas-constructions.png';
 import prismCement from '../assets/clients/prism-cement.png';
 import centralIndia from '../assets/clients/central-india-pvt-ltd.png';
+import cmrLogo from '../assets/clients/cmr_logo.jpg';
+import hegLimited from '../assets/clients/HEG.png';
+import indianRailways from '../assets/clients/Indian Railways.png';
+import laxmiCivilEngineering from '../assets/clients/laxmii.png';
+import omConstruction from '../assets/clients/om.jpeg';
+import sbem from '../assets/clients/SBEM.jpg';
 import heroSectionImage from '../assets/products/hero-section.jpg';
 
 export default function ClientsPage() {
@@ -95,7 +101,13 @@ export default function ClientsPage() {
                   'Vindhyachal Distillery',
                   'Central India Pvt Ltd',
                   'Dilip Buildcon',
-                  'Tejas Construction'
+                  'Tejas Construction',
+                  'CMR Infrastructure',
+                  'HEG Limited',
+                  'Indian Railways',
+                  'Laxmi Civil Engineering',
+                  'OM Construction',
+                  'SBEM'
                 ];
 
                 const logoMap: Record<string, string | null> = {
@@ -110,7 +122,13 @@ export default function ClientsPage() {
                   'Vindhyachal Distillery': vindhayachalDistillery,
                   'Central India Pvt Ltd': centralIndia,
                   'Dilip Buildcon': dblBuildcon,
-                  'Tejas Construction': tejasConstructions
+                  'Tejas Construction': tejasConstructions,
+                  'CMR Infrastructure': cmrLogo,
+                  'HEG Limited': hegLimited,
+                  'Indian Railways': indianRailways,
+                  'Laxmi Civil Engineering': laxmiCivilEngineering,
+                  'OM Construction': omConstruction,
+                  'SBEM': sbem
                 };
 
                 return displayNames.map((name) => {
