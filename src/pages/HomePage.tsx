@@ -4,7 +4,7 @@ import { MotionFadeUp, MotionStagger, AnimatedHeading } from '../components/Anim
 import { useState, useRef } from 'react';
 import SEO from '../components/SEO';
 import heroGirl from '../assets/hero-village-girl.jpg';
-import heroBg from '../assets/products/hero-bg.jpg';
+import HeroBackgroundSlider from '../components/HeroBackgroundSlider';
 import villageProject2 from '../assets/village-project-2.jpg';
 import iconWaterTreatmentPlants from '../assets/icon/Water Treatment Plants.png';
 import iconAutomationSystems from '../assets/icon/Automation Systems.png';
@@ -288,21 +288,13 @@ export default function HomePage({ onNavigate }: HomePageProps) {
       {/* Hidden H1 for SEO */}
       <h1 className="sr-only">Orbit Engineering Group Bhopal | Water Treatment Plants (WTP), SCADA, PLC Automation & Sustainable Engineering Solutions</h1>
 
-      <section
-        className="relative text-white overflow-hidden"
-        style={{
-          backgroundImage: `url(${heroBg})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
-        {/* subtle overlay so white text remains readable but image stays visible */}
-        <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
+      <section className="relative text-white overflow-hidden">
+        <HeroBackgroundSlider />
+        <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div className="max-w-3xl lg:pr-10">
               <motion.h2
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 leading-tight [text-shadow:_0_2px_4px_rgba(0,0,0,0.5)]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: 'easeOut', delay: 0 }}
@@ -310,7 +302,7 @@ export default function HomePage({ onNavigate }: HomePageProps) {
                 Water Tech for a Greener, Resilient and Sustainable Tomorrow
               </motion.h2>
               <motion.p
-                className="text-lg md:text-xl text-blue-100 mb-8 leading-relaxed"
+                className="text-lg md:text-xl text-white mb-8 leading-relaxed font-medium [text-shadow:_0_1px_2px_rgba(0,0,0,0.5)]"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, ease: 'easeOut', delay: 0.3 }}
