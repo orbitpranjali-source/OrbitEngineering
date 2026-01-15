@@ -15,6 +15,18 @@ export default function FAQPage({ onNavigate }: FAQPageProps) {
       answer: 'Orbit Engineering Group offers a wide range of water treatment solutions to meet various needs, including: Water filtration systems: Remove impurities, contaminants, and suspended solids from water. Water softening systems: Reduce the hardness of water by removing calcium and magnesium ions. Disinfection systems: Eliminate harmful bacteria, viruses, and other microorganisms. Wastewater treatment systems: Treat wastewater to remove pollutants and contaminants before discharge.'
     },
     {
+      question: 'How does a Water Treatment Plant improve water quality?',
+      answer: 'A WTP removes suspended solids, harmful microorganisms, organic matter, and chemical contaminants through processes such as coagulation, filtration, and disinfection, ensuring safe and potable water supply.'
+    },
+    {
+      question: 'Do you design customized WTP solutions for different capacities?',
+      answer: 'Yes, we design customized WTP solutions based on raw water quality, required treatment standards, plant capacity (MLD), and site conditions to ensure efficient and compliant operation.'
+    },
+    {
+      question: 'What factors influence the cost of a Water Treatment Plant?',
+      answer: 'The cost depends on plant capacity, treatment technology, raw water quality, automation level, civil and mechanical scope, and long-term operation & maintenance requirements.'
+    },
+    {
       question: 'How do your SCADA systems help optimise water distribution?',
       answer: 'Our SCADA (Supervisory Control and Data Acquisition) systems provide real-time monitoring and control of water distribution networks. By collecting and analyzing data on water flow, pressure, and consumption, we can optimize operations, identify leaks, and improve efficiency.'
     },
@@ -52,6 +64,11 @@ export default function FAQPage({ onNavigate }: FAQPageProps) {
 
       <section className="py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 text-center">
+              Understanding Our Water Treatment Plant (WTP) Solutions
+            </h2>
+          </div>
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div

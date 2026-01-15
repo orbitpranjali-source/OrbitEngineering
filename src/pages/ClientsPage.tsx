@@ -19,6 +19,9 @@ import indianRailways from '../assets/clients/Indian Railways.png';
 import laxmiCivilEngineering from '../assets/clients/laxmii.png';
 import omConstruction from '../assets/clients/om.jpeg';
 import sbem from '../assets/clients/SBEM.jpg';
+import indoreMunicipal from '../assets/clients/indore municipal corporation.png';
+import larsenToubro from "../assets/clients/larsen- toubro's.png";
+import bmcLogo from '../assets/clients/mpudcl-bhopal.jpg';
 import heroSectionImage from '../assets/products/hero-section.jpg';
 
 export default function ClientsPage() {
@@ -107,13 +110,15 @@ export default function ClientsPage() {
                   'Indian Railways',
                   'Laxmi Civil Engineering',
                   'OM Construction',
-                  'SBEM'
+                  'SBEM',
+                  'Indore Municipal Corporation',
+                  "Larsen & Toubro's"
                 ];
 
                 const logoMap: Record<string, string | null> = {
                   'MP Jal Nigam': mpJalNigam,
                   'MPUDCL Bhopal': bharatSarkar,
-                  'Bhopal Municipal Corporation': bharatSarkar,
+                  'Bhopal Municipal Corporation': bmcLogo,
                   'Indore District Administration': mpudclIndoreDistrict,
                   'Tikamgarh Nagar Parishads': bharatSarkar,
                   'WRD Bhopal': bharatSarkar,
@@ -128,7 +133,9 @@ export default function ClientsPage() {
                   'Indian Railways': indianRailways,
                   'Laxmi Civil Engineering': laxmiCivilEngineering,
                   'OM Construction': omConstruction,
-                  'SBEM': sbem
+                  'SBEM': sbem,
+                  'Indore Municipal Corporation': indoreMunicipal,
+                  "Larsen & Toubro's": larsenToubro
                 };
 
                 return displayNames.map((name) => {
