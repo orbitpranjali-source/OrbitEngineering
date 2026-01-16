@@ -1,4 +1,4 @@
-import { Droplets, Zap, Gauge, ThermometerSun, Activity, FlaskConical, Wrench, Camera, BarChart3 } from 'lucide-react';
+import { Droplets, Zap, Gauge, ThermometerSun, Activity, FlaskConical, Wrench, Camera, BarChart3, Sun, Droplet } from 'lucide-react';
 import HeroSection from '../components/HeroSection';
 import subHeadingImage from '../assets/products/sub-heading.jpg';
 import productsHeroBg from '../assets/products/hero-section.jpg';
@@ -11,6 +11,15 @@ import iconRO from '../assets/icon/Reverse Osmosis Systems.png';
 import iconETP from '../assets/icon/Effluent Treatment Plants.png';
 import iconPLC from '../assets/icon/plc-control-panel.png';
 import iconIoT from '../assets/icon/iot-sensors.png';
+import iconSolar from '../assets/products/solar-panel.jpg';
+import iconChlorinator from '../assets/products/chlorinator.png';
+import iconFlowMeter from '../assets/products/electromagnetic-flow-meter.jpg';
+import iconAnalyzer from '../assets/products/ph-analyzer.png';
+import iconValve from '../assets/products/butter-fly-valves.jpg';
+import iconCamera from '../assets/products/bullet-camera.jpg';
+import iconJointing from '../assets/products/electrofusion.jpeg';
+import iconPressure from '../assets/products/rosemount-3051s-series-coplanar-pressure-transmitter.jpg';
+import iconTransformer from '../assets/products/distribution-transformer.png';
 // Raw products now live in src/data/rawProducts to avoid HMR issues
 
 interface ProductsPageProps {
@@ -103,6 +112,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
     },
     {
       icon: Gauge,
+      image: iconFlowMeter,
       page: 'product-info:flow-meters',
       title: 'Flow Meters',
       description: 'Precision flow measurement for all applications',
@@ -116,6 +126,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
     },
     {
       icon: Activity,
+      image: iconAnalyzer,
       page: 'product-info:analyzers',
       title: 'Analyzers & Transmitters',
       description: 'Continuous online water quality monitoring',
@@ -129,6 +140,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
     },
     {
       icon: Wrench,
+      image: iconValve,
       page: 'product-info:valves',
       title: 'Valves & Piping',
       description: 'Industrial grade valves and piping solutions',
@@ -142,6 +154,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
     },
     {
       icon: Camera,
+      image: iconCamera,
       page: 'product-info:cameras',
       title: 'Cameras & Vision',
       description: 'Rugged surveillance for water infrastructure',
@@ -155,6 +168,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
     },
     {
       icon: Wrench,
+      image: iconJointing,
       page: 'product-info:jointing',
       title: 'Jointing Machines',
       description: 'HDPE pipe jointing and fusion equipment',
@@ -168,6 +182,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
     },
     {
       icon: BarChart3,
+      image: iconPressure,
       page: 'product-info:rosemount',
       title: 'Pressure Transmitter',
       description: 'High-performance pressure and level transmitters',
@@ -181,6 +196,7 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
     },
     {
       icon: Zap,
+      image: iconTransformer,
       page: 'product-info:transformers',
       title: 'Transformers',
       description: 'Power and distribution transformers for grid stability',
@@ -190,6 +206,34 @@ export default function ProductsPage({ onNavigate }: ProductsPageProps) {
         'Shunt Reactors',
         'Locomotive Transformers',
         'High Efficiency'
+      ]
+    },
+    {
+      icon: Sun,
+      image: iconSolar,
+      page: 'product-info:solar',
+      title: 'Solar Sensor',
+      description: 'Advanced solar monitoring and control systems',
+      features: [
+        'Solar irradiance sensors',
+        'Panel efficiency monitoring',
+        'Real-time performance tracking',
+        'Weather station integration',
+        'Data logging & analytics'
+      ]
+    },
+    {
+      icon: Droplet,
+      image: iconChlorinator,
+      page: 'product-info:chlorinators',
+      title: 'Chlorinators',
+      description: 'Automated chlorine dosing systems for water treatment',
+      features: [
+        'Precise chemical dosing',
+        'Automated control',
+        'Flow-proportional dosing',
+        'Safety interlocks',
+        'Low maintenance operation'
       ]
     }
   ];
